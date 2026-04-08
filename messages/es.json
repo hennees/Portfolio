@@ -96,5 +96,14 @@
       "message_placeholder": "Cuéntame sobre tu proyecto..."
     },
     "social": "Encuéntrame en"
+  },
+  "footer": {
+    "nav_title": "Plataforma",
+    "legal_title": "Legal",
+    "social_title": "Social",
+    "imprint": "Aviso legal",
+    "privacy": "Política de privacidad",
+    "made_with": "Diseñado & programado por",
+    "rights": "Todos los derechos reservados."
   }
 }

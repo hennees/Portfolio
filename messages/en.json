@@ -96,5 +96,14 @@
       "message_placeholder": "Tell me about your project..."
     },
     "social": "Find me on"
+  },
+  "footer": {
+    "nav_title": "Platform",
+    "legal_title": "Legal",
+    "social_title": "Social",
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy",
+    "made_with": "Designed & Built by",
+    "rights": "All rights reserved."
   }
 }

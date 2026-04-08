@@ -37,7 +37,6 @@ export default function Navbar() {
     { href: "#work", label: t("work") },
     { href: "#services", label: t("services") },
     { href: "#about", label: t("about") },
-    { href: "#contact", label: t("contact") },
   ];
 
   return (
@@ -75,23 +74,22 @@ export default function Navbar() {
             />
           </a>
 
-          {/* Desktop nav links */}
-          <ul className="hidden md:flex items-center gap-1" role="list">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="nav-link px-4 py-2 rounded-xl text-sm font-medium cursor-pointer"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {/* Desktop nav links & locale */}
+          <div className="hidden md:flex items-center gap-4">
+            <ul className="flex items-center gap-1" role="list">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="nav-link px-4 py-2 rounded-xl text-sm font-medium cursor-pointer"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
 
-          {/* Right side: locale switcher + mobile toggle */}
-          <div className="flex items-center gap-2">
-            {/* Locale switcher */}
+            {/* Desktop Locale switcher */}
             <div
               className="flex items-center rounded-xl p-0.5"
               style={{ background: "rgba(255,255,255,0.05)" }}
@@ -104,11 +102,8 @@ export default function Navbar() {
                   onClick={() => switchLocale(code)}
                   className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer"
                   style={{
-                    background:
-                      locale === code
-                        ? "linear-gradient(135deg, #F85900, #FF9432)"
-                        : "transparent",
-                    color: locale === code ? "#0E0F10" : "#A09E9E",
+                    background: locale === code ? "rgba(255,255,255,0.1)" : "transparent",
+                    color: locale === code ? "#F5F5F7" : "#A09E9E",
                   }}
                   aria-label={`Switch to ${label}`}
                   aria-pressed={locale === code}
@@ -117,6 +112,21 @@ export default function Navbar() {
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* Right side: Contact CTA + mobile toggle */}
+          <div className="flex items-center gap-3">
+            <a
+              href="#contact"
+              className="hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer"
+              style={{
+                background: "linear-gradient(135deg, #F85900, #FF9432)",
+                color: "#0E0F10",
+                boxShadow: "0 4px 14px rgba(248,89,0,0.25)",
+              }}
+            >
+              {t("contact")}
+            </a>
 
             {/* Mobile menu toggle */}
             <button
@@ -162,6 +172,35 @@ export default function Navbar() {
                   </a>
                 </li>
               ))}
+              
+              {/* Mobile Contact Link */}
+              <li>
+                <a
+                  href="#contact"
+                  className="block px-4 py-3 rounded-xl text-sm font-bold cursor-pointer mt-2"
+                  style={{ background: "linear-gradient(135deg, #F85900, #FF9432)", color: "#0E0F10" }}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {t("contact")}
+                </a>
+              </li>
+
+              {/* Mobile Locale Switcher */}
+              <li className="mt-4 pt-4 flex gap-2 justify-center" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                {LOCALES.map(({ code, label }) => (
+                  <button
+                    key={code}
+                    onClick={() => { switchLocale(code); setMobileOpen(false); }}
+                    className="px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer flex-1"
+                    style={{
+                      background: locale === code ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.03)",
+                      color: locale === code ? "#F5F5F7" : "#A09E9E",
+                    }}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </li>
             </ul>
           </motion.div>
         )}
