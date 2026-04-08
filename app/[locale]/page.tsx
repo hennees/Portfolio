@@ -2,6 +2,7 @@ import Navbar from "@/components/ui/Navbar";
 import Hero from "@/components/sections/Hero";
 import Showcase from "@/components/sections/Showcase";
 import Services from "@/components/sections/Services";
+import Process from "@/components/sections/Process";
 import StackTools from "@/components/sections/StackTools";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <Showcase />
       <Services />
+      <Process />
       <StackTools />
       <About />
       <Contact />

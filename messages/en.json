@@ -45,21 +45,22 @@
     "title": "What I Do",
     "subtitle": "End-to-end product design and development — from first sketch to final build.",
     "items": {
-      "design": {
-        "title": "UI/UX Design",
-        "description": "From wireframe to pixel-perfect interface. I craft intuitive, visually compelling experiences grounded in real user needs."
-      },
       "web": {
-        "title": "Web Development",
-        "description": "Modern, fast, responsive web apps built with the best tools in the ecosystem — performant by default."
+        "title": "Full-Stack Web Development",
+        "description": "From the initial concept to a scalable cloud solution. I develop modern, responsive web apps, dashboards, and SaaS products that shine both in the frontend and backend.",
+        "tags": ["React", "Next.js", "Node.js", "PostgreSQL", "Tailwind"]
       },
       "mobile": {
         "title": "Mobile App Development",
-        "description": "Native iOS and cross-platform apps that feel right. Swift, Kotlin, Flutter — whichever fits best."
+        "description": "High-performance apps that engage users. Whether native for iOS or cross-platform, I build tailored mobile experiences from conception to the App Store."
       },
-      "ai": {
-        "title": "AI-Powered Workflow",
-        "description": "I leverage the latest AI tools to deliver faster, smarter, and higher-quality results without sacrificing craft."
+      "design": {
+        "title": "UI/UX Design",
+        "description": "Aesthetics meet functionality. I craft pixel-perfect interfaces through thoughtful wireframes, interactive prototypes, and a clear user-centric focus."
+      },
+      "performance": {
+        "title": "Performance & Security",
+        "description": "Secure, fast, and future-proof. My focus is on measurable top-tier performance, clean architecture, and strict adherence to privacy standards."
       }
     }
   },
@@ -80,6 +81,28 @@
     "stat_values": {
       "experience": "4+",
       "projects": "10+"
+    }
+  },
+  "process": {
+    "title": "My Process",
+    "subtitle": "From the first idea to the final launch — structured and transparent.",
+    "items": {
+      "analyse": {
+        "title": "Analysis",
+        "description": "We start with the core problem. Together we define clear goals, analyze your target audience, and lay the technical framework for the project."
+      },
+      "design": {
+        "title": "Design",
+        "description": "Ideas become visible. Through modern and interactive prototypes, we create an interface that doesn't just look amazing, but feels intuitive."
+      },
+      "development": {
+        "title": "Development",
+        "description": "Time to build. Focused on clean code and cutting-edge frameworks, I engineer a robust, high-performance architecture for your product."
+      },
+      "launch": {
+        "title": "Launch",
+        "description": "Smooth liftoff. Beyond the initial go-live, I ensure deep optimizations and remain by your side even after a successful launch."
+      }
     }
   },
   "contact": {

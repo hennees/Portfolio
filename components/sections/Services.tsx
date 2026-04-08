@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { Palette, Code2, Smartphone, Zap } from "lucide-react";
+import { Palette, Code2, Smartphone, ShieldCheck } from "lucide-react";
 import GlassCard from "@/components/ui/GlassCard";
 import { type LucideIcon } from "lucide-react";
 
@@ -17,36 +17,48 @@ const stagger = {
 };
 
 type ServiceItem = {
-  key: "design" | "web" | "mobile" | "ai";
+  key: "web" | "mobile" | "design" | "performance";
+  number: string;
   Icon: LucideIcon;
   gradient: string;
+  spanClass: string;
 };
 
 const SERVICES: ServiceItem[] = [
   {
-    key: "design",
-    Icon: Palette,
-    gradient: "linear-gradient(135deg, rgba(248,89,0,0.2), rgba(255,148,50,0.1))",
-  },
-  {
     key: "web",
+    number: "01",
     Icon: Code2,
-    gradient: "linear-gradient(135deg, rgba(248,89,0,0.15), rgba(47,47,47,0.3))",
+    gradient: "radial-gradient(circle at center, rgba(248,89,0,0.15) 0%, rgba(47,47,47,0) 70%)",
+    spanClass: "lg:col-span-2",
   },
   {
     key: "mobile",
+    number: "02",
     Icon: Smartphone,
-    gradient: "linear-gradient(135deg, rgba(255,148,50,0.15), rgba(47,47,47,0.3))",
+    gradient: "radial-gradient(circle at center, rgba(255,148,50,0.15) 0%, rgba(47,47,47,0) 70%)",
+    spanClass: "lg:col-span-1",
   },
   {
-    key: "ai",
-    Icon: Zap,
-    gradient: "linear-gradient(135deg, rgba(248,89,0,0.18), rgba(255,148,50,0.08))",
+    key: "design",
+    number: "03",
+    Icon: Palette,
+    gradient: "radial-gradient(circle at center, rgba(248,89,0,0.2) 0%, rgba(255,148,50,0) 70%)",
+    spanClass: "lg:col-span-1",
+  },
+  {
+    key: "performance",
+    number: "04",
+    Icon: ShieldCheck,
+    gradient: "radial-gradient(circle at center, rgba(248,89,0,0.18) 0%, rgba(255,148,50,0) 70%)",
+    spanClass: "lg:col-span-2",
   },
 ];
 
 export default function Services() {
   const t = useTranslations("services");
+
+  const tags = ["React", "Next.js", "Node.js", "PostgreSQL", "Tailwind"];
 
   return (
     <section
@@ -104,51 +116,63 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* Cards */}
+        {/* Bento Box Cards */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={stagger}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6"
         >
-          {SERVICES.map(({ key, Icon, gradient }) => (
+          {SERVICES.map(({ key, number, Icon, gradient, spanClass }) => (
             <motion.div
               key={key}
               variants={fadeUp}
               transition={{ duration: 0.5 }}
+              className={`h-full ${spanClass}`}
             >
-              <GlassCard className="p-6 flex flex-col gap-5 h-full group">
-                {/* Icon */}
-                <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-hover:scale-110"
-                  style={{ background: gradient }}
-                >
-                  <Icon
-                    size={22}
-                    style={{ color: "#F85900" }}
-                    aria-hidden="true"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2 flex-1">
+              <GlassCard className="p-8 sm:p-10 flex flex-col h-full group relative overflow-hidden">
+                {/* Text Content */}
+                <div className="relative z-10 w-full sm:w-[75%] lg:w-[85%] flex-1">
+                  <span className="text-xs font-mono font-medium tracking-widest uppercase mb-4 block" style={{ color: "#A09E9E" }}>
+                    {number}
+                  </span>
                   <h3
-                    className="font-heading font-bold text-lg"
+                    className="font-heading font-bold text-2xl mb-4"
                     style={{ color: "#F5F5F7" }}
                   >
                     {t(`items.${key}.title`)}
                   </h3>
                   <p
-                    className="text-sm leading-relaxed"
+                    className="text-base leading-relaxed mb-6"
                     style={{ color: "#A09E9E" }}
                   >
                     {t(`items.${key}.description`)}
                   </p>
+                  
+                  {/* Tags specifically for Web */}
+                  {key === "web" && (
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {tags.map((tag) => (
+                        <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "#A09E9E" }}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
-                {/* Accent line */}
+                {/* Oversized Glowing Icon */}
+                <div 
+                  className="absolute -bottom-8 -right-8 w-48 h-48 sm:w-[240px] sm:h-[240px] rounded-full flex items-center justify-center transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-6" 
+                  style={{ background: gradient }}
+                >
+                  <Icon className="w-24 h-24 sm:w-32 sm:h-32" strokeWidth={0.5} style={{ color: "rgba(248,89,0,0.5)" }} />
+                </div>
+                
+                {/* Accent line border */}
                 <div
-                  className="h-px w-0 group-hover:w-full transition-all duration-500 rounded-full"
+                  className="absolute bottom-0 left-0 h-px w-0 group-hover:w-full transition-all duration-700 ease-out"
                   style={{ background: "linear-gradient(90deg, #F85900, transparent)" }}
                   aria-hidden="true"
                 />

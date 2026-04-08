@@ -45,21 +45,22 @@
     "title": "Was ich tue",
     "subtitle": "End-to-End Produktdesign und Entwicklung — vom ersten Entwurf bis zum fertigen Produkt.",
     "items": {
-      "design": {
-        "title": "UI/UX Design",
-        "description": "Vom Wireframe zur pixelgenauen Oberfläche. Ich gestalte intuitive, visuell überzeugende Erlebnisse, die auf echten Nutzerbedürfnissen basieren."
-      },
       "web": {
-        "title": "Webentwicklung",
-        "description": "Moderne, schnelle, responsive Web-Apps mit den besten Tools des Ökosystems — standardmäßig performant."
+        "title": "Full-Stack Webentwicklung",
+        "description": "Von der ersten Idee bis zur skalierbaren Cloud-Lösung. Ich entwickle moderne, reaktionsschnelle Web-Apps, Dashboards und SaaS-Produkte, die sowohl im Frontend als auch im Backend überzeugen.",
+        "tags": ["React", "Next.js", "Node.js", "PostgreSQL", "Tailwind"]
       },
       "mobile": {
         "title": "Mobile App Entwicklung",
-        "description": "Native iOS und plattformübergreifende Apps, die sich richtig anfühlen. Swift, Kotlin, Flutter — je nachdem was am besten passt."
+        "description": "Leistungsstarke Apps, die Nutzer begeistern. Egal ob nativ für iOS oder plattformübergreifend – ich baue mobile Erlebnisse passgenau von der Konzeption bis in den App Store."
       },
-      "ai": {
-        "title": "KI-gestützter Workflow",
-        "description": "Ich nutze die neuesten KI-Tools, um schneller, intelligenter und qualitativ hochwertiger zu liefern — ohne handwerkliche Sorgfalt zu opfern."
+      "design": {
+        "title": "UI/UX Design",
+        "description": "Ästhetik trifft auf Funktionalität. Mit durchdachten Wireframes, interaktiven Prototypen und einem klaren, nutzerzentrierten Fokus gestalte ich pixelgenaue Interfaces."
+      },
+      "performance": {
+        "title": "Performance & Sicherheit",
+        "description": "Sicher, schnell und zukunftssicher. Mein Fokus liegt auf messbarer Performance, sauberen Code-Strukturen und strikter Einhaltung von Datenschutzstandards."
       }
     }
   },
@@ -80,6 +81,28 @@
     "stat_values": {
       "experience": "4+",
       "projects": "10+"
+    }
+  },
+  "process": {
+    "title": "Mein Prozess",
+    "subtitle": "Von der ersten Idee bis zum Launch — strukturiert und transparent.",
+    "items": {
+      "analyse": {
+        "title": "Analyse",
+        "description": "Wir starten mit dem Kernproblem. Gemeinsam definieren wir Ziele, analysieren deine Zielgruppe und legen das technische Fundament für dein Projekt."
+      },
+      "design": {
+        "title": "Design",
+        "description": "Ideen werden sichtbar. Durch moderne und interaktive Prototypen schaffen wir ein Interface, das nicht nur fantastisch aussieht, sondern intuitiv bedienbar ist."
+      },
+      "development": {
+        "title": "Entwicklung",
+        "description": "Jetzt wird gebaut. Mit Fokus auf sauberen Code und modernsten Frameworks entwickle ich eine robuste, leistungsstarke Architektur für dein Produkt."
+      },
+      "launch": {
+        "title": "Launch",
+        "description": "Abheben leicht gemacht. Neben dem eigentlichen Go-Live sorge ich für tiefgehende Optimierungen und begleite dich auch nach dem erfolgreichen Start."
+      }
     }
   },
   "contact": {

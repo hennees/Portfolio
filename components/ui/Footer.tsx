@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-
+import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 
 function LinkedInIcon() {
@@ -136,8 +136,8 @@ export default function Footer() {
             <h3 className="font-heading font-semibold text-sm tracking-wider uppercase mb-2" style={{ color: "#F5F5F7" }}>
               {tFooter("legal_title")}
             </h3>
-            <a href="#" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("imprint")}</a>
-            <a href="#" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("privacy")}</a>
+            <Link href="/imprint" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("imprint")}</Link>
+            <Link href="/privacy" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("privacy")}</Link>
           </motion.div>
         </motion.div>
 
