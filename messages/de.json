@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "work": "Arbeit",
+    "services": "Leistungen",
+    "about": "Über mich",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "name": "Patrick Hennes",
+    "tagline": "Interfaces gestalten, die sich genauso gut anfühlen, wie sie aussehen — präzise gebaut, aus Neugier angetrieben.",
+    "cta_work": "Meine Arbeit",
+    "cta_contact": "Kontakt aufnehmen",
+    "roles": ["UI/UX Designer", "Freelance Entwickler", "Mobile App Creator", "KI-gestützter Workflow"],
+    "scroll": "Scrollen zum Entdecken"
+  },
+  "showcase": {
+    "title": "Ausgewählte Projekte",
+    "subtitle": "Eine Sammlung von Projekten, wo Design auf Funktion trifft.",
+    "featured_label": "Hauptprojekt",
+    "tags_label": "Tags"
+  },
+  "projects": {
+    "scoon": {
+      "name": "Scoon",
+      "description": "Eine iOS-Creator-Plattform der nächsten Generation für Kurzinhalte. Von Grund auf mit einem dunklen, immersiven UI-System gestaltet.",
+      "tags": ["iOS", "UI/UX", "SwiftUI", "Creator App"]
+    },
+    "amigon": {
+      "name": "Amigon",
+      "description": "Eine Mental-Health-Begleit-App mit Fokus auf ruhiges Interaktionsdesign, tägliches Stimmungs-Tracking und sanftes KI-Journaling.",
+      "tags": ["Mental Health", "iOS", "KI-gestützt", "UI/UX"]
+    },
+    "portfolio": {
+      "name": "Portfolio",
+      "description": "Diese Website — gestaltet und gebaut, um meine Arbeit zu präsentieren. Dunkle Glassmorphism-Ästhetik mit mehrsprachiger Unterstützung.",
+      "tags": ["Web", "Next.js", "Framer Motion", "i18n"]
+    },
+    "dataflow": {
+      "name": "DataFlow",
+      "description": "Ein SaaS-Dashboard für Echtzeit-Analysen mit komplexer Datenvisualisierung, benutzerdefinierten Chart-Komponenten und rollenbasiertem Zugriff.",
+      "tags": ["Dashboard", "SaaS", "React", "UI/UX"]
+    }
+  },
+  "services": {
+    "title": "Was ich tue",
+    "subtitle": "End-to-End Produktdesign und Entwicklung — vom ersten Entwurf bis zum fertigen Produkt.",
+    "items": {
+      "design": {
+        "title": "UI/UX Design",
+        "description": "Vom Wireframe zur pixelgenauen Oberfläche. Ich gestalte intuitive, visuell überzeugende Erlebnisse, die auf echten Nutzerbedürfnissen basieren."
+      },
+      "web": {
+        "title": "Webentwicklung",
+        "description": "Moderne, schnelle, responsive Web-Apps mit den besten Tools des Ökosystems — standardmäßig performant."
+      },
+      "mobile": {
+        "title": "Mobile App Entwicklung",
+        "description": "Native iOS und plattformübergreifende Apps, die sich richtig anfühlen. SwiftUI, React Native und alles dazwischen."
+      },
+      "ai": {
+        "title": "KI-gestützter Workflow",
+        "description": "Ich nutze die neuesten KI-Tools, um schneller, intelligenter und qualitativ hochwertiger zu liefern — ohne handwerkliche Sorgfalt zu opfern."
+      }
+    }
+  },
+  "stack": {
+    "title": "Stack & Tools",
+    "subtitle": "Die Technologien und Tools, mit denen ich täglich arbeite."
+  },
+  "about": {
+    "title": "Über mich",
+    "subtitle": "Die Person hinter den Pixeln.",
+    "bio1": "Ich bin Patrick — ein österreichischer Freelance UI/UX-Designer und Entwickler aus Wien. In den letzten Jahren habe ich digitale Produkte gebaut, die sowohl schön als auch funktional sind.",
+    "bio2": "Meine Arbeit umfasst mobile Apps, Web-Plattformen und Design-Systeme. Ich bin leidenschaftlich interessiert an der Schnittstelle von Design und Technologie und suche immer die klarste, eleganteste Lösung.",
+    "bio3": "Ich bleibe an der Spitze, indem ich KI-Tools in jede Phase meines Workflows integriere — von der Ideenfindung bis zur Auslieferung — was mir ermöglicht, schneller vorzugehen, ohne jemals die Qualität zu beeinträchtigen.",
+    "stats": {
+      "experience": "Jahre Erfahrung",
+      "projects": "Projekte geliefert",
+      "languages": "Sprachen"
+    },
+    "stat_values": {
+      "experience": "3+",
+      "projects": "10+",
+      "languages": "3"
+    }
+  },
+  "contact": {
+    "title": "Lass uns etwas bauen",
+    "subtitle": "Haben Sie ein Projekt im Sinn? Ich würde es gerne hören. Schicken Sie mir eine Nachricht und sehen wir, was wir gemeinsam erschaffen können.",
+    "cta": "Nachricht senden",
+    "form": {
+      "name": "Ihr Name",
+      "email": "Ihre E-Mail",
+      "message": "Ihre Nachricht",
+      "send": "Nachricht senden",
+      "name_placeholder": "Patrick Hennes",
+      "email_placeholder": "patrick@example.com",
+      "message_placeholder": "Erzählen Sie mir von Ihrem Projekt..."
+    },
+    "social": "Finden Sie mich auf"
+  }
+}

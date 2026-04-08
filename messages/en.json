@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "work": "Work",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Patrick Hennes",
+    "tagline": "Crafting interfaces that feel as good as they look — built with precision, driven by curiosity.",
+    "cta_work": "View My Work",
+    "cta_contact": "Get in Touch",
+    "roles": ["UI/UX Designer", "Freelance Developer", "Mobile App Creator", "AI-Powered Workflow"],
+    "scroll": "Scroll to explore"
+  },
+  "showcase": {
+    "title": "Selected Work",
+    "subtitle": "A collection of projects where design meets function.",
+    "featured_label": "Featured Project",
+    "tags_label": "tags"
+  },
+  "projects": {
+    "scoon": {
+      "name": "Scoon",
+      "description": "A next-generation iOS creator platform for short-form content. Designed from the ground up with a dark, immersive UI system.",
+      "tags": ["iOS", "UI/UX", "SwiftUI", "Creator App"]
+    },
+    "amigon": {
+      "name": "Amigon",
+      "description": "A mental health companion app focused on calm interaction design, daily mood tracking, and gentle AI-assisted journaling.",
+      "tags": ["Mental Health", "iOS", "AI-Powered", "UI/UX"]
+    },
+    "portfolio": {
+      "name": "Portfolio",
+      "description": "This very site — designed and built to showcase my craft. Dark glassmorphism aesthetic with multilingual support.",
+      "tags": ["Web", "Next.js", "Framer Motion", "i18n"]
+    },
+    "dataflow": {
+      "name": "DataFlow",
+      "description": "A SaaS dashboard for real-time analytics with complex data visualisation, custom chart components, and role-based access.",
+      "tags": ["Dashboard", "SaaS", "React", "UI/UX"]
+    }
+  },
+  "services": {
+    "title": "What I Do",
+    "subtitle": "End-to-end product design and development — from first sketch to final build.",
+    "items": {
+      "design": {
+        "title": "UI/UX Design",
+        "description": "From wireframe to pixel-perfect interface. I craft intuitive, visually compelling experiences grounded in real user needs."
+      },
+      "web": {
+        "title": "Web Development",
+        "description": "Modern, fast, responsive web apps built with the best tools in the ecosystem — performant by default."
+      },
+      "mobile": {
+        "title": "Mobile App Development",
+        "description": "Native iOS and cross-platform apps that feel right. SwiftUI, React Native, and everything in between."
+      },
+      "ai": {
+        "title": "AI-Powered Workflow",
+        "description": "I leverage the latest AI tools to deliver faster, smarter, and higher-quality results without sacrificing craft."
+      }
+    }
+  },
+  "stack": {
+    "title": "Stack & Tools",
+    "subtitle": "The technologies and tools I work with every day."
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "The person behind the pixels.",
+    "bio1": "I'm Patrick — an Austrian freelance UI/UX designer and developer based in Vienna. I've spent the last few years building digital products that are both beautiful and functional.",
+    "bio2": "My work spans mobile apps, web platforms, and design systems. I'm passionate about the intersection of design and technology, always seeking the cleanest, most elegant solution.",
+    "bio3": "I stay at the cutting edge by integrating AI tools into every stage of my workflow — from ideation to delivery — which lets me move faster without ever compromising quality.",
+    "stats": {
+      "experience": "Years Experience",
+      "projects": "Projects Delivered",
+      "languages": "Languages"
+    },
+    "stat_values": {
+      "experience": "3+",
+      "projects": "10+",
+      "languages": "3"
+    }
+  },
+  "contact": {
+    "title": "Let's Build Something",
+    "subtitle": "Have a project in mind? I'd love to hear about it. Drop me a message and let's see what we can create together.",
+    "cta": "Send a Message",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "message": "Your Message",
+      "send": "Send Message",
+      "name_placeholder": "Patrick Hennes",
+      "email_placeholder": "patrick@example.com",
+      "message_placeholder": "Tell me about your project..."
+    },
+    "social": "Find me on"
+  }
+}
