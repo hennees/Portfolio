@@ -22,14 +22,53 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSending(true);
-    // Simulate send
-    setTimeout(() => {
+
+    const formData = new FormData(e.currentTarget);
+    const object = Object.fromEntries(formData);
+    
+    // Check if the key exists, otherwise let it fail gracefully or show an alert (for testing)
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+    if (!accessKey) {
+      console.warn("WEB3FORMS KEY MISSING");
+      // Fallback to simulate send if no key is present for local development
+      setTimeout(() => {
+        setSending(false);
+        setSubmitted(true);
+      }, 1200);
+      return;
+    }
+
+    const data = {
+      ...object,
+      access_key: accessKey,
+    };
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        console.error("Web3Forms error:", result);
+        alert("Something went wrong. Please email directly.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Network error.");
+    } finally {
       setSending(false);
-      setSubmitted(true);
-    }, 1200);
+    }
   };
 
   return (
@@ -181,6 +220,7 @@ export default function Contact() {
                   </label>
                   <input
                     id="contact-name"
+                    name="name"
                     type="text"
                     required
                     placeholder={t("form.name_placeholder")}
@@ -198,6 +238,7 @@ export default function Contact() {
                   </label>
                   <input
                     id="contact-email"
+                    name="email"
                     type="email"
                     required
                     placeholder={t("form.email_placeholder")}
@@ -217,6 +258,7 @@ export default function Contact() {
                 </label>
                 <textarea
                   id="contact-message"
+                  name="message"
                   required
                   rows={5}
                   placeholder={t("form.message_placeholder")}
