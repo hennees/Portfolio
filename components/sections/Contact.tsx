@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { Globe, Briefcase, PenTool, Send, Mail } from "lucide-react";
+import { Send, Mail } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
 const fadeUp = {
@@ -15,10 +15,29 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
+function LinkedInIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+      <rect x="2" y="9" width="4" height="12"/>
+      <circle cx="4" cy="4" r="2"/>
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+    </svg>
+  );
+}
+
 const SOCIALS = [
-  { Icon: Globe, label: "GitHub" },
-  { Icon: Briefcase, label: "LinkedIn" },
-  { Icon: PenTool, label: "Figma" },
+  { Icon: LinkedInIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/hennespatrick/" },
+  { Icon: InstagramIcon, label: "Instagram", href: "https://www.instagram.com/hennees" },
 ] as const;
 
 export default function Contact() {
@@ -101,25 +120,8 @@ export default function Contact() {
           className="flex justify-center mb-12"
         >
           <a
-            href="mailto:patrick@example.com"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-200 cursor-pointer"
-            style={{
-              background: "linear-gradient(135deg, #F85900, #FF9432)",
-              color: "#0E0F10",
-              boxShadow: "0 12px 40px rgba(248,89,0,0.35)",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                "0 16px 50px rgba(248,89,0,0.5)";
-              (e.currentTarget as HTMLAnchorElement).style.transform =
-                "translateY(-2px)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                "0 12px 40px rgba(248,89,0,0.35)";
-              (e.currentTarget as HTMLAnchorElement).style.transform =
-                "translateY(0)";
-            }}
+            href="mailto:hello@henux.at"
+            className="cta-primary inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-semibold text-base cursor-pointer"
           >
             <Mail size={20} aria-hidden="true" />
             {t("cta")}
@@ -282,35 +284,16 @@ export default function Contact() {
             {t("social")}
           </span>
           <div className="flex items-center gap-3">
-            {SOCIALS.map(({ Icon, label }) => (
+            {SOCIALS.map(({ Icon, label, href }) => (
               <a
                 key={label}
-                href="#"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={label}
-                className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
-                style={{
-                  background: "rgba(47,47,47,0.4)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  color: "#A09E9E",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                    "rgba(248,89,0,0.4)";
-                  (e.currentTarget as HTMLAnchorElement).style.color =
-                    "#F85900";
-                  (e.currentTarget as HTMLAnchorElement).style.background =
-                    "rgba(248,89,0,0.08)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                    "rgba(255,255,255,0.08)";
-                  (e.currentTarget as HTMLAnchorElement).style.color =
-                    "#A09E9E";
-                  (e.currentTarget as HTMLAnchorElement).style.background =
-                    "rgba(47,47,47,0.4)";
-                }}
+                className="social-icon w-11 h-11 rounded-xl flex items-center justify-center cursor-pointer"
               >
-                <Icon size={18} aria-hidden="true" />
+                <Icon />
               </a>
             ))}
           </div>
@@ -326,8 +309,11 @@ export default function Contact() {
           style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
         >
           <p className="text-xs" style={{ color: "#A09E9E" }}>
-            &copy; {new Date().getFullYear()} Patrick Hennes. Designed &amp;
-            built with care.
+            &copy; {new Date().getFullYear()}{" "}
+            <span style={{ color: "#F5F5F7", fontWeight: 700, letterSpacing: "-0.03em" }}>
+              hen<span style={{ color: "#F85900" }}>UX</span>
+            </span>
+            {" · "}Patrick Hennes
           </p>
         </motion.div>
       </div>

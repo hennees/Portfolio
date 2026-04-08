@@ -228,3 +228,91 @@ h6 {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Blink cursor */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Nav link hover */
+.nav-link {
+  color: #a09e9e;
+  transition: color 200ms ease, background 200ms ease;
+}
+
+.nav-link:hover {
+  color: #f5f5f7;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Hero CTA primary */
+.hero-cta-primary {
+  background: linear-gradient(135deg, #f85900, #ff9432);
+  color: #0e0f10;
+  box-shadow: 0 8px 32px rgba(248, 89, 0, 0.35);
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.hero-cta-primary:hover {
+  box-shadow: 0 12px 40px rgba(248, 89, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Hero CTA secondary */
+.hero-cta-secondary {
+  background: rgba(47, 47, 47, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f5f5f7;
+  transition: border-color 200ms ease, background 200ms ease;
+}
+
+.hero-cta-secondary:hover {
+  border-color: rgba(248, 89, 0, 0.4);
+  background: rgba(248, 89, 0, 0.08);
+}
+
+/* CTA button primary (contact) */
+.cta-primary {
+  background: linear-gradient(135deg, #f85900, #ff9432);
+  color: #0e0f10;
+  box-shadow: 0 12px 40px rgba(248, 89, 0, 0.35);
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.cta-primary:hover {
+  box-shadow: 0 16px 50px rgba(248, 89, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Social icon button */
+.social-icon {
+  background: rgba(47, 47, 47, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #a09e9e;
+  transition: border-color 200ms ease, color 200ms ease, background 200ms ease;
+}
+
+.social-icon:hover {
+  border-color: rgba(248, 89, 0, 0.4);
+  color: #f85900;
+  background: rgba(248, 89, 0, 0.08);
+}
+
+/* Reduced motion — disable blink too */
+@media (prefers-reduced-motion: reduce) {
+  .animate-blink {
+    animation: none;
+    opacity: 1;
+  }
+}

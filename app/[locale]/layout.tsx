@@ -20,17 +20,23 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export const metadata: Metadata = {
-  title: "Patrick Hennes — UI/UX Designer & Freelancer",
+  title: "Patrick Hennes — UI/UX Designer & eHealth Developer | henux.at",
   description:
-    "Austrian freelance UI/UX designer and developer based in Vienna. Crafting interfaces that feel as good as they look.",
-  keywords: ["UI/UX Designer", "Freelancer", "Web Development", "Mobile Apps", "Vienna", "Austria"],
+    "Austrian freelance UI/UX designer and eHealth developer based in Graz. Bridging health and technology — mobile apps, web platforms, AI-powered workflow.",
+  keywords: ["UI/UX Designer", "eHealth Developer", "Freelancer", "Mobile Apps", "Swift", "Kotlin", "Flutter", "Graz", "Austria", "henux"],
   authors: [{ name: "Patrick Hennes" }],
+  metadataBase: new URL("https://henux.at"),
   openGraph: {
-    title: "Patrick Hennes — UI/UX Designer & Freelancer",
+    title: "Patrick Hennes — UI/UX Designer & eHealth Developer",
     description:
-      "Austrian freelance UI/UX designer and developer. Crafting interfaces that feel as good as they look.",
+      "Bridging health and technology — interfaces that feel as good as they look. Based in Graz, Austria.",
     type: "website",
+    url: "https://henux.at",
   },
 };
 

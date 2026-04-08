@@ -7,15 +7,15 @@
   },
   "hero": {
     "name": "Patrick Hennes",
-    "tagline": "Creando interfaces que se sienten tan bien como se ven — construidas con precisión, impulsadas por curiosidad.",
+    "tagline": "Conectando salud y tecnología — interfaces que se sienten tan bien como se ven.",
     "cta_work": "Ver mi trabajo",
     "cta_contact": "Contactar",
-    "roles": ["Diseñador UI/UX", "Desarrollador Freelance", "Creador de Apps Móviles", "Flujo de Trabajo con IA"],
+    "roles": ["Diseñador UI/UX", "Desarrollador eHealth", "Creador de Apps Móviles", "Flujo de Trabajo con IA"],
     "scroll": "Desplázate para explorar"
   },
   "showcase": {
     "title": "Proyectos Seleccionados",
-    "subtitle": "Una colección de proyectos donde el diseño se encuentra con la función.",
+    "subtitle": "Proyectos en la intersección del diseño, la salud y la tecnología.",
     "featured_label": "Proyecto Destacado",
     "tags_label": "etiquetas"
   },
@@ -37,7 +37,7 @@
     },
     "dataflow": {
       "name": "DataFlow",
-      "description": "Un dashboard SaaS para análisis en tiempo real con visualización de datos compleja, componentes de gráficos personalizados y acceso basado en roles.",
+      "description": "Un dashboard SaaS para análisis en tiempo real con visualización de datos compleja y acceso basado en roles.",
       "tags": ["Dashboard", "SaaS", "React", "UI/UX"]
     }
   },
@@ -55,7 +55,7 @@
       },
       "mobile": {
         "title": "Desarrollo de Apps Móviles",
-        "description": "Apps iOS nativas y multiplataforma que se sienten correctas. SwiftUI, React Native y todo lo demás."
+        "description": "Apps iOS nativas y multiplataforma que se sienten correctas. Swift, Kotlin, Flutter — lo que mejor se adapte."
       },
       "ai": {
         "title": "Flujo de Trabajo con IA",
@@ -70,18 +70,16 @@
   "about": {
     "title": "Sobre mí",
     "subtitle": "La persona detrás de los píxeles.",
-    "bio1": "Soy Patrick — un diseñador UI/UX y desarrollador freelance austriaco con base en Viena. He pasado los últimos años construyendo productos digitales que son tanto hermosos como funcionales.",
-    "bio2": "Mi trabajo abarca aplicaciones móviles, plataformas web y sistemas de diseño. Me apasiona la intersección del diseño y la tecnología, siempre buscando la solución más limpia y elegante.",
-    "bio3": "Me mantengo a la vanguardia integrando herramientas de IA en cada etapa de mi flujo de trabajo — desde la ideación hasta la entrega — lo que me permite moverme más rápido sin comprometer nunca la calidad.",
+    "bio1": "Soy Patrick, 27 años, de Graz, Austria. Siempre me apasionó la tecnología — pero el UI/UX lo descubrí durante un semestre Erasmus en Holanda, trabajando en un gran proyecto para la ciudad de Ámsterdam. Eso cambió todo.",
+    "bio2": "Ahora estoy terminando mi MSc en eHealth en FH Joanneum, construyendo apps móviles en Swift, Kotlin y Flutter, y pensando mucho en cómo la salud y la tecnología pueden realmente funcionar juntas.",
+    "bio3": "Uso herramientas de IA en casi todo lo que hago — no como atajo, sino porque genuinamente hacen el trabajo mejor y más rápido.",
     "stats": {
       "experience": "Años de Experiencia",
-      "projects": "Proyectos Entregados",
-      "languages": "Idiomas"
+      "projects": "Proyectos Entregados"
     },
     "stat_values": {
-      "experience": "3+",
-      "projects": "10+",
-      "languages": "3"
+      "experience": "4+",
+      "projects": "10+"
     }
   },
   "contact": {
@@ -94,7 +92,7 @@
       "message": "Tu mensaje",
       "send": "Enviar mensaje",
       "name_placeholder": "Patrick Hennes",
-      "email_placeholder": "patrick@example.com",
+      "email_placeholder": "hola@example.com",
       "message_placeholder": "Cuéntame sobre tu proyecto..."
     },
     "social": "Encuéntrame en"

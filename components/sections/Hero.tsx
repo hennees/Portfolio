@@ -47,14 +47,10 @@ function TypewriterText({ phrases }: { phrases: string[] }) {
     <span className="inline-flex items-center gap-1">
       <span className="gradient-text">{displayed}</span>
       <span
-        className="inline-block w-0.5 h-8 sm:h-10 md:h-12 rounded-full ml-0.5"
-        style={{
-          background: "#F85900",
-          animation: "blink 1s step-end infinite",
-        }}
+        className="inline-block w-0.5 h-8 sm:h-10 md:h-12 rounded-full ml-0.5 animate-blink"
+        style={{ background: "#F85900" }}
         aria-hidden="true"
       />
-      <style>{`@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }`}</style>
     </span>
   );
 }
@@ -120,42 +116,6 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium mb-8"
-          style={{
-            background: "rgba(248,89,0,0.12)",
-            border: "1px solid rgba(248,89,0,0.25)",
-            color: "#FF9432",
-          }}
-        >
-          <span
-            className="w-1.5 h-1.5 rounded-full"
-            style={{ background: "#F85900", boxShadow: "0 0 6px #F85900" }}
-            aria-hidden="true"
-          />
-          Available for new projects
-        </motion.div>
-
-        {/* Name */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="font-heading font-black tracking-tight mb-4"
-          style={{
-            fontSize: "clamp(3rem, 8vw, 7rem)",
-            lineHeight: 1.0,
-            color: "#F5F5F7",
-            letterSpacing: "-0.03em",
-          }}
-        >
-          {t("name")}
-        </motion.h1>
-
         {/* Typewriter */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -192,48 +152,13 @@ export default function Hero() {
         >
           <a
             href="#work"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer"
-            style={{
-              background: "linear-gradient(135deg, #F85900, #FF9432)",
-              color: "#0E0F10",
-              boxShadow: "0 8px 32px rgba(248,89,0,0.35)",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                "0 12px 40px rgba(248,89,0,0.5)";
-              (e.currentTarget as HTMLAnchorElement).style.transform =
-                "translateY(-1px)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                "0 8px 32px rgba(248,89,0,0.35)";
-              (e.currentTarget as HTMLAnchorElement).style.transform =
-                "translateY(0)";
-            }}
+            className="hero-cta-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm cursor-pointer"
           >
             {t("cta_work")}
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer"
-            style={{
-              background: "rgba(47,47,47,0.4)",
-              backdropFilter: "blur(12px)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              color: "#F5F5F7",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                "rgba(248,89,0,0.4)";
-              (e.currentTarget as HTMLAnchorElement).style.background =
-                "rgba(248,89,0,0.08)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                "rgba(255,255,255,0.12)";
-              (e.currentTarget as HTMLAnchorElement).style.background =
-                "rgba(47,47,47,0.4)";
-            }}
+            className="hero-cta-secondary inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm cursor-pointer"
           >
             {t("cta_contact")}
           </a>

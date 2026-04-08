@@ -5,6 +5,7 @@ import Services from "@/components/sections/Services";
 import StackTools from "@/components/sections/StackTools";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
+import Footer from "@/components/ui/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <StackTools />
       <About />
       <Contact />
+      <Footer />
     </main>
   );
 }

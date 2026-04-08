@@ -134,7 +134,7 @@ export default function About() {
               transition={{ duration: 0.5 }}
               className="grid grid-cols-3 gap-4 mt-4"
             >
-              {(["experience", "projects", "languages"] as const).map((statKey) => {
+              {(["experience", "projects"] as const).map((statKey) => {
                 const rawValue = t(`stat_values.${statKey}`) as string;
                 const numericPart = parseInt(rawValue);
                 const suffix = rawValue.replace(/[0-9]/g, "");
@@ -147,9 +147,7 @@ export default function About() {
                       border: "1px solid rgba(255,255,255,0.08)",
                     }}
                   >
-                    <span
-                      className="font-heading font-black text-2xl sm:text-3xl gradient-text"
-                    >
+                    <span className="font-heading font-black text-2xl sm:text-3xl gradient-text">
                       <AnimatedCounter target={numericPart} suffix={suffix} />
                     </span>
                     <span
@@ -161,6 +159,23 @@ export default function About() {
                   </div>
                 );
               })}
+              <div
+                className="flex flex-col items-center gap-1 p-4 rounded-2xl text-center"
+                style={{
+                  background: "rgba(248,89,0,0.08)",
+                  border: "1px solid rgba(248,89,0,0.2)",
+                }}
+              >
+                <span className="font-heading font-black text-lg sm:text-xl gradient-text leading-tight">
+                  MSc
+                </span>
+                <span
+                  className="text-xs font-medium text-center leading-tight"
+                  style={{ color: "#A09E9E" }}
+                >
+                  eHealth
+                </span>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -182,59 +197,119 @@ export default function About() {
               }}
             >
               {/* Code snippet art */}
-              <div className="font-mono text-sm leading-7 select-none">
-                <div style={{ color: "#A09E9E" }}>
-                  <span style={{ color: "rgba(248,89,0,0.8)" }}>const</span>{" "}
-                  <span style={{ color: "#FF9432" }}>patrick</span>{" "}
-                  <span style={{ color: "#F5F5F7" }}>=</span>{" "}
+              <div className="font-mono text-xs leading-6 select-none">
+                {/* Comment header */}
+                <div className="mb-2" style={{ color: "rgba(160,158,158,0.5)" }}>
+                  {"// henUX.at — patrick.ts"}
+                </div>
+
+                {/* Type definition */}
+                <div>
+                  <span style={{ color: "rgba(248,89,0,0.6)" }}>type </span>
+                  <span style={{ color: "#F5F5F7" }}>Stack </span>
+                  <span style={{ color: "#A09E9E" }}>= </span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                  <span style={{ color: "#FF9432" }}>Swift</span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                  <span style={{ color: "#A09E9E" }}> | </span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                  <span style={{ color: "#FF9432" }}>Kotlin</span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                  <span style={{ color: "#A09E9E" }}> | </span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                  <span style={{ color: "#FF9432" }}>Flutter</span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                  <span style={{ color: "#A09E9E" }}> | </span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                  <span style={{ color: "#FF9432" }}>Next.js</span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                </div>
+
+                <div className="mb-2">
+                  <span style={{ color: "rgba(248,89,0,0.6)" }}>type </span>
+                  <span style={{ color: "#F5F5F7" }}>Focus </span>
+                  <span style={{ color: "#A09E9E" }}>= </span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                  <span style={{ color: "#FF9432" }}>eHealth</span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                  <span style={{ color: "#A09E9E" }}> | </span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                  <span style={{ color: "#FF9432" }}>UI/UX</span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                  <span style={{ color: "#A09E9E" }}> | </span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                  <span style={{ color: "#FF9432" }}>Mobile</span>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>&apos;</span>
+                </div>
+
+                {/* Const object */}
+                <div>
+                  <span style={{ color: "rgba(248,89,0,0.8)" }}>const </span>
+                  <span style={{ color: "#FF9432" }}>patrick </span>
+                  <span style={{ color: "#A09E9E" }}>= </span>
                   <span style={{ color: "#F85900" }}>{`{`}</span>
                 </div>
                 <div className="pl-4">
-                  <span style={{ color: "#A09E9E" }}>role:</span>{" "}
+                  <span style={{ color: "#A09E9E" }}>name: </span>
                   <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
-                  <span style={{ color: "#FF9432" }}>UI/UX Designer</span>
-                  <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
-                  <span style={{ color: "#A09E9E" }}>,</span>
-                </div>
-                <div className="pl-4">
-                  <span style={{ color: "#A09E9E" }}>location:</span>{" "}
-                  <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
-                  <span style={{ color: "#FF9432" }}>Vienna, AT</span>
+                  <span style={{ color: "#F5F5F7" }}>Patrick Hennes</span>
                   <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
                   <span style={{ color: "#A09E9E" }}>,</span>
                 </div>
                 <div className="pl-4">
-                  <span style={{ color: "#A09E9E" }}>loves:</span>{" "}
-                  <span style={{ color: "#F85900" }}>[</span>
-                </div>
-                <div className="pl-8">
+                  <span style={{ color: "#A09E9E" }}>location: </span>
                   <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
-                  <span style={{ color: "#F5F5F7" }}>clean code</span>
-                  <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
-                  <span style={{ color: "#A09E9E" }}>,</span>
-                </div>
-                <div className="pl-8">
-                  <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
-                  <span style={{ color: "#F5F5F7" }}>pixel-perfect UI</span>
-                  <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
-                  <span style={{ color: "#A09E9E" }}>,</span>
-                </div>
-                <div className="pl-8">
-                  <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
-                  <span style={{ color: "#F5F5F7" }}>AI-powered dev</span>
+                  <span style={{ color: "#F5F5F7" }}>Graz, Austria</span>
                   <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
                   <span style={{ color: "#A09E9E" }}>,</span>
                 </div>
                 <div className="pl-4">
-                  <span style={{ color: "#F85900" }}>]</span>
+                  <span style={{ color: "#A09E9E" }}>education: </span>
+                  <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
+                  <span style={{ color: "#F5F5F7" }}>MSc eHealth @ FH Joanneum</span>
+                  <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
                   <span style={{ color: "#A09E9E" }}>,</span>
                 </div>
                 <div className="pl-4">
-                  <span style={{ color: "#A09E9E" }}>available:</span>{" "}
+                  <span style={{ color: "#A09E9E" }}>stack: </span>
+                  <span style={{ color: "#F5F5F7" }}>Stack[]</span>
+                  <span style={{ color: "#A09E9E" }}>,</span>
+                </div>
+                <div className="pl-4">
+                  <span style={{ color: "#A09E9E" }}>focus: </span>
+                  <span style={{ color: "#F5F5F7" }}>Focus</span>
+                  <span style={{ color: "#A09E9E" }}>,</span>
+                </div>
+                <div className="pl-4">
+                  <span style={{ color: "#A09E9E" }}>currentlyWorking: </span>
+                  <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
+                  <span style={{ color: "#F5F5F7" }}>Healthcare & IT</span>
+                  <span style={{ color: "rgba(248,89,0,0.7)" }}>&apos;</span>
+                  <span style={{ color: "#A09E9E" }}>,</span>
+                </div>
+                <div className="pl-4">
+                  <span style={{ color: "#A09E9E" }}>aiPowered: </span>
                   <span style={{ color: "#F85900" }}>true</span>
                   <span style={{ color: "#A09E9E" }}>,</span>
                 </div>
-                <div style={{ color: "#F85900" }}>{`}`}</div>
+                <div className="pl-4">
+                  <span style={{ color: "#A09E9E" }}>available: </span>
+                  <span style={{ color: "#F85900" }}>true</span>
+                  <span style={{ color: "#A09E9E" }}>,</span>
+                </div>
+                <div className="mb-2">
+                  <span style={{ color: "#F85900" }}>{`}`}</span>
+                </div>
+
+                {/* Function call */}
+                <div style={{ color: "rgba(160,158,158,0.4)" }}>{"// ready to build something?"}</div>
+                <div>
+                  <span style={{ color: "#FF9432" }}>hire</span>
+                  <span style={{ color: "#A09E9E" }}>(</span>
+                  <span style={{ color: "#FF9432" }}>patrick</span>
+                  <span style={{ color: "#A09E9E" }}>)</span>
+                  <span className="inline-block w-0.5 h-3.5 ml-0.5 rounded-sm animate-blink align-middle" style={{ background: "#F85900" }} aria-hidden="true" />
+                </div>
               </div>
 
               {/* Decorative orb */}

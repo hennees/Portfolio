@@ -7,15 +7,15 @@
   },
   "hero": {
     "name": "Patrick Hennes",
-    "tagline": "Interfaces gestalten, die sich genauso gut anfühlen, wie sie aussehen — präzise gebaut, aus Neugier angetrieben.",
+    "tagline": "Gesundheit und Technologie verbinden — Interfaces, die sich genauso gut anfühlen, wie sie aussehen.",
     "cta_work": "Meine Arbeit",
     "cta_contact": "Kontakt aufnehmen",
-    "roles": ["UI/UX Designer", "Freelance Entwickler", "Mobile App Creator", "KI-gestützter Workflow"],
+    "roles": ["UI/UX Designer", "eHealth Entwickler", "Mobile App Creator", "KI-gestützter Workflow"],
     "scroll": "Scrollen zum Entdecken"
   },
   "showcase": {
     "title": "Ausgewählte Projekte",
-    "subtitle": "Eine Sammlung von Projekten, wo Design auf Funktion trifft.",
+    "subtitle": "Projekte an der Schnittstelle von Design, Gesundheit und Technologie.",
     "featured_label": "Hauptprojekt",
     "tags_label": "Tags"
   },
@@ -37,7 +37,7 @@
     },
     "dataflow": {
       "name": "DataFlow",
-      "description": "Ein SaaS-Dashboard für Echtzeit-Analysen mit komplexer Datenvisualisierung, benutzerdefinierten Chart-Komponenten und rollenbasiertem Zugriff.",
+      "description": "Ein SaaS-Dashboard für Echtzeit-Analysen mit komplexer Datenvisualisierung und rollenbasiertem Zugriff.",
       "tags": ["Dashboard", "SaaS", "React", "UI/UX"]
     }
   },
@@ -55,7 +55,7 @@
       },
       "mobile": {
         "title": "Mobile App Entwicklung",
-        "description": "Native iOS und plattformübergreifende Apps, die sich richtig anfühlen. SwiftUI, React Native und alles dazwischen."
+        "description": "Native iOS und plattformübergreifende Apps, die sich richtig anfühlen. Swift, Kotlin, Flutter — je nachdem was am besten passt."
       },
       "ai": {
         "title": "KI-gestützter Workflow",
@@ -70,33 +70,31 @@
   "about": {
     "title": "Über mich",
     "subtitle": "Die Person hinter den Pixeln.",
-    "bio1": "Ich bin Patrick — ein österreichischer Freelance UI/UX-Designer und Entwickler aus Wien. In den letzten Jahren habe ich digitale Produkte gebaut, die sowohl schön als auch funktional sind.",
-    "bio2": "Meine Arbeit umfasst mobile Apps, Web-Plattformen und Design-Systeme. Ich bin leidenschaftlich interessiert an der Schnittstelle von Design und Technologie und suche immer die klarste, eleganteste Lösung.",
-    "bio3": "Ich bleibe an der Spitze, indem ich KI-Tools in jede Phase meines Workflows integriere — von der Ideenfindung bis zur Auslieferung — was mir ermöglicht, schneller vorzugehen, ohne jemals die Qualität zu beeinträchtigen.",
+    "bio1": "Ich bin Patrick, 27, aus Graz. Ich war schon immer von Technik begeistert — aber UI/UX hab ich erst während meines Erasmus-Semesters in Holland für mich entdeckt. Ein großes Stadtprojekt für Amsterdam hat alles verändert.",
+    "bio2": "Jetzt schließe ich gerade meinen MSc in eHealth an der FH Joanneum ab, baue mobile Apps in Swift, Kotlin und Flutter, und beschäftige mich viel damit wie Gesundheit und Technologie wirklich gut zusammenwachsen können.",
+    "bio3": "KI-Tools nutze ich in fast allem was ich mache — nicht als Abkürzung, sondern weil sie die Arbeit einfach besser und schneller machen.",
     "stats": {
       "experience": "Jahre Erfahrung",
-      "projects": "Projekte geliefert",
-      "languages": "Sprachen"
+      "projects": "Projekte geliefert"
     },
     "stat_values": {
-      "experience": "3+",
-      "projects": "10+",
-      "languages": "3"
+      "experience": "4+",
+      "projects": "10+"
     }
   },
   "contact": {
     "title": "Lass uns etwas bauen",
-    "subtitle": "Haben Sie ein Projekt im Sinn? Ich würde es gerne hören. Schicken Sie mir eine Nachricht und sehen wir, was wir gemeinsam erschaffen können.",
+    "subtitle": "Hast du ein Projekt im Sinn? Ich freue mich darauf. Schreib mir und wir schauen, was wir gemeinsam erschaffen können.",
     "cta": "Nachricht senden",
     "form": {
-      "name": "Ihr Name",
-      "email": "Ihre E-Mail",
-      "message": "Ihre Nachricht",
+      "name": "Dein Name",
+      "email": "Deine E-Mail",
+      "message": "Deine Nachricht",
       "send": "Nachricht senden",
       "name_placeholder": "Patrick Hennes",
-      "email_placeholder": "patrick@example.com",
-      "message_placeholder": "Erzählen Sie mir von Ihrem Projekt..."
+      "email_placeholder": "hallo@example.com",
+      "message_placeholder": "Erzähl mir von deinem Projekt..."
     },
-    "social": "Finden Sie mich auf"
+    "social": "Finde mich auf"
   }
 }

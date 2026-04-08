@@ -6,6 +6,7 @@ import { useRouter, usePathname } from "@/i18n/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+
 const LOCALES = [
   { code: "en", label: "EN" },
   { code: "de", label: "DE" },
@@ -62,24 +63,16 @@ export default function Navbar() {
           {/* Logo */}
           <a
             href="#"
-            className="flex items-center gap-2 group cursor-pointer"
-            aria-label="Patrick Hennes — Home"
+            className="flex items-center cursor-pointer transition-opacity duration-200 hover:opacity-75"
+            aria-label="henUX — Home"
           >
-            <div
-              className="w-9 h-9 rounded-xl flex items-center justify-center font-heading font-black text-sm tracking-tight transition-transform duration-200 group-hover:scale-105"
-              style={{
-                background: "linear-gradient(135deg, #F85900, #FF9432)",
-                color: "#0E0F10",
-              }}
-            >
-              PH
-            </div>
-            <span
-              className="hidden sm:block font-heading font-semibold text-sm"
-              style={{ color: "#F5F5F7" }}
-            >
-              Patrick Hennes
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo-dark.svg"
+              alt="henUX"
+              height={56}
+              style={{ height: 56, width: "auto" }}
+            />
           </a>
 
           {/* Desktop nav links */}
@@ -88,20 +81,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:text-white"
-                  style={{ color: "#A09E9E" }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.background =
-                      "rgba(255,255,255,0.06)";
-                    (e.currentTarget as HTMLAnchorElement).style.color =
-                      "#F5F5F7";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.background =
-                      "transparent";
-                    (e.currentTarget as HTMLAnchorElement).style.color =
-                      "#A09E9E";
-                  }}
+                  className="nav-link px-4 py-2 rounded-xl text-sm font-medium cursor-pointer"
                 >
                   {link.label}
                 </a>
@@ -175,21 +155,8 @@ export default function Navbar() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200"
-                    style={{ color: "#A09E9E" }}
+                    className="nav-link block px-4 py-3 rounded-xl text-sm font-medium cursor-pointer"
                     onClick={() => setMobileOpen(false)}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.background =
-                        "rgba(255,255,255,0.06)";
-                      (e.currentTarget as HTMLAnchorElement).style.color =
-                        "#F5F5F7";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.background =
-                        "transparent";
-                      (e.currentTarget as HTMLAnchorElement).style.color =
-                        "#A09E9E";
-                    }}
                   >
                     {link.label}
                   </a>

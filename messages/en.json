@@ -7,15 +7,15 @@
   },
   "hero": {
     "name": "Patrick Hennes",
-    "tagline": "Crafting interfaces that feel as good as they look — built with precision, driven by curiosity.",
+    "tagline": "Bridging health and technology — designing interfaces that feel as good as they look.",
     "cta_work": "View My Work",
     "cta_contact": "Get in Touch",
-    "roles": ["UI/UX Designer", "Freelance Developer", "Mobile App Creator", "AI-Powered Workflow"],
+    "roles": ["UI/UX Designer", "eHealth Developer", "Mobile App Creator", "AI-Powered Workflow"],
     "scroll": "Scroll to explore"
   },
   "showcase": {
     "title": "Selected Work",
-    "subtitle": "A collection of projects where design meets function.",
+    "subtitle": "A collection of projects where design meets healthcare and technology.",
     "featured_label": "Featured Project",
     "tags_label": "tags"
   },
@@ -55,7 +55,7 @@
       },
       "mobile": {
         "title": "Mobile App Development",
-        "description": "Native iOS and cross-platform apps that feel right. SwiftUI, React Native, and everything in between."
+        "description": "Native iOS and cross-platform apps that feel right. Swift, Kotlin, Flutter — whichever fits best."
       },
       "ai": {
         "title": "AI-Powered Workflow",
@@ -70,18 +70,16 @@
   "about": {
     "title": "About Me",
     "subtitle": "The person behind the pixels.",
-    "bio1": "I'm Patrick — an Austrian freelance UI/UX designer and developer based in Vienna. I've spent the last few years building digital products that are both beautiful and functional.",
-    "bio2": "My work spans mobile apps, web platforms, and design systems. I'm passionate about the intersection of design and technology, always seeking the cleanest, most elegant solution.",
-    "bio3": "I stay at the cutting edge by integrating AI tools into every stage of my workflow — from ideation to delivery — which lets me move faster without ever compromising quality.",
+    "bio1": "I'm Patrick, 27, from Graz. Got into tech early and never really stopped. I discovered UI/UX during an Erasmus semester in the Netherlands — working on a big project for the city of Amsterdam — and that kind of changed everything.",
+    "bio2": "Now I'm wrapping up my MSc in eHealth at FH Joanneum, building mobile apps in Swift, Kotlin and Flutter, and thinking a lot about how health and technology can actually work well together.",
+    "bio3": "I use AI tools in basically everything I do — not as a shortcut, but because they genuinely make the work better and faster.",
     "stats": {
       "experience": "Years Experience",
-      "projects": "Projects Delivered",
-      "languages": "Languages"
+      "projects": "Projects Delivered"
     },
     "stat_values": {
-      "experience": "3+",
-      "projects": "10+",
-      "languages": "3"
+      "experience": "4+",
+      "projects": "10+"
     }
   },
   "contact": {
@@ -94,7 +92,7 @@
       "message": "Your Message",
       "send": "Send Message",
       "name_placeholder": "Patrick Hennes",
-      "email_placeholder": "patrick@example.com",
+      "email_placeholder": "hello@example.com",
       "message_placeholder": "Tell me about your project..."
     },
     "social": "Find me on"
