@@ -61,11 +61,11 @@ export default function Contact() {
         setSubmitted(true);
       } else {
         console.error("Web3Forms error:", result);
-        alert("Something went wrong. Please email directly.");
+        alert(t("form.error"));
       }
     } catch (error) {
       console.error(error);
-      alert("Network error.");
+      alert(t("form.error"));
     } finally {
       setSending(false);
     }
@@ -158,7 +158,7 @@ export default function Contact() {
             style={{ background: "rgba(255,255,255,0.06)" }}
           />
           <span className="text-xs font-medium" style={{ color: "#A09E9E" }}>
-            or fill the form
+            {t("form.divider")}
           </span>
           <div
             className="flex-1 h-px"
@@ -196,10 +196,10 @@ export default function Contact() {
                 className="font-heading font-bold text-xl"
                 style={{ color: "#F5F5F7" }}
               >
-                Message sent!
+                {t("form.success_title")}
               </h3>
               <p className="text-sm" style={{ color: "#A09E9E" }}>
-                I&apos;ll get back to you as soon as possible.
+                {t("form.success_message")}
               </p>
             </motion.div>
           ) : (
@@ -283,7 +283,7 @@ export default function Contact() {
                   aria-busy={sending}
                 >
                   <Send size={16} aria-hidden="true" />
-                  {sending ? "Sending..." : t("form.send")}
+                  {sending ? t("form.sending") : t("form.send")}
                 </button>
               </motion.div>
             </form>

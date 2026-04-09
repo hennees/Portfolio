@@ -116,7 +116,12 @@
       "send": "Enviar mensaje",
       "name_placeholder": "Patrick Hennes",
       "email_placeholder": "hola@example.com",
-      "message_placeholder": "Cuéntame sobre tu proyecto..."
+      "message_placeholder": "Cuéntame sobre tu proyecto...",
+      "sending": "Enviando...",
+      "success_title": "¡Mensaje enviado!",
+      "success_message": "Te responderé lo antes posible.",
+      "error": "Algo salió mal. Por favor, envíame un correo directamente.",
+      "divider": "o rellena el formulario"
     },
     "social": "Encuéntrame en"
   },

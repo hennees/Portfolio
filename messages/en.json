@@ -116,7 +116,12 @@
       "send": "Send Message",
       "name_placeholder": "Patrick Hennes",
       "email_placeholder": "hello@example.com",
-      "message_placeholder": "Tell me about your project..."
+      "message_placeholder": "Tell me about your project...",
+      "sending": "Sending...",
+      "success_title": "Message sent!",
+      "success_message": "I'll get back to you as soon as possible.",
+      "error": "Something went wrong. Please email me directly.",
+      "divider": "or fill the form"
     },
     "social": "Find me on"
   },

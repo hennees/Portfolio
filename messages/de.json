@@ -116,7 +116,12 @@
       "send": "Nachricht senden",
       "name_placeholder": "Patrick Hennes",
       "email_placeholder": "hallo@example.com",
-      "message_placeholder": "Erzähl mir von deinem Projekt..."
+      "message_placeholder": "Erzähl mir von deinem Projekt...",
+      "sending": "Wird gesendet...",
+      "success_title": "Nachricht gesendet!",
+      "success_message": "Ich melde mich so schnell wie möglich bei dir.",
+      "error": "Etwas ist schiefgelaufen. Bitte schreib mir direkt eine E-Mail.",
+      "divider": "oder füll das Formular aus"
     },
     "social": "Finde mich auf"
   },
