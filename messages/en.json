@@ -27,7 +27,7 @@
     },
     "amigon": {
       "name": "Amigon",
-      "description": "A mental health companion app with AI voice integration, built as a master's thesis project. Daily mood tracking, gentle voice journaling, and calm interaction design.",
+      "description": "A mental health companion app with AI voice integration. Daily mood tracking, gentle voice journaling, and calm interaction design.",
       "tags": ["Flutter", "Mental Health", "Voice AI", "UI/UX"]
     },
     "portfolio": {
@@ -155,7 +155,7 @@
       "sending": "Sending...",
       "success_title": "Inquiry received!",
       "success_message": "I'll get back to you within 24h.",
-      "error": "Something went wrong. Email me directly at hello@henux.at"
+      "error": "Something went wrong. Email me directly at patrick.hennes27@icloud.com"
     },
     "social": "Find me on"
   },

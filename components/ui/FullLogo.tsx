@@ -4,7 +4,7 @@ type Props = {
 };
 
 export default function FullLogo({ height = 80, className = "" }: Props) {
-  const aspectRatio = 2077 / 820;
+  const aspectRatio = 1486 / 693;
   const width = Math.round(height * aspectRatio);
 
   return (

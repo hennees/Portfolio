@@ -27,7 +27,7 @@
     },
     "amigon": {
       "name": "Amigon",
-      "description": "Mental-Health-Begleit-App mit KI-Sprachanbindung als Masterprojekt. Stimmungs-Tracking, sanftes Voice-Journaling und ein ruhiges, durchdachtes Interaktionsdesign.",
+      "description": "Mental-Health-Begleit-App mit KI-Sprachanbindung. Stimmungs-Tracking, sanftes Voice-Journaling und ein ruhiges, durchdachtes Interaktionsdesign.",
       "tags": ["Flutter", "Mental Health", "Voice KI", "UI/UX"]
     },
     "portfolio": {
@@ -155,7 +155,7 @@
       "sending": "Wird gesendet...",
       "success_title": "Anfrage erhalten!",
       "success_message": "Ich melde mich innerhalb von 24h bei dir.",
-      "error": "Etwas ist schiefgelaufen. Schreib mir direkt an hello@henux.at"
+      "error": "Etwas ist schiefgelaufen. Schreib mir direkt an patrick.hennes27@icloud.com"
     },
     "social": "Finde mich auf"
   },
