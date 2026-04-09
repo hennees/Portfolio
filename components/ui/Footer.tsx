@@ -73,7 +73,7 @@ export default function Footer() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-12 sm:gap-8 mb-20"
+          className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-8 mb-12 md:mb-20"
         >
           {/* Logo & Description */}
           <motion.div variants={itemVariants} className="md:col-span-2 flex flex-col items-start gap-6">
@@ -120,24 +120,27 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          {/* Platform Links */}
-          <motion.div variants={itemVariants} className="flex flex-col gap-4">
-            <h3 className="font-heading font-semibold text-sm tracking-wider uppercase mb-2" style={{ color: "#F5F5F7" }}>
-              {tFooter("nav_title")}
-            </h3>
-            <a href="#work" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tNav("work")}</a>
-            <a href="#services" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tNav("services")}</a>
-            <a href="#about" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tNav("about")}</a>
-            <a href="#contact" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tNav("contact")}</a>
-          </motion.div>
+          {/* Platform + Legal — nebeneinander auf Mobile, je eigene Spalte auf Desktop */}
+          <motion.div variants={itemVariants} className="col-span-1 md:col-span-2 grid grid-cols-2 md:contents gap-8">
+            {/* Platform Links */}
+            <div className="flex flex-col gap-3">
+              <h3 className="font-heading font-semibold text-sm tracking-wider uppercase mb-1" style={{ color: "#F5F5F7" }}>
+                {tFooter("nav_title")}
+              </h3>
+              <a href="#work" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tNav("work")}</a>
+              <a href="#services" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tNav("services")}</a>
+              <a href="#about" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tNav("about")}</a>
+              <a href="#contact" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tNav("contact")}</a>
+            </div>
 
-          {/* Legal Links */}
-          <motion.div variants={itemVariants} className="flex flex-col gap-4">
-            <h3 className="font-heading font-semibold text-sm tracking-wider uppercase mb-2" style={{ color: "#F5F5F7" }}>
-              {tFooter("legal_title")}
-            </h3>
-            <Link href="/imprint" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("imprint")}</Link>
-            <Link href="/privacy" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("privacy")}</Link>
+            {/* Legal Links */}
+            <div className="flex flex-col gap-3">
+              <h3 className="font-heading font-semibold text-sm tracking-wider uppercase mb-1" style={{ color: "#F5F5F7" }}>
+                {tFooter("legal_title")}
+              </h3>
+              <Link href="/imprint" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("imprint")}</Link>
+              <Link href="/privacy" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("privacy")}</Link>
+            </div>
           </motion.div>
         </motion.div>
 
@@ -145,7 +148,7 @@ export default function Footer() {
         <div className="h-px w-full mb-8" style={{ background: "rgba(255,255,255,0.06)" }} />
 
         {/* Bottom Bar containing copyright */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-2">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6 pb-2 text-center sm:text-left">
           <p className="text-xs" style={{ color: "#A09E9E" }}>
             &copy; {year} {tFooter("made_with")}
             <span style={{ color: "#F5F5F7", fontWeight: 700, marginLeft: "4px" }}>
