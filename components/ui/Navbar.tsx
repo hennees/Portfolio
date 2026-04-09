@@ -142,66 +142,86 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-20 left-4 right-4 z-40 rounded-2xl p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setMobileOpen(false)}
+            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
+            aria-hidden="true"
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="fixed top-24 left-4 right-4 z-50 rounded-3xl p-6 overflow-hidden"
             style={{
-              background: "rgba(14, 15, 16, 0.96)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
-              border: "1px solid rgba(255,255,255,0.08)",
+              background: "rgba(18, 19, 21, 0.98)",
+              backdropFilter: "blur(32px)",
+              WebkitBackdropFilter: "blur(32px)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
             }}
             role="dialog"
+            aria-modal="true"
             aria-label="Mobile navigation"
           >
-            <ul className="flex flex-col gap-1" role="list">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="nav-link block px-4 py-3 rounded-xl text-sm font-medium cursor-pointer"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+            <div className="flex flex-col gap-6">
+              <ul className="flex flex-col gap-2" role="list">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="flex items-center px-4 py-4 rounded-2xl text-lg font-semibold transition-colors duration-200 active:bg-white/5"
+                      style={{ color: "#F5F5F7" }}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
               
-              {/* Mobile Contact Link */}
-              <li>
+              <div className="flex flex-col gap-4 pt-6 border-t border-white/10">
                 <a
                   href="#contact"
-                  className="block px-4 py-3 rounded-xl text-sm font-bold cursor-pointer mt-2"
-                  style={{ background: "linear-gradient(135deg, #F85900, #FF9432)", color: "#0E0F10" }}
+                  className="flex items-center justify-center w-full py-4 rounded-2xl text-base font-bold transition-transform duration-200 active:scale-95"
+                  style={{ 
+                    background: "linear-gradient(135deg, #F85900, #FF9432)", 
+                    color: "#0E0F10",
+                    boxShadow: "0 8px 20px rgba(248,89,0,0.3)"
+                  }}
                   onClick={() => setMobileOpen(false)}
                 >
                   {t("contact")}
                 </a>
-              </li>
 
-              {/* Mobile Locale Switcher */}
-              <li className="mt-4 pt-4 flex gap-2 justify-center" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                {LOCALES.map(({ code, label }) => (
-                  <button
-                    key={code}
-                    onClick={() => { switchLocale(code); setMobileOpen(false); }}
-                    className="px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer flex-1"
-                    style={{
-                      background: locale === code ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.03)",
-                      color: locale === code ? "#F5F5F7" : "#A09E9E",
-                    }}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </li>
-            </ul>
+                <div className="flex gap-2 p-1 rounded-2xl bg-white/5">
+                  {LOCALES.map(({ code, label }) => (
+                    <button
+                      key={code}
+                      onClick={() => { switchLocale(code); setMobileOpen(false); }}
+                      className="flex-1 py-3 rounded-xl text-sm font-bold transition-all duration-200"
+                      style={{
+                        background: locale === code ? "rgba(255,255,255,0.15)" : "transparent",
+                        color: locale === code ? "#F5F5F7" : "#A09E9E",
+                      }}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

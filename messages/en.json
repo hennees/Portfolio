@@ -22,13 +22,13 @@
   "projects": {
     "scoon": {
       "name": "Scoon",
-      "description": "A next-generation iOS creator platform for short-form content. Designed from the ground up with a dark, immersive UI system.",
-      "tags": ["iOS", "UI/UX", "SwiftUI", "Creator App"]
+      "description": "The platform for photographers, videographers and creators searching for the best locations. Community-driven, curated spots — creators earn from their contributions. Built with Itanic & Kyri Agency.",
+      "tags": ["Ionic", "UI/UX", "Creator Platform"]
     },
     "amigon": {
       "name": "Amigon",
-      "description": "A mental health companion app focused on calm interaction design, daily mood tracking, and gentle AI-assisted journaling.",
-      "tags": ["Mental Health", "iOS", "AI-Powered", "UI/UX"]
+      "description": "A mental health companion app with AI voice integration, built as a master's thesis project. Daily mood tracking, gentle voice journaling, and calm interaction design.",
+      "tags": ["Flutter", "Mental Health", "Voice AI", "UI/UX"]
     },
     "portfolio": {
       "name": "Portfolio",
@@ -39,6 +39,31 @@
       "name": "DataFlow",
       "description": "A SaaS dashboard for real-time analytics with complex data visualisation, custom chart components, and role-based access.",
       "tags": ["Dashboard", "SaaS", "React", "UI/UX"]
+    },
+    "gym": {
+      "name": "GymLog",
+      "description": "Fitness tracking app with personalised workout plans, progress analytics, and an intuitive dark-mode UI.",
+      "tags": ["Flutter", "UI/UX", "Fitness"]
+    },
+    "gymbook": {
+      "name": "GymBook",
+      "description": "Workout journal app for planning and tracking training sessions — clear, fast, and motivating by design.",
+      "tags": ["Flutter", "UI/UX", "Fitness"]
+    },
+    "pokedex": {
+      "name": "Pokédex",
+      "description": "A modern Pokédex app with fluid animations, detailed Pokémon profiles, and a thoughtfully designed search experience. University project at Inholland Hogeschool.",
+      "tags": ["iOS", "UI/UX", "Uni Project"]
+    },
+    "wearable": {
+      "name": "Wearable Dashboard",
+      "description": "A health dashboard for wearable data, built in collaboration with StrykerLabs GmbH, Graz. Heart rate, sleep, and activity — cleanly visualised in a medical-grade interface.",
+      "tags": ["eHealth", "Dashboard", "React", "UI/UX"]
+    },
+    "anno": {
+      "name": "Anno Amsterdam",
+      "description": "AR tourism app for Amsterdam — explore building information through Augmented Reality and choose guided tours. Built with Inholland Hogeschool and Pieter Both.",
+      "tags": ["AR", "Swift", "Kotlin", "Uni Project"]
     }
   },
   "services": {
@@ -109,19 +134,28 @@
     "title": "Let's Build Something",
     "subtitle": "Have a project in mind? I'd love to hear about it. Drop me a message and let's see what we can create together.",
     "cta": "Send a Message",
+    "email_label": "Email",
+    "response_time": "Usually responds within 24h",
+    "available": "Available for new projects",
     "form": {
-      "name": "Your Name",
-      "email": "Your Email",
-      "message": "Your Message",
-      "send": "Send Message",
-      "name_placeholder": "Patrick Hennes",
-      "email_placeholder": "hello@example.com",
-      "message_placeholder": "Tell me about your project...",
+      "project_label": "What's it about?",
+      "scope_label": "How big is the project?",
+      "timeline_label": "When do you want to start?",
+      "optional_hint": "Optional — helps me respond faster",
+      "skip": "Skip & send",
+      "next": "Next",
+      "back": "Back",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send Inquiry",
+      "name_placeholder": "Your name",
+      "email_placeholder": "Your email",
+      "message_placeholder": "Brief description, ideas, questions...",
       "sending": "Sending...",
-      "success_title": "Message sent!",
-      "success_message": "I'll get back to you as soon as possible.",
-      "error": "Something went wrong. Please email me directly.",
-      "divider": "or fill the form"
+      "success_title": "Inquiry received!",
+      "success_message": "I'll get back to you within 24h.",
+      "error": "Something went wrong. Email me directly at hello@henux.at"
     },
     "social": "Find me on"
   },

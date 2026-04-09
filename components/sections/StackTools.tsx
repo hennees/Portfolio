@@ -2,77 +2,126 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import GlassCard from "@/components/ui/GlassCard";
-import { 
-  SiReact, SiNextdotjs, SiTypescript, SiPython, 
-  SiFigma, SiFramer, SiDocker, SiVite,
-  SiOpenai, SiSupabase, SiPostgresql, SiStripe,
-  SiTailwindcss, SiNodedotjs, SiApple
+import {
+  SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs,
+  SiFigma, SiFramer, SiSupabase, SiPostgresql, SiDocker, SiVite,
+  SiPython, SiOpenai, SiKotlin, SiFlutter, SiIonic, SiSwift,
+  SiXcode, SiClaude,
 } from "react-icons/si";
-import { DiJava } from "react-icons/di";
-import { FaAws, FaGithub, FaRobot } from "react-icons/fa";
+import { FaGithub, FaRobot } from "react-icons/fa";
+
+type Tool = { label: string; Icon: React.ElementType };
+
+const ROW1: Tool[] = [
+  { label: "React",       Icon: SiReact },
+  { label: "Next.js",     Icon: SiNextdotjs },
+  { label: "TypeScript",  Icon: SiTypescript },
+  { label: "Tailwind",    Icon: SiTailwindcss },
+  { label: "Swift",       Icon: SiSwift },
+  { label: "Kotlin",      Icon: SiKotlin },
+  { label: "Flutter",     Icon: SiFlutter },
+  { label: "Ionic",       Icon: SiIonic },
+  { label: "Node.js",     Icon: SiNodedotjs },
+  { label: "Python",      Icon: SiPython },
+];
+
+const ROW2: Tool[] = [
+  { label: "Figma",       Icon: SiFigma },
+  { label: "Framer",      Icon: SiFramer },
+  { label: "Claude",      Icon: SiClaude },
+  { label: "OpenAI",      Icon: SiOpenai },
+  { label: "Supabase",    Icon: SiSupabase },
+  { label: "PostgreSQL",  Icon: SiPostgresql },
+  { label: "GitHub",      Icon: FaGithub },
+  { label: "Docker",      Icon: SiDocker },
+  { label: "Xcode",       Icon: SiXcode },
+  { label: "Vite",        Icon: SiVite },
+];
+
+// Duplicate for seamless loop
+const LOOP1 = [...ROW1, ...ROW1];
+const LOOP2 = [...ROW2, ...ROW2];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
 };
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.05 } },
-};
+function MarqueeRow({
+  items,
+  direction = "left",
+  duration = 28,
+}: {
+  items: Tool[];
+  direction?: "left" | "right";
+  duration?: number;
+}) {
+  const from = direction === "left" ? 0 : "-50%";
+  const to   = direction === "left" ? "-50%" : 0;
 
-const TECHNOLOGIES = [
-  { label: "React", Icon: SiReact },
-  { label: "Next.js", Icon: SiNextdotjs },
-  { label: "TypeScript", Icon: SiTypescript },
-  { label: "Tailwind CSS", Icon: SiTailwindcss },
-  { label: "Figma", Icon: SiFigma },
-  { label: "Node.js", Icon: SiNodedotjs },
-  { label: "Supabase", Icon: SiSupabase },
-  { label: "PostgreSQL", Icon: SiPostgresql },
-  { label: "iOS / Swift", Icon: SiApple },
-  { label: "Framer", Icon: SiFramer },
-  { label: "OpenAI", Icon: SiOpenai },
-  { label: "GitHub", Icon: FaGithub },
-  { label: "Docker", Icon: SiDocker },
-  { label: "AWS", Icon: FaAws },
-  { label: "Vite", Icon: SiVite },
-  { label: "Python", Icon: SiPython },
-  { label: "AI Tools", Icon: FaRobot },
-  { label: "Stripe", Icon: SiStripe },
-];
+  return (
+    <div className="relative overflow-hidden">
+      {/* Edge fades */}
+      <div
+        className="absolute inset-y-0 left-0 w-24 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(to right, #0E0F10, transparent)" }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-y-0 right-0 w-24 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(to left, #0E0F10, transparent)" }}
+        aria-hidden="true"
+      />
+
+      <motion.div
+        className="flex gap-3"
+        style={{ width: "max-content" }}
+        animate={{ x: [from, to] }}
+        transition={{ duration, ease: "linear", repeat: Infinity }}
+      >
+        {items.map(({ label, Icon }, i) => (
+          <div
+            key={`${label}-${i}`}
+            className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl flex-shrink-0"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.07)",
+            }}
+          >
+            <Icon size={18} style={{ color: "#7A7878" }} />
+            <span className="text-xs font-medium whitespace-nowrap" style={{ color: "#8A8888" }}>
+              {label}
+            </span>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
 
 export default function StackTools() {
   const t = useTranslations("stack");
 
   return (
-    <section
-      id="stack"
-      className="relative py-24 overflow-hidden"
-      aria-label="Stack and tools"
-    >
-      {/* Subtle separator top */}
+    <section id="stack" className="relative py-20 overflow-hidden" aria-label="Stack and tools">
+      {/* Separators */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{ background: "linear-gradient(90deg, transparent, rgba(248,89,0,0.2), transparent)" }}
         aria-hidden="true"
       />
 
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
+      {/* Header */}
+      <div className="max-w-6xl mx-auto px-6 mb-12">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={fadeUp}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col items-center text-center mb-16"
+          transition={{ duration: 0.55 }}
+          className="flex flex-col items-center text-center"
         >
-          <span
-            className="text-xs font-semibold uppercase tracking-widest mb-4"
-            style={{ color: "#F85900" }}
-          >
+          <span className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#F85900" }}>
             Technologies
           </span>
           <h2
@@ -81,38 +130,18 @@ export default function StackTools() {
           >
             {t("title")}
           </h2>
-          <p className="text-base max-w-md" style={{ color: "#A09E9E" }}>
+          <p className="text-base max-w-md" style={{ color: "#6B6969" }}>
             {t("subtitle")}
           </p>
         </motion.div>
-
-        {/* Tech Grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={stagger}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
-        >
-          {TECHNOLOGIES.map(({ label, Icon }) => (
-            <motion.div key={label} variants={fadeUp}>
-              <GlassCard className="flex flex-col items-center justify-center p-6 gap-4 h-full aspect-square group transition-all duration-300 hover:-translate-y-1">
-                <div 
-                  className="p-4 rounded-2xl transition-all duration-300 flex items-center justify-center group-hover:scale-110"
-                  style={{ background: "rgba(255,255,255,0.03)", boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.05)" }}
-                >
-                  <Icon size={32} style={{ color: "#A09E9E" }} className="group-hover:text-white transition-colors duration-300" />
-                </div>
-                <span className="text-xs font-medium text-center" style={{ color: "#A09E9E" }}>
-                  {label}
-                </span>
-              </GlassCard>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
 
-      {/* Subtle separator bottom */}
+      {/* Marquee rows */}
+      <div className="flex flex-col gap-3">
+        <MarqueeRow items={LOOP1} direction="left"  duration={30} />
+        <MarqueeRow items={LOOP2} direction="right" duration={26} />
+      </div>
+
       <div
         className="absolute bottom-0 left-0 right-0 h-px"
         style={{ background: "linear-gradient(90deg, transparent, rgba(248,89,0,0.2), transparent)" }}

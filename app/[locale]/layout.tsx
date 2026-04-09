@@ -31,6 +31,10 @@ export const metadata: Metadata = {
   keywords: ["UI/UX Designer", "eHealth Developer", "Freelancer", "Mobile Apps", "Swift", "Kotlin", "Flutter", "Graz", "Austria", "henux"],
   authors: [{ name: "Patrick Hennes" }],
   metadataBase: new URL("https://henux.at"),
+  icons: {
+    icon: "/icon",
+    apple: "/apple-icon",
+  },
   openGraph: {
     title: "Patrick Hennes — UI/UX Designer & eHealth Developer",
     description:

@@ -22,13 +22,13 @@
   "projects": {
     "scoon": {
       "name": "Scoon",
-      "description": "Una plataforma iOS de nueva generación para creadores de contenido corto. Diseñada desde cero con un sistema de UI oscuro e inmersivo.",
-      "tags": ["iOS", "UI/UX", "SwiftUI", "App para Creadores"]
+      "description": "La plataforma para fotógrafos, videógrafos y creadores en busca de los mejores lugares. Community-driven, spots verificados — los creadores ganan con sus aportaciones.",
+      "tags": ["Ionic", "UI/UX", "Creator Platform"]
     },
     "amigon": {
       "name": "Amigon",
-      "description": "Una app de salud mental centrada en el diseño de interacción tranquilo, seguimiento diario del estado de ánimo y diario asistido por IA.",
-      "tags": ["Salud Mental", "iOS", "IA", "UI/UX"]
+      "description": "App de salud mental con integración de voz con IA, desarrollada como proyecto de máster. Seguimiento del ánimo, journaling de voz y diseño de interacción tranquilo.",
+      "tags": ["Flutter", "Salud Mental", "IA de Voz", "UI/UX"]
     },
     "portfolio": {
       "name": "Portfolio",
@@ -39,6 +39,31 @@
       "name": "DataFlow",
       "description": "Un dashboard SaaS para análisis en tiempo real con visualización de datos compleja y acceso basado en roles.",
       "tags": ["Dashboard", "SaaS", "React", "UI/UX"]
+    },
+    "gym": {
+      "name": "GymLog",
+      "description": "App de fitness con planes de entrenamiento personalizados, análisis de progreso e interfaz dark-mode intuitiva.",
+      "tags": ["Flutter", "UI/UX", "Fitness"]
+    },
+    "gymbook": {
+      "name": "GymBook",
+      "description": "App de diario de entrenamiento para planificar y registrar sesiones — diseñada para ser clara, rápida y motivadora.",
+      "tags": ["Flutter", "UI/UX", "Fitness"]
+    },
+    "pokedex": {
+      "name": "Pokédex",
+      "description": "App moderna de Pokédex con animaciones fluidas, perfiles detallados y búsqueda cuidadosamente diseñada. Proyecto universitario en Inholland Hogeschool.",
+      "tags": ["iOS", "UI/UX", "Proyecto Uni"]
+    },
+    "wearable": {
+      "name": "Wearable Dashboard",
+      "description": "Dashboard de salud para datos wearable en colaboración con StrykerLabs GmbH, Graz. Frecuencia cardíaca, sueño y actividad — visualizados en una interfaz de grado médico.",
+      "tags": ["eHealth", "Dashboard", "React", "UI/UX"]
+    },
+    "anno": {
+      "name": "Anno Amsterdam",
+      "description": "App de turismo AR para Ámsterdam — explora edificios con Realidad Aumentada y elige tours guiados. Desarrollado con Inholland Hogeschool y Pieter Both.",
+      "tags": ["AR", "Swift", "Kotlin", "Proyecto Uni"]
     }
   },
   "services": {
@@ -109,19 +134,28 @@
     "title": "Construyamos algo",
     "subtitle": "¿Tienes un proyecto en mente? Me encantaría escucharlo. Envíame un mensaje y veamos qué podemos crear juntos.",
     "cta": "Enviar mensaje",
+    "email_label": "Correo electrónico",
+    "response_time": "Suele responder en menos de 24h",
+    "available": "Disponible para nuevos proyectos",
     "form": {
-      "name": "Tu nombre",
-      "email": "Tu email",
-      "message": "Tu mensaje",
-      "send": "Enviar mensaje",
-      "name_placeholder": "Patrick Hennes",
-      "email_placeholder": "hola@example.com",
-      "message_placeholder": "Cuéntame sobre tu proyecto...",
+      "project_label": "¿De qué se trata?",
+      "scope_label": "¿Qué tan grande es el proyecto?",
+      "timeline_label": "¿Cuándo quieres empezar?",
+      "optional_hint": "Opcional — me ayuda a responder más rápido",
+      "skip": "Omitir y enviar",
+      "next": "Siguiente",
+      "back": "Atrás",
+      "name": "Nombre",
+      "email": "Correo",
+      "message": "Mensaje",
+      "send": "Enviar consulta",
+      "name_placeholder": "Tu nombre",
+      "email_placeholder": "Tu correo",
+      "message_placeholder": "Descripción breve, ideas, preguntas...",
       "sending": "Enviando...",
-      "success_title": "¡Mensaje enviado!",
-      "success_message": "Te responderé lo antes posible.",
-      "error": "Algo salió mal. Por favor, envíame un correo directamente.",
-      "divider": "o rellena el formulario"
+      "success_title": "¡Consulta recibida!",
+      "success_message": "Te responderé en menos de 24h.",
+      "error": "Algo salió mal. Escríbeme a hello@henux.at"
     },
     "social": "Encuéntrame en"
   },
