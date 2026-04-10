@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1584" />
+<title>LinkedIn Banner — Patrick Hennes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;700;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1584px;
+    height: 396px;
+    overflow: hidden;
+    background: #0E0F10;
+  }
+
+  .banner {
+    width: 1584px;
+    height: 396px;
+    background: #0E0F10;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* Grid */
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+    background-size: 66px 66px;
+  }
+
+  /* Glow effects */
+  .glow-right {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(248,89,0,0.16) 0%, transparent 65%);
+    bottom: -280px;
+    right: 80px;
+    filter: blur(50px);
+  }
+  .glow-left {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(248,89,0,0.06) 0%, transparent 65%);
+    top: -150px;
+    left: 200px;
+    filter: blur(60px);
+  }
+
+  /* ECG / pulse line left decoration */
+  .pulse-line {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.12;
+  }
+
+  /* Vertical separator */
+  .separator {
+    position: absolute;
+    left: 580px;
+    top: 48px;
+    bottom: 48px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(248,89,0,0.4), transparent);
+  }
+
+  /* Left: icon + location */
+  .left {
+    position: absolute;
+    left: 64px;
+    top: 0;
+    bottom: 0;
+    width: 490px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-text {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    color: #F5F5F7;
+  }
+  .logo-text span {
+    color: #F85900;
+  }
+
+  .tagline-left {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #4A4A4A;
+    line-height: 1;
+  }
+
+  /* Services chips */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #7A7A7A;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .chip.accent {
+    background: rgba(248,89,0,0.1);
+    border-color: rgba(248,89,0,0.28);
+    color: #F85900;
+  }
+
+  /* Availability dot */
+  .available {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #5A5A5A;
+    font-weight: 400;
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22C55E;
+    box-shadow: 0 0 8px rgba(34,197,94,0.5);
+    flex-shrink: 0;
+  }
+
+  /* Right: main content */
+  .right {
+    position: absolute;
+    right: 64px;
+    top: 0;
+    bottom: 0;
+    width: 860px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    padding-left: 48px;
+  }
+
+  .role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: 6px;
+    background: rgba(248,89,0,0.1);
+    border: 1px solid rgba(248,89,0,0.25);
+    color: #F85900;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-bottom: 20px;
+  }
+
+  .name {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 86px;
+    color: #F5F5F7;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    margin-bottom: 20px;
+  }
+  .name .first {
+    color: #F5F5F7;
+  }
+  .name .last {
+    color: #F85900;
+  }
+
+  .divider-line {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(to right, #F85900, transparent);
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    color: #6B6969;
+    letter-spacing: 0.01em;
+  }
+  .subtitle strong {
+    color: #A09E9E;
+    font-weight: 500;
+  }
+
+  /* Bottom border strip */
+  .bottom-strip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent 0%, #F85900 30%, rgba(248,89,0,0.3) 60%, transparent 100%);
+  }
+
+  /* Top thin line */
+  .top-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.05);
+  }
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="grid"></div>
+  <div class="glow-right"></div>
+  <div class="glow-left"></div>
+  <div class="top-strip"></div>
+  <div class="bottom-strip"></div>
+
+  <!-- ECG pulse line -->
+  <svg class="pulse-line" width="560" height="120" viewBox="0 0 560 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polyline
+      points="0,60 60,60 80,60 90,20 100,100 115,10 130,110 145,60 180,60 200,60 215,50 225,70 240,60 560,60"
+      stroke="#F85900"
+      stroke-width="1.5"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+
+  <div class="separator"></div>
+
+  <!-- Left -->
+  <div class="left">
+    <div>
+      <div class="logo-area">
+        <!-- henUX icon simplified -->
+        <svg width="32" height="40" viewBox="0 0 560 693" fill="none">
+          <path d="M0 267.5C0 278.546 8.9543 287.5 20 287.5C31.0457 287.5 40 278.546 40 267.5H20H0ZM20 267.5H40V87H20H0V267.5H20ZM451 87H431V217H451H471V87H451ZM87 20V40H384V20V0H87V20ZM451 87H471C471 38.9512 432.049 0 384 0V20V40C409.957 40 431 61.0426 431 87H451ZM20 87H40C40 61.0426 61.0426 40 87 40V20V0C38.9512 0 0 38.9512 0 87H20Z" fill="#C8C8C8"/>
+          <path d="M471 477C471 465.954 462.046 457 451 457C439.954 457 431 465.954 431 477H451H471ZM451 477H431V606H451H471V477H451ZM384 673V653H87V673V693H384V673ZM20 606H40V489.5H20H0V606H20ZM87 673V653C61.0426 653 40 631.957 40 606H20H0C0 654.049 38.9512 693 87 693V673ZM451 606H431C431 631.957 409.957 653 384 653V673V693C432.049 693 471 654.049 471 606H451Z" fill="#C8C8C8"/>
+          <circle cx="236" cy="356" r="50" fill="#F85900"/>
+          <path d="M170.997 216.516L163.366 208.884C160.134 205.653 160.134 200.428 163.366 197.231L230.156 130.406C233.387 127.175 238.612 127.175 241.809 130.406L308.6 197.197C311.831 200.428 311.831 205.653 308.6 208.85L300.969 216.481C297.703 219.747 292.375 219.678 289.178 216.344L249.75 174.956V273.75C249.75 278.322 246.072 282 241.5 282H230.5C225.928 282 222.25 278.322 222.25 273.75V174.956L182.787 216.378C179.591 219.747 174.262 219.816 170.997 216.516Z" fill="#F85900"/>
+          <path d="M152 374.5C163.046 374.5 172 365.546 172 354.5C172 343.454 163.046 334.5 152 334.5V354.5V374.5ZM20 489.5H40V421.5H20H0V489.5H20ZM87 354.5V374.5H152V354.5V334.5H87V354.5ZM20 421.5H40C40 395.543 61.0426 374.5 87 374.5V354.5V334.5C38.9512 334.5 0 373.451 0 421.5H20Z" fill="#F85900"/>
+        </svg>
+        <span class="logo-text">hen<span>UX</span></span>
+      </div>
+    </div>
+
+    <div class="tagline-left">henux.at · Graz, Austria</div>
+
+    <div class="chips">
+      <span class="chip accent">eHealth</span>
+      <span class="chip">iOS · Android</span>
+      <span class="chip">FHIR</span>
+      <span class="chip">Figma</span>
+      <span class="chip">Next.js</span>
+    </div>
+
+    <div class="available">
+      <div class="dot"></div>
+      Available for new projects
+    </div>
+  </div>
+
+  <!-- Right -->
+  <div class="right">
+    <div class="role-badge">UI/UX · eHealth · Mobile</div>
+    <div class="name">
+      <span class="first">Patrick </span><span class="last">Hennes</span>
+    </div>
+    <div class="divider-line"></div>
+    <div class="subtitle">
+      <strong>Bridging Health × Technology</strong> — Interfaces that feel as good as they look.
+    </div>
+  </div>
+</div>
+</body>
+</html>

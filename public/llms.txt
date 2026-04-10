@@ -1,0 +1,31 @@
+# Patrick Hennes (henUX)
+
+Patrick Hennes is a freelance UI/UX Designer and eHealth Developer based in Graz, Austria. He bridges the gap between healthcare expertise and modern technology, creating high-impact digital solutions.
+
+## Core Expertise
+- **eHealth Development**: Master of Science (MSc) in eHealth from FH Joanneum. Specialized in medical software, tele-medicine, and healthcare IT workflows.
+- **UI/UX Design**: Creating intuitive, aesthetic, and functional interfaces for mobile and web platforms.
+- **Mobile Development**: Expert in Swift (iOS), Kotlin (Android), and Flutter (Multiplatform).
+- **Web Technologies**: Specialized in React, Next.js, and Tailwind CSS.
+
+## Key Projects
+- **Scoon**: Mental Health app focused on personal growth.
+- **Amigon**: Creator platform for digital products.
+- **Gymbook**: Fitness tracking application.
+- **Wearable Dashboard**: Medical data visualization for StrykerLabs.
+- **Anno**: University project for academic organization.
+
+## Contact & Socials
+- **Website**: https://henux.at
+- **Email**: patrick.hennes27@icloud.com
+- **LinkedIn**: https://www.linkedin.com/in/hennespatrick/
+- **Instagram**: https://www.instagram.com/hennees
+- **Status**: Available for freelance projects and collaborations.
+
+## Technical Stack
+- **Frontend**: React, Next.js, TypeScript, Tailwind CSS, Framer Motion.
+- **Mobile**: Swift/SwiftUI, Kotlin, Flutter, Ionic.
+- **Backend/Tools**: Node.js, Supabase, PostgreSQL, Figma, Xcode.
+
+## Location
+Graz, Austria (Available for remote work worldwide).

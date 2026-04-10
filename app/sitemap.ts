@@ -1,39 +1,22 @@
-import type { MetadataRoute } from "next";
+import { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
-import {
-  DEFAULT_LOCALE,
-  SEO_SITEMAP_PATHS,
-  type SupportedLocale,
-  getLocalizedPath,
-  toAbsoluteUrl,
-} from "@/lib/seo";
-
-const LAST_MODIFIED = new Date();
+import { SITE_URL, SEO_SITEMAP_PATHS } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const locales = routing.locales as readonly SupportedLocale[];
+  const locales = routing.locales;
 
-  return locales.flatMap((locale) =>
-    SEO_SITEMAP_PATHS.map((path) => {
-      const languageAlternates = Object.fromEntries(
-        locales.map((alternateLocale) => [
-          alternateLocale,
-          toAbsoluteUrl(getLocalizedPath(alternateLocale, path)),
-        ])
-      ) as Record<string, string>;
-
-      languageAlternates["x-default"] = toAbsoluteUrl(
-        getLocalizedPath(DEFAULT_LOCALE, path)
-      );
+  return SEO_SITEMAP_PATHS.flatMap((path) =>
+    locales.map((locale) => {
+      const isDefault = locale === routing.defaultLocale;
+      const url = isDefault && path === "" 
+        ? `${SITE_URL}/${locale}` 
+        : `${SITE_URL}/${locale}${path}`;
 
       return {
-        url: toAbsoluteUrl(getLocalizedPath(locale, path)),
-        lastModified: LAST_MODIFIED,
-        changeFrequency: path === "" ? "monthly" : "yearly",
-        priority: path === "" ? 1 : 0.3,
-        alternates: {
-          languages: languageAlternates,
-        },
+        url,
+        lastModified: new Date(),
+        changeFrequency: path === "" ? "weekly" : "monthly" as any,
+        priority: path === "" ? 1.0 : 0.5,
       };
     })
   );

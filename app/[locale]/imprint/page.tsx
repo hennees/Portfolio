@@ -58,9 +58,7 @@ export default function Imprint() {
           <h2 className="font-heading font-bold text-xl" style={{ color: "#F5F5F7" }}>Angaben gemäß § 5 ECG / § 25 MedienG</h2>
           <p className="leading-relaxed">
             <strong className="text-white">Patrick Hennes</strong><br />
-            Griesgasse 11<br />
-            8020 Graz<br />
-            Österreich
+            Graz, Österreich
           </p>
         </section>
 

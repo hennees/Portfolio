@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.henux.at" }],
+      "destination": "https://henux.at/:path*",
+      "permanent": true
+    }
+  ]
+}

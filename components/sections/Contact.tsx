@@ -4,9 +4,6 @@ import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, ArrowRight, ArrowLeft } from "lucide-react";
-
-// ── Icons ──────────────────────────────────────────────────────────────────
-
 import { LinkedInIcon, InstagramIcon } from "@/components/ui/Icons";
 
 const SOCIALS = [
@@ -133,6 +130,7 @@ export default function Contact() {
   const [name, setName]       = useState("");
   const [email, setEmail]     = useState("");
   const [message, setMessage] = useState("");
+  const [botcheck, setBotcheck] = useState(false);
 
   const toggleType = (val: string) =>
     setSelectedTypes((prev) => prev.includes(val) ? prev.filter((x) => x !== val) : [...prev, val]);
@@ -147,6 +145,13 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !message.trim()) return;
+
+    // Honeypot check: If the hidden field is filled, pretend success but don't send anything
+    if (botcheck) {
+      setSubmitted(true);
+      return;
+    }
+
     setSending(true);
     setError(null);
 
@@ -159,6 +164,7 @@ export default function Contact() {
           name,
           email,
           message,
+          botcheck: botcheck ? "yes" : "",
           project_types: selectedTypes.join(", "),
           scope: selectedScope ?? "",
           timeline: selectedTimeline ?? "",
@@ -175,6 +181,11 @@ export default function Contact() {
     } finally {
       setSending(false);
     }
+  };
+
+  const submitDirect = () => {
+    if (!name.trim() || !email.trim() || !message.trim()) return;
+    handleSubmit({ preventDefault: () => {} } as React.FormEvent<HTMLFormElement>);
   };
 
   return (
@@ -340,11 +351,38 @@ export default function Contact() {
                           />
                         </div>
 
+                        {/* Honeypot field for bot protection — completely invisible to real users */}
+                        <input
+                          type="checkbox"
+                          name="botcheck"
+                          className="hidden"
+                          style={{ display: "none" }}
+                          onChange={(e) => setBotcheck(e.target.checked)}
+                          checked={botcheck}
+                          aria-hidden="true"
+                          tabIndex={-1}
+                          autoComplete="off"
+                        />
+
                         {error && (
                           <p className="text-xs" style={{ color: "#F85900" }} role="alert">{error}</p>
                         )}
 
-                        <div className="flex justify-end pt-1">
+                        <div className="flex items-center justify-between pt-1">
+                          {/* Direct send — skip step 2 */}
+                          <button
+                            type="button"
+                            onClick={submitDirect}
+                            disabled={sending || !name.trim() || !email.trim() || !message.trim()}
+                            className="text-xs font-medium transition-colors duration-200 cursor-pointer disabled:opacity-40"
+                            style={{ color: "#5A5A5A" }}
+                            onMouseEnter={(e) => { e.currentTarget.style.color = "#A09E9E"; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.color = "#5A5A5A"; }}
+                            aria-busy={sending}
+                          >
+                            {sending ? t("form.sending") : t("form.skip")}
+                          </button>
+
                           <button
                             type="button"
                             onClick={goNext}
