@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, Space_Grotesk } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import {
@@ -102,11 +102,13 @@ type Props = {
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale: requestedLocale } = await params;
   const locale = resolveLocale(requestedLocale);
+  const localizedHomeUrl = `${SITE_URL}${getLocalizedPath(locale)}`;
 
   if (!isSupportedLocale(locale)) {
     notFound();
   }
 
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   const jsonLd = {
@@ -157,6 +159,30 @@ export default async function LocaleLayout({ children, params }: Props) {
         "worksFor": { "@id": `${SITE_URL}/#organization` },
         "sameAs": [
           "https://www.linkedin.com/in/hennespatrick/",
+        ],
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${localizedHomeUrl}/#breadcrumbs`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": localizedHomeUrl,
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Imprint",
+            "item": `${localizedHomeUrl}/imprint`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Privacy",
+            "item": `${localizedHomeUrl}/privacy`,
+          },
         ],
       },
     ],

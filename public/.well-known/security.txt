@@ -1,0 +1,5 @@
+Contact: mailto:patrick.hennes27@icloud.com
+Expires: 2027-04-10T00:00:00.000Z
+Canonical: https://henux.at/.well-known/security.txt
+Preferred-Languages: en, de
+Policy: https://henux.at/de/privacy

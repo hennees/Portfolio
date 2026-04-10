@@ -89,8 +89,9 @@ export default function IPhoneMockup({
             <Image
               src={src}
               alt={alt}
-              fill
-              className="object-contain"
+              width={236}
+              height={506}
+              className="h-full w-full object-contain"
               sizes="236px"
             />
           ) : (

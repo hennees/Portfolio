@@ -10,16 +10,16 @@ const fadeUp = {
 };
 
 const SCOON_SCREENS = [
-  "/projects/Scoon2.png",
-  "/projects/Scoon3.png",
-  "/projects/Scoon4.png",
-  "/projects/Scoon5.png",
+  "/projects/Scoon2.webp",
+  "/projects/Scoon3.webp",
+  "/projects/Scoon4.webp",
+  "/projects/Scoon5.webp",
 ];
 
 const SCOON_SCREENS_MOBILE = [
-  "/projects/Scoon2.png",
-  "/projects/Scoon3.png",
-  "/projects/Scoon4.png",
+  "/projects/Scoon2.webp",
+  "/projects/Scoon3.webp",
+  "/projects/Scoon4.webp",
 ];
 
 export function ScoonHero({ name, description, tags, featuredLabel }: {

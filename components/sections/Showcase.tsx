@@ -52,12 +52,12 @@ export default function Showcase() {
 
           <AppCard name={tAmigon("name")} description={tAmigon("description")}
             tags={tAmigon.raw("tags") as string[]}
-            screens={["/projects/amigon1.png", "/projects/Amigon3.png", "/projects/Amigon2.png"]}
+            screens={["/projects/amigon1.webp", "/projects/Amigon3.webp", "/projects/Amigon2.webp"]}
             colSpan="col-span-12 md:col-span-5" accentColor="#00C2CB" />
 
           <AppCard name={tGym("name")} description={tGym("description")}
             tags={tGym.raw("tags") as string[]}
-            screens={["/projects/Gymbook1.png", "/projects/Gymbook2.png", "/projects/Gymbook3.png"]}
+            screens={["/projects/Gymbook1.webp", "/projects/Gymbook2.webp", "/projects/Gymbook3.webp"]}
             colSpan="col-span-12 md:col-span-7" accentColor="#F97316" />
 
           <AnnoCard name={tAnno("name")} description={tAnno("description")}
@@ -65,7 +65,7 @@ export default function Showcase() {
 
           <AppCard name={tPokedex("name")} description={tPokedex("description")}
             tags={tPokedex.raw("tags") as string[]}
-            screens={["/projects/Pokedex2.png", "/projects/Pokedex3.png", "/projects/Pokedex1.png"]}
+            screens={["/projects/Pokedex2.webp", "/projects/Pokedex3.webp", "/projects/Pokedex1.webp"]}
             colSpan="col-span-12 md:col-span-5" accentColor="#F85900" />
 
           <WearableCard name={tWearable("name")} description={tWearable("description")}

@@ -11,10 +11,10 @@ const fadeUp = {
 
 export function AnnoCard({ name, description, tags }: { name: string; description: string; tags: string[] }) {
   const screens = [
-    "/projects/Anno2.png",
-    "/projects/Anno3.png",
-    "/projects/Anno1.png",
-    "/projects/Anno4.png",
+    "/projects/Anno2.webp",
+    "/projects/Anno3.webp",
+    "/projects/Anno1.webp",
+    "/projects/Anno4.webp",
   ];
 
   return (

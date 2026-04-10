@@ -5,11 +5,10 @@ import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import { LinkedInIcon, InstagramIcon } from "@/components/ui/Icons";
+import { LinkedInIcon } from "@/components/ui/Icons";
 
 const SOCIALS = [
   { Icon: LinkedInIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/hennespatrick/" },
-  { Icon: InstagramIcon, label: "Instagram", href: "https://www.instagram.com/hennees" },
 ] as const;
 
 export default function Footer() {
@@ -60,13 +59,15 @@ export default function Footer() {
         >
           {/* Logo & Description */}
           <motion.div variants={itemVariants} className="md:col-span-2 flex flex-col items-start gap-6">
-            <Image
-              src="/logo-dark.svg"
-              alt="henUX"
-              height={56}
-              width={112}
-              className="h-14 w-auto"
-            />
+            <Link href="/" aria-label="henUX — Home" className="inline-flex transition-opacity hover:opacity-80">
+              <Image
+                src="/logo-dark.svg"
+                alt="henUX"
+                height={56}
+                width={112}
+                className="h-14 w-auto"
+              />
+            </Link>
             <p className="text-sm max-w-sm leading-relaxed" style={{ color: "#A09E9E" }}>
               Bridging health and technology — designing interfaces that feel as good as they look.
             </p>
@@ -123,6 +124,7 @@ export default function Footer() {
               </h3>
               <Link href="/imprint" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("imprint")}</Link>
               <Link href="/privacy" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("privacy")}</Link>
+              <a href="/sitemap.xml" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>Sitemap</a>
             </div>
           </motion.div>
         </motion.div>

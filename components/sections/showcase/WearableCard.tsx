@@ -18,8 +18,14 @@ export function WearableCard({ name, description, tags }: { name: string; descri
       style={{ minHeight: 360, background: "#0A0A0A" }}
       whileHover={{ scale: 1.008, boxShadow: "0 0 40px rgba(248,89,0,0.06)", transition: { type: "spring", stiffness: 240, damping: 30 } }}
     >
-      <Image src="/projects/Weareble-Dashbaord.png" alt="Wearable Dashboard" fill
-        className="object-cover object-center transition-transform duration-700 group-hover:scale-105" sizes="100vw" />
+      <Image
+        src="/projects/Weareble-Dashbaord.webp"
+        alt="Wearable Dashboard"
+        width={1600}
+        height={900}
+        className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+        sizes="(max-width: 768px) 100vw, 1200px"
+      />
       <div className="absolute inset-0"
         style={{ background: "linear-gradient(to top, rgba(6,6,6,0.97) 22%, rgba(6,6,6,0.5) 52%, rgba(6,6,6,0.06) 100%)" }} />
       <motion.div className="absolute inset-0 rounded-2xl pointer-events-none"

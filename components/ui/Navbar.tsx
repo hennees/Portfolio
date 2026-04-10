@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { useRouter, usePathname } from "@/i18n/navigation";
+import { Link, useRouter, usePathname } from "@/i18n/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -61,8 +61,8 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between px-5 py-3">
           {/* Logo */}
-          <a
-            href="#"
+          <Link
+            href="/"
             className="flex items-center cursor-pointer transition-opacity duration-200 hover:opacity-75"
             aria-label="henUX — Home"
           >
@@ -74,7 +74,7 @@ export default function Navbar() {
               className="h-14 w-auto"
               priority
             />
-          </a>
+          </Link>
 
           {/* Desktop nav links & locale */}
           <div className="hidden md:flex items-center gap-4">
