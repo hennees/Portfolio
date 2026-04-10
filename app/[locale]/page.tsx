@@ -1,12 +1,14 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/ui/Navbar";
 import Hero from "@/components/sections/Hero";
-import Showcase from "@/components/sections/Showcase";
-import Services from "@/components/sections/Services";
-import Process from "@/components/sections/Process";
-import StackTools from "@/components/sections/StackTools";
-import About from "@/components/sections/About";
-import Contact from "@/components/sections/Contact";
 import Footer from "@/components/ui/Footer";
+
+const Showcase   = dynamic(() => import("@/components/sections/Showcase"));
+const Services   = dynamic(() => import("@/components/sections/Services"));
+const Process    = dynamic(() => import("@/components/sections/Process"));
+const StackTools = dynamic(() => import("@/components/sections/StackTools"));
+const About      = dynamic(() => import("@/components/sections/About"));
+const Contact    = dynamic(() => import("@/components/sections/Contact"));
 
 export default function Home() {
   return (

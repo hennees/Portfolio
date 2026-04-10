@@ -5,29 +5,31 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import {
-  SITE_METADATA_BASE,
-  SITE_NAME,
-  buildAlternates,
-  getHomeSeo,
-  getLocalizedPath,
-  getOgLocale,
   isSupportedLocale,
   resolveLocale,
+  getHomeSeo,
+  getOgLocale,
+  buildAlternates,
+  SITE_METADATA_BASE,
+  SITE_NAME,
+  getLocalizedPath,
+  SITE_URL,
 } from "@/lib/seo";
+import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 
 const archivo = Archivo({
   subsets: ["latin"],
   variable: "--font-heading",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["600", "700", "900"],
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "700"],
 });
 
 export function generateStaticParams() {
@@ -57,6 +59,9 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
     robots: {
       index: true,
       follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
       googleBot: {
         index: true,
         follow: true,
@@ -66,7 +71,11 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
       },
     },
     icons: {
-      icon: "/icon",
+      icon: [
+        { url: "/icon" },
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/logo-dark.svg", type: "image/svg+xml" },
+      ],
       apple: "/apple-icon",
     },
     openGraph: {
@@ -91,7 +100,8 @@ type Props = {
 };
 
 export default async function LocaleLayout({ children, params }: Props) {
-  const { locale } = await params;
+  const { locale: requestedLocale } = await params;
+  const locale = resolveLocale(requestedLocale);
 
   if (!isSupportedLocale(locale)) {
     notFound();
@@ -99,12 +109,73 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const messages = await getMessages();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        "url": SITE_URL,
+        "name": "henUX",
+        "description": "Patrick Hennes — UI/UX Designer & eHealth Developer",
+        "inLanguage": locale,
+      },
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        "name": "henUX",
+        "url": SITE_URL,
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${SITE_URL}/logo-dark.svg`,
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Graz",
+          "addressCountry": "AT",
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/hennespatrick/",
+        ],
+        "knowsAbout": [
+          "UI/UX Design", "eHealth", "Mobile App Development",
+          "FHIR", "iOS Development", "Flutter", "Next.js", "Figma",
+        ],
+        "makesOffer": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI/UX Design" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Full-Stack Web Development" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "eHealth Solutions" } },
+        ],
+      },
+      {
+        "@type": "Person",
+        "@id": `${SITE_URL}/#person`,
+        "name": "Patrick Hennes",
+        "url": SITE_URL,
+        "jobTitle": "UI/UX Designer & eHealth Developer",
+        "worksFor": { "@id": `${SITE_URL}/#organization` },
+        "sameAs": [
+          "https://www.linkedin.com/in/hennespatrick/",
+        ],
+      },
+    ],
+  };
+
   return (
     <html lang={locale} className={`${archivo.variable} ${spaceGrotesk.variable}`}>
+      <head>
+        <link rel="alternate" type="text/plain" href="/llms.txt" />
+      </head>
       <body className="font-body antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );

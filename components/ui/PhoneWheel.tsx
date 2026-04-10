@@ -112,6 +112,8 @@ export function PhoneWheel({
               alt=""
               width={centerWidth}
               height={Math.round(centerWidth * 2.165)}
+              sizes="(max-width: 768px) 140px, 210px"
+              loading={isCenter ? "eager" : "lazy"}
               className="object-contain select-none"
               draggable={false}
               style={{

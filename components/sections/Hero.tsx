@@ -3,8 +3,10 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
 import developerAnimationRaw from "@/public/animations/developer.json";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import { recolorLottie, PORTFOLIO_COLOR_MAP } from "@/lib/lottie";
 import { TypewriterText } from "@/components/ui/TypewriterText";
 

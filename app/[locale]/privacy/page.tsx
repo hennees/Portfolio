@@ -61,8 +61,7 @@ export default function Privacy() {
           <p className="leading-relaxed">
             Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:<br /><br />
             <strong className="text-white">Patrick Hennes</strong><br />
-            Griesgasse 11<br />
-            8020 Graz, Österreich<br />
+            Graz, Österreich<br />
             E-Mail: patrick.hennes27@icloud.com
           </p>
         </section>

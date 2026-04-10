@@ -3,7 +3,9 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import GlassCard from "@/components/ui/GlassCard";
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import webDesignAnimationRaw from "@/public/animations/web-design.json";
 import uxDesignAnimationRaw from "@/public/animations/ux-design.json";
 import mobileDevAnimationRaw from "@/public/animations/mobile-dev.json";

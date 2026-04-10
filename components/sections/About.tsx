@@ -159,23 +159,6 @@ export default function About() {
                   </div>
                 );
               })}
-              <div
-                className="flex flex-col items-center gap-1 p-4 rounded-2xl text-center"
-                style={{
-                  background: "rgba(248,89,0,0.08)",
-                  border: "1px solid rgba(248,89,0,0.2)",
-                }}
-              >
-                <span className="font-heading font-black text-lg sm:text-xl gradient-text leading-tight">
-                  MSc
-                </span>
-                <span
-                  className="text-xs font-medium text-center leading-tight"
-                  style={{ color: "#A09E9E" }}
-                >
-                  eHealth
-                </span>
-              </div>
             </motion.div>
           </motion.div>
 
