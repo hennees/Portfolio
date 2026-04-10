@@ -84,8 +84,8 @@
         "description": "Aesthetics meet functionality. I craft pixel-perfect interfaces through thoughtful wireframes, interactive prototypes, and a clear user-centric focus."
       },
       "performance": {
-        "title": "Performance & Security",
-        "description": "Secure, fast, and future-proof. My focus is on measurable top-tier performance, clean architecture, and strict adherence to privacy standards."
+        "title": "eHealth & Digital Health",
+        "description": "Apps and platforms built for healthcare — grounded in FHIR and established health standards. From electronic patient records to telemedicine solutions. Regulated medical devices aren't my domain — but concept, design and development very much are."
       }
     }
   },

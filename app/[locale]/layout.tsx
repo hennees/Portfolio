@@ -4,6 +4,16 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import {
+  SITE_METADATA_BASE,
+  SITE_NAME,
+  buildAlternates,
+  getHomeSeo,
+  getLocalizedPath,
+  getOgLocale,
+  isSupportedLocale,
+  resolveLocale,
+} from "@/lib/seo";
 import "../globals.css";
 
 const archivo = Archivo({
@@ -24,35 +34,66 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: "Patrick Hennes — UI/UX Designer & eHealth Developer | henux.at",
-  description:
-    "Austrian freelance UI/UX designer and eHealth developer based in Graz. Bridging health and technology — mobile apps, web platforms, AI-powered workflow.",
-  keywords: ["UI/UX Designer", "eHealth Developer", "Freelancer", "Mobile Apps", "Swift", "Kotlin", "Flutter", "Graz", "Austria", "henux"],
-  authors: [{ name: "Patrick Hennes" }],
-  metadataBase: new URL("https://henux.at"),
-  icons: {
-    icon: "/icon",
-    apple: "/apple-icon",
-  },
-  openGraph: {
-    title: "Patrick Hennes — UI/UX Designer & eHealth Developer",
-    description:
-      "Bridging health and technology — interfaces that feel as good as they look. Based in Graz, Austria.",
-    type: "website",
-    url: "https://henux.at",
-  },
+type RouteParams = Promise<{ locale: string }>;
+
+type MetadataProps = {
+  params: RouteParams;
 };
+
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
+  const { locale: requestedLocale } = await params;
+  const locale = resolveLocale(requestedLocale);
+  const homeSeo = getHomeSeo(locale);
+
+  return {
+    title: homeSeo.title,
+    description: homeSeo.description,
+    keywords: homeSeo.keywords,
+    authors: [{ name: "Patrick Hennes" }],
+    creator: "Patrick Hennes",
+    publisher: "Patrick Hennes",
+    metadataBase: SITE_METADATA_BASE,
+    alternates: buildAlternates(locale),
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+    icons: {
+      icon: "/icon",
+      apple: "/apple-icon",
+    },
+    openGraph: {
+      title: homeSeo.title,
+      description: homeSeo.description,
+      type: "website",
+      url: getLocalizedPath(locale),
+      siteName: SITE_NAME,
+      locale: getOgLocale(locale),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: homeSeo.title,
+      description: homeSeo.description,
+    },
+  };
+}
 
 type Props = {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: RouteParams;
 };
 
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as "en" | "de" | "es")) {
+  if (!isSupportedLocale(locale)) {
     notFound();
   }
 

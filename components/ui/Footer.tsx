@@ -3,26 +3,9 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-function LinkedInIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-      <rect x="2" y="9" width="4" height="12"/>
-      <circle cx="4" cy="4" r="2"/>
-    </svg>
-  );
-}
-
-function InstagramIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-      <circle cx="12" cy="12" r="4"/>
-      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-    </svg>
-  );
-}
+import { LinkedInIcon, InstagramIcon } from "@/components/ui/Icons";
 
 const SOCIALS = [
   { Icon: LinkedInIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/hennespatrick/" },
@@ -77,12 +60,12 @@ export default function Footer() {
         >
           {/* Logo & Description */}
           <motion.div variants={itemVariants} className="md:col-span-2 flex flex-col items-start gap-6">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/logo-dark.svg"
               alt="henUX"
               height={56}
-              style={{ height: 56, width: "auto" }}
+              width={112}
+              className="h-14 w-auto"
             />
             <p className="text-sm max-w-sm leading-relaxed" style={{ color: "#A09E9E" }}>
               Bridging health and technology — designing interfaces that feel as good as they look.

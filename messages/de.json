@@ -84,8 +84,8 @@
         "description": "Ästhetik trifft auf Funktionalität. Mit durchdachten Wireframes, interaktiven Prototypen und einem klaren, nutzerzentrierten Fokus gestalte ich pixelgenaue Interfaces."
       },
       "performance": {
-        "title": "Performance & Sicherheit",
-        "description": "Sicher, schnell und zukunftssicher. Mein Fokus liegt auf messbarer Performance, sauberen Code-Strukturen und strikter Einhaltung von Datenschutzstandards."
+        "title": "eHealth & Digitale Gesundheit",
+        "description": "Apps und Plattformen für den Gesundheitsbereich — aufgebaut auf FHIR und gängigen Gesundheitsstandards. Von der Patientenakte bis zur Telemedizin-Lösung. Medizinprodukte im regulatorischen Sinne sind nicht mein Ding — aber Konzept, Design und Entwicklung sehr wohl."
       }
     }
   },

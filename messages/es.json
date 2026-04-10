@@ -84,8 +84,8 @@
         "description": "La estética se une a la funcionalidad. Creo interfaces precisas mediante wireframes, prototipos interactivos y un claro enfoque centrado en el usuario."
       },
       "performance": {
-        "title": "Rendimiento y Seguridad",
-        "description": "Seguro, rápido y preparado para el futuro. Mi enfoque es el rendimiento medible, la arquitectura limpia y el cumplimiento estricto de las normas de privacidad."
+        "title": "eHealth y Salud Digital",
+        "description": "Apps y plataformas para el sector sanitario — basadas en FHIR y estándares de salud establecidos. Desde la historia clínica electrónica hasta soluciones de telemedicina. Los productos sanitarios regulados no son mi especialidad — pero el concepto, diseño y desarrollo sí."
       }
     }
   },

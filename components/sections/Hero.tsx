@@ -1,93 +1,22 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import Lottie from "lottie-react";
 import developerAnimationRaw from "@/public/animations/developer.json";
-
-// Farbanpassung: Lottie-Farben → Portfolio-Palette
-const COLOR_MAP: [number[], number[]][] = [
-  [[0.416, 0.914, 0.624], [0.969, 0.380, 0.039]], // grün → #F7610A
-  [[0.627, 0.627, 0.780], [0.416, 0.416, 0.447]], // muted purple → neutral
-  [[0.710, 0.671, 0.937], [0.627, 0.620, 0.620]], // light purple → #A09E9E
-  [[0.812, 0.792, 1.000], [0.831, 0.824, 0.824]], // very light purple → #D4D2D2
-  [[0.906, 0.890, 1.000], [0.929, 0.918, 0.918]], // near-white purple → #EDEAEA
-  [[0.961, 0.953, 1.000], [0.961, 0.961, 0.969]], // almost white → #F5F5F7
-];
-
-function matchAndReplace(arr: number[]): void {
-  for (const [src, dst] of COLOR_MAP) {
-    if (
-      Math.abs(arr[0] - src[0]) < 0.04 &&
-      Math.abs(arr[1] - src[1]) < 0.04 &&
-      Math.abs(arr[2] - src[2]) < 0.04
-    ) {
-      arr[0] = dst[0]; arr[1] = dst[1]; arr[2] = dst[2];
-      return;
-    }
-  }
-}
-
-function recolor(obj: unknown): void {
-  if (typeof obj !== "object" || obj === null) return;
-  if (Array.isArray(obj)) { obj.forEach(recolor); return; }
-  const o = obj as Record<string, unknown>;
-  if ("c" in o && typeof o.c === "object" && o.c !== null) {
-    const c = o.c as { a: number; k: unknown };
-    if (c.a === 0 && Array.isArray(c.k) && typeof c.k[0] === "number")
-      matchAndReplace(c.k as number[]);
-    if (c.a === 1 && Array.isArray(c.k))
-      (c.k as { s?: number[] }[]).forEach((kf) => { if (Array.isArray(kf.s)) matchAndReplace(kf.s); });
-  }
-  Object.values(o).forEach(recolor);
-}
+import { recolorLottie, PORTFOLIO_COLOR_MAP } from "@/lib/lottie";
+import { TypewriterText } from "@/components/ui/TypewriterText";
 
 const developerAnimation = (() => {
-  const clone = JSON.parse(JSON.stringify(developerAnimationRaw));
-  recolor(clone);
-  for (const layer of clone.layers ?? []) {
+  const recolored = recolorLottie(developerAnimationRaw, PORTFOLIO_COLOR_MAP);
+  for (const layer of recolored.layers ?? []) {
     if (["c++", "PHP"].includes(layer.nm)) {
       layer.ks.o = { a: 0, k: 0, ix: 11 };
     }
   }
-  return clone;
+  return recolored;
 })();
-
-function TypewriterText({ phrases }: { phrases: string[] }) {
-  const [current, setCurrent] = useState(0);
-  const [displayed, setDisplayed] = useState("");
-  const [deleting, setDeleting] = useState(false);
-  const [paused, setPaused] = useState(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    const phrase = phrases[current];
-    if (paused) {
-      timeoutRef.current = setTimeout(() => { setPaused(false); setDeleting(true); }, 2200);
-      return;
-    }
-    if (!deleting && displayed.length < phrase.length) {
-      timeoutRef.current = setTimeout(() => { setDisplayed(phrase.slice(0, displayed.length + 1)); }, 60);
-    } else if (!deleting && displayed.length === phrase.length) {
-      setPaused(true);
-    } else if (deleting && displayed.length > 0) {
-      timeoutRef.current = setTimeout(() => { setDisplayed(displayed.slice(0, -1)); }, 35);
-    } else if (deleting && displayed.length === 0) {
-      setDeleting(false);
-      setCurrent((c) => (c + 1) % phrases.length);
-    }
-    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
-  }, [displayed, deleting, paused, current, phrases]);
-
-  return (
-    <span className="inline-flex items-center gap-1">
-      <span className="gradient-text">{displayed}</span>
-      <span className="inline-block w-0.5 h-7 sm:h-8 rounded-full ml-0.5 animate-blink" style={{ background: "#F85900" }} aria-hidden="true" />
-    </span>
-  );
-}
 
 export default function Hero() {
   const t = useTranslations("hero");

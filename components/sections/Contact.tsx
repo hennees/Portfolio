@@ -7,29 +7,11 @@ import { Send, ArrowRight, ArrowLeft } from "lucide-react";
 
 // ── Icons ──────────────────────────────────────────────────────────────────
 
-function LinkedInIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
-  );
-}
-
-function InstagramIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
+import { LinkedInIcon, InstagramIcon } from "@/components/ui/Icons";
 
 const SOCIALS = [
-  { Icon: LinkedInIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/hennespatrick/" },
-  { Icon: InstagramIcon, label: "Instagram", href: "https://www.instagram.com/hennees" },
+  { Icon: () => <LinkedInIcon size={16} />, label: "LinkedIn", href: "https://www.linkedin.com/in/hennespatrick/" },
+  { Icon: () => <InstagramIcon size={16} />, label: "Instagram", href: "https://www.instagram.com/hennees" },
 ] as const;
 
 // ── Data — in Kundensprache, kein Tech-Jargon ──────────────────────────────
@@ -133,6 +115,8 @@ const stepVariants = {
 
 // ── Main ───────────────────────────────────────────────────────────────────
 
+const WEB3FORMS_KEY = "feef905c-fd31-4d7a-a4d1-306b68ca7838";
+
 export default function Contact() {
   const t = useTranslations("contact");
 
@@ -145,34 +129,43 @@ export default function Contact() {
   const [sending, setSending]         = useState(false);
   const [error, setError]             = useState<string | null>(null);
 
-  // form ref to submit from step 2
-  const formRef = React.useRef<HTMLFormElement>(null);
+  // Store contact fields in state so they survive step transitions
+  const [name, setName]       = useState("");
+  const [email, setEmail]     = useState("");
+  const [message, setMessage] = useState("");
 
   const toggleType = (val: string) =>
     setSelectedTypes((prev) => prev.includes(val) ? prev.filter((x) => x !== val) : [...prev, val]);
 
-  const goNext = () => { setDirection(1);  setStep(2); };
+  const goNext = () => {
+    if (!name.trim() || !email.trim() || !message.trim()) return;
+    setDirection(1);
+    setStep(2);
+  };
   const goBack = () => { setDirection(-1); setStep(1); };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!name.trim() || !email.trim() || !message.trim()) return;
     setSending(true);
     setError(null);
-
-    const formData = new FormData(e.currentTarget);
-    const object   = Object.fromEntries(formData);
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-
-    if (!accessKey) {
-      setTimeout(() => { setSending(false); setSubmitted(true); }, 1200);
-      return;
-    }
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...object, access_key: accessKey }),
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name,
+          email,
+          message,
+          project_types: selectedTypes.join(", "),
+          scope: selectedScope ?? "",
+          timeline: selectedTimeline ?? "",
+          subject: `Neue Anfrage von ${name} – henUX Portfolio`,
+          from_name: "henUX Portfolio",
+          replyto: email,
+        }),
       });
       const result = await res.json();
       if (result.success) setSubmitted(true);
@@ -183,9 +176,6 @@ export default function Contact() {
       setSending(false);
     }
   };
-
-  // submit the form directly (used by "Skip & send" and step-2 submit)
-  const submitForm = () => formRef.current?.requestSubmit();
 
   return (
     <section id="contact" className="relative py-24 px-6" aria-label="Contact">
@@ -273,7 +263,7 @@ export default function Contact() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
-            {submitted ? (
+              {submitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -299,12 +289,7 @@ export default function Contact() {
               >
                 <StepIndicator current={step} />
 
-                <form ref={formRef} onSubmit={handleSubmit} noValidate aria-label="Contact form">
-                  {/* Hidden metadata */}
-                  <input type="text"   name="botcheck"   className="hidden" aria-hidden="true" tabIndex={-1} />
-                  <input type="hidden" name="project_types" value={selectedTypes.join(", ")} />
-                  <input type="hidden" name="scope"         value={selectedScope ?? ""} />
-                  <input type="hidden" name="timeline"      value={selectedTimeline ?? ""} />
+                <form onSubmit={handleSubmit} aria-label="Contact form">
 
                   <AnimatePresence mode="wait" custom={direction}>
 
@@ -324,7 +309,8 @@ export default function Contact() {
                               {t("form.name")}
                             </label>
                             <input
-                              id="contact-name" name="name" type="text" required
+                              id="contact-name" type="text"
+                              value={name} onChange={e => setName(e.target.value)}
                               placeholder={t("form.name_placeholder")} autoComplete="name"
                               className="glass-input px-4 py-3 rounded-xl text-sm w-full"
                             />
@@ -334,7 +320,8 @@ export default function Contact() {
                               {t("form.email")}
                             </label>
                             <input
-                              id="contact-email" name="email" type="email" required
+                              id="contact-email" type="email"
+                              value={email} onChange={e => setEmail(e.target.value)}
                               placeholder={t("form.email_placeholder")} autoComplete="email"
                               className="glass-input px-4 py-3 rounded-xl text-sm w-full"
                             />
@@ -346,7 +333,8 @@ export default function Contact() {
                             {t("form.message")}
                           </label>
                           <textarea
-                            id="contact-message" name="message" required rows={5}
+                            id="contact-message" rows={5}
+                            value={message} onChange={e => setMessage(e.target.value)}
                             placeholder={t("form.message_placeholder")}
                             className="glass-input px-4 py-3 rounded-xl text-sm w-full resize-none"
                           />
@@ -356,24 +344,12 @@ export default function Contact() {
                           <p className="text-xs" style={{ color: "#F85900" }} role="alert">{error}</p>
                         )}
 
-                        <div className="flex items-center justify-between pt-1">
-                          {/* Direct send — skip step 2 */}
-                          <button
-                            type="submit"
-                            disabled={sending}
-                            className="text-xs font-medium transition-colors duration-200 cursor-pointer disabled:opacity-40"
-                            style={{ color: "#5A5A5A" }}
-                            onMouseEnter={(e) => { e.currentTarget.style.color = "#A09E9E"; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.color = "#5A5A5A"; }}
-                            aria-busy={sending}
-                          >
-                            {sending ? t("form.sending") : t("form.skip")}
-                          </button>
-
+                        <div className="flex justify-end pt-1">
                           <button
                             type="button"
                             onClick={goNext}
-                            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm cursor-pointer transition-all duration-200"
+                            disabled={!name.trim() || !email.trim() || !message.trim()}
+                            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm cursor-pointer transition-all duration-200 disabled:opacity-40"
                             style={{ background: "linear-gradient(135deg, #F85900, #FF9432)", color: "#0E0F10", boxShadow: "0 8px 24px rgba(248,89,0,0.25)" }}
                           >
                             {t("form.next")} <ArrowRight size={15} aria-hidden="true" />

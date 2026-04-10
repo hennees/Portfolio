@@ -1,5 +1,43 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
+import {
+  SITE_NAME,
+  buildAlternates,
+  getLocalizedPath,
+  getOgLocale,
+  getPageSeo,
+  resolveLocale,
+} from "@/lib/seo";
+
+type MetadataProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
+  const { locale: requestedLocale } = await params;
+  const locale = resolveLocale(requestedLocale);
+  const seo = getPageSeo(locale, "imprint");
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    alternates: buildAlternates(locale, "/imprint"),
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      type: "website",
+      url: getLocalizedPath(locale, "/imprint"),
+      siteName: SITE_NAME,
+      locale: getOgLocale(locale),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo.title,
+      description: seo.description,
+    },
+  };
+}
 
 export default function Imprint() {
   return (
