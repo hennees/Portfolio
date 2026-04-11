@@ -6,9 +6,10 @@ import { useRef, useEffect, useState, useMemo } from "react";
 import { useTheme } from "@/components/ui/ThemeProvider";
 import { 
   FileCode, Zap, ShieldCheck, Copy, Check, 
-  ChevronRight, Folder, Search, Github,
+  ChevronRight, Folder, Search,
   Terminal, Monitor, Cpu
 } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
 // ─── ANIMATED COUNTER ────────────────────────────────────────────────────────
 
@@ -191,7 +192,7 @@ function CodeEditor() {
         </div>
         <div className="flex gap-4 opacity-40">
           <Search size={14} />
-          <Github size={14} />
+          <FaGithub size={14} />
         </div>
       </div>
 
