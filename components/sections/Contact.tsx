@@ -64,7 +64,7 @@ function StepIndicator({ current }: { current: number }) {
             style={{
               background: s < current ? "#F85900" : s === current ? "rgba(248,89,0,0.15)" : "var(--c-glass-bg)",
               border: s === current ? "1px solid rgba(248,89,0,0.5)" : "1px solid var(--c-border)",
-              color: s < current ? "#0E0F10" : s === current ? "#F85900" : "var(--c-text-muted)",
+              color: s < current ? "var(--c-deep)" : s === current ? "#F85900" : "var(--c-text-muted)",
             }}
           >
             {s < current ? (
@@ -438,7 +438,7 @@ export default function Contact() {
                             type="button"
                             onClick={goNext}
                             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm cursor-pointer transition-all duration-200"
-                            style={{ background: "linear-gradient(135deg, #F85900, #FF9432)", color: "#0E0F10", boxShadow: "0 8px 24px rgba(248,89,0,0.25)" }}
+                            style={{ background: "linear-gradient(135deg, #F85900, #FF9432)", color: "var(--c-deep)", boxShadow: "0 8px 24px rgba(248,89,0,0.25)" }}
                           >
                             {t("form.next")} <ArrowRight size={15} aria-hidden="true" />
                           </button>
@@ -519,7 +519,7 @@ export default function Contact() {
                             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm cursor-pointer transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                             style={{
                               background: sending ? "var(--c-surface-2)" : "linear-gradient(135deg, #F85900, #FF9432)",
-                              color: sending ? "var(--c-text-muted)" : "#0E0F10",
+                              color: sending ? "var(--c-text-muted)" : "var(--c-deep)",
                               boxShadow: sending ? "none" : "0 8px 24px rgba(248,89,0,0.25)",
                             }}
                             aria-busy={sending}

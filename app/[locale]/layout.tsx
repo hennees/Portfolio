@@ -189,7 +189,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   };
 
   return (
-    <html lang={locale} data-theme="dark" className={`${archivo.variable} ${spaceGrotesk.variable}`}>
+    <html lang={locale} data-theme="dark" suppressHydrationWarning className={`${archivo.variable} ${spaceGrotesk.variable}`}>
       <head>
         <link rel="alternate" type="text/plain" href="/llms.txt" />
         {/* FOUC prevention: apply stored theme before first paint */}

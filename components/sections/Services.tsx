@@ -4,89 +4,43 @@ import { useTranslations } from "next-intl";
 import { motion, useInView } from "framer-motion";
 import GlassCard from "@/components/ui/GlassCard";
 import Lottie from "lottie-react";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import webDesignAnimationRaw from "@/public/animations/web-design.json";
 import uxDesignAnimationRaw from "@/public/animations/ux-design.json";
 import mobileDevAnimationRaw from "@/public/animations/mobile-dev.json";
 import faceIdAnimationRaw from "@/public/animations/face-id.json";
 import medicalAppAnimationRaw from "@/public/animations/medical-app.json";
 import { recolorLottie } from "@/lib/lottie";
+import { useTheme } from "@/components/ui/ThemeProvider";
 
 // ─── PER-ANIMATION PALETTES ────────────────────────────────────────────────
 
-const WEB_MAP: Record<string, string> = {
-  "#00caae": "#00D4BE", // teal → brighter vivid teal
-  "#ffec36": "#F85900", // yellow → brand orange
-  "#1a1a1a": "#111111",
+const WEB_MAP_DARK: Record<string, string> = {
+  "#00caae": "#00D4BE", "#ffec36": "#F85900", "#1a1a1a": "#111111",
+};
+const WEB_MAP_LIGHT: Record<string, string> = {
+  "#00caae": "#009688", "#ffec36": "#F85900", "#1a1a1a": "#e0e0e0",
 };
 
-const UX_MAP: Record<string, string> = {
-  "#4a3ed0": "#8B5CF6", // indigo → vivid violet
-  "#455a64": "#1E3A52",
-  "#37474f": "#162F45",
-  "#263238": "#0F2438",
+const UX_MAP_DARK: Record<string, string> = {
+  "#4a3ed0": "#8B5CF6", "#455a64": "#1E3A52", "#37474f": "#162F45", "#263238": "#0F2438",
+};
+const UX_MAP_LIGHT: Record<string, string> = {
+  "#4a3ed0": "#6D28D9", "#455a64": "#94A3B8", "#37474f": "#CBD5E1", "#263238": "#E2E8F0",
 };
 
-const MOBILE_MAP: Record<string, string> = {
-  "#ff9f24": "#F85900",
-  "#ff6a5f": "#F97316",
-  "#fe685e": "#F97316",
-  "#ff795c": "#F85900",
-  "#ff625a": "#F85900",
-  "#ff6159": "#F85900",
-  "#f46a59": "#F97316",
-  "#ff7a6a": "#FB923C",
-  "#fe9a5e": "#FDBA74",
-  "#ffd6a6": "#FED7AA",
-  "#fff3e4": "#FFF7ED",
-  "#ffebd2": "#FFEDD5",
-  "#ffdfba": "#FEF3C7",
-  "#e84857": "#F43F5E",
-  "#ff6d7a": "#FB7185",
-  "#fe4f60": "#F43F5E",
-  "#009cdf": "#0EA5E9",
-  "#6bc5e8": "#38BDF8",
-  "#3a9ec1": "#0284C7",
-  "#c9e8f3": "#BAE6FD",
-  "#dbeeff": "#E0F2FE",
-  "#d747de": "#C026D3",
-  "#5762df": "#6366F1",
-  "#6379e4": "#818CF8",
-  "#637be5": "#818CF8",
-  "#6278e4": "#6366F1",
-  "#5a69e0": "#6366F1",
-  "#e4e7f8": "#EEF2FF",
-  "#0e4356": "#0C2340",
-  "#283c5a": "#1E3A5F",
-  "#3d4962": "#2D3F62",
+const MOBILE_MAP_DARK: Record<string, string> = {
+  "#ff9f24": "#F85900", "#ff6a5f": "#F97316", "#009cdf": "#0EA5E9",
+};
+const MOBILE_MAP_LIGHT: Record<string, string> = {
+  "#ff9f24": "#E65100", "#ff6a5f": "#F57C00", "#009cdf": "#0288D1",
 };
 
-const MEDICAL_MAP: Record<string, string> = {
-  "#60c3da": "#10B981", // cyan → eHealth green
-  "#61c3da": "#10B981", // cyan variant
-  "#000000": "#3A4A44", // black → dark teal (visible on dark bg)
-  "#010101": "#3A4A44",
-  "#020202": "#3A4A44",
-  "#ffffff": "#D1D5DB", // white → light gray
-  "#eeeff0": "#9CA3AF",
-  "#d0d4d7": "#6B7280",
-  "#c1bdbb": "#4B5563",
+const MEDICAL_MAP_DARK: Record<string, string> = {
+  "#60c3da": "#10B981", "#000000": "#3A4A44", "#ffffff": "#D1D5DB",
 };
-
-// ─── PRE-PROCESS ANIMATIONS ───────────────────────────────────────────────
-const ANIMS = {
-  web:         recolorLottie(webDesignAnimationRaw,  WEB_MAP),
-  design:      recolorLottie(uxDesignAnimationRaw,   UX_MAP),
-  mobile:      recolorLottie(mobileDevAnimationRaw,  MOBILE_MAP),
-  performance: recolorLottie(medicalAppAnimationRaw, MEDICAL_MAP),
-} as Record<string, unknown>;
-
-// ─── CARD ACCENT COLORS ────────────────────────────────────────────────────
-const ACCENTS: Record<string, { color: string; rgb: string }> = {
-  web:         { color: "#00D4BE", rgb: "0,212,190"   },
-  design:      { color: "#8B5CF6", rgb: "139,92,246"  },
-  mobile:      { color: "#F85900", rgb: "248,89,0"    },
-  performance: { color: "#10B981", rgb: "16,185,129"  },
+const MEDICAL_MAP_LIGHT: Record<string, string> = {
+  "#60c3da": "#059669", "#000000": "#10B981", "#ffffff": "#374151",
 };
 
 // ─── DATA ──────────────────────────────────────────────────────────────────
@@ -97,7 +51,15 @@ const SERVICES = [
   { key: "performance", num: "04", tags: ["FHIR", "DSGVO", "Telemedizin"],        scale: "70%" },
 ] as const;
 
-function ServiceCard({ s, idx, t }: { s: typeof SERVICES[number], idx: number, t: any }) {
+// ─── CARD ACCENT COLORS ────────────────────────────────────────────────────
+const ACCENTS: Record<string, { color: string; rgb: string }> = {
+  web:         { color: "#00D4BE", rgb: "0,212,190"   },
+  design:      { color: "#8B5CF6", rgb: "139,92,246"  },
+  mobile:      { color: "#F85900", rgb: "248,89,0"    },
+  performance: { color: "#10B981", rgb: "16,185,129"  },
+};
+
+function ServiceCard({ s, idx, t, animationData }: { s: typeof SERVICES[number], idx: number, t: any, animationData: any }) {
   const accent = ACCENTS[s.key];
   const cardRef = useRef(null);
   const isVisible = useInView(cardRef, { amount: 0.2, once: false });
@@ -129,7 +91,7 @@ function ServiceCard({ s, idx, t }: { s: typeof SERVICES[number], idx: number, t
             className="relative z-10 transition-transform duration-700 group-hover:scale-105"
             style={{ width: s.scale, maxWidth: "240px" }}
           >
-            <Lottie animationData={(ANIMS as any)[s.key]} loop autoplay={isVisible} />
+            <Lottie animationData={animationData} loop autoplay={isVisible} />
           </div>
           <span
             className="absolute bottom-2 right-4 font-heading font-black leading-none select-none pointer-events-none"
@@ -191,6 +153,17 @@ function ServiceCard({ s, idx, t }: { s: typeof SERVICES[number], idx: number, t
 
 export default function Services() {
   const t = useTranslations("services");
+  const { theme } = useTheme();
+
+  const animations = useMemo(() => {
+    const isDark = theme === "dark";
+    return {
+      web:         recolorLottie(webDesignAnimationRaw,  isDark ? WEB_MAP_DARK : WEB_MAP_LIGHT),
+      design:      recolorLottie(uxDesignAnimationRaw,   isDark ? UX_MAP_DARK : UX_MAP_LIGHT),
+      mobile:      recolorLottie(mobileDevAnimationRaw,  isDark ? MOBILE_MAP_DARK : MOBILE_MAP_LIGHT),
+      performance: recolorLottie(medicalAppAnimationRaw, isDark ? MEDICAL_MAP_DARK : MEDICAL_MAP_LIGHT),
+    };
+  }, [theme]);
 
   return (
     <section id="services" className="relative py-24 px-4 sm:px-6 overflow-hidden" aria-label="Services">
@@ -223,7 +196,7 @@ export default function Services() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {SERVICES.map((s, idx) => (
-            <ServiceCard key={s.key} s={s} idx={idx} t={t} />
+            <ServiceCard key={s.key} s={s} idx={idx} t={t} animationData={(animations as any)[s.key]} />
           ))}
         </div>
       </div>

@@ -119,7 +119,7 @@ html {
 }
 
 body {
-  background-color: var(--c-deep);
+  background-color: var(--c-deep) !important;
   color: var(--c-text-primary);
   font-family: "Space Grotesk", sans-serif;
   min-height: 100vh;

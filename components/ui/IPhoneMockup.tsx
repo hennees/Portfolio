@@ -54,9 +54,9 @@ export default function IPhoneMockup({
           aria-hidden="true"
         >
           <rect x="1" y="1" width="258" height="528" rx="44" fill="#1a1a1a" stroke="#3a3a3a" strokeWidth="2" />
-          <rect x="10" y="10" width="240" height="510" rx="36" fill="#0e0f10" />
+          <rect x="10" y="10" width="240" height="510" rx="36" fill="var(--c-deep)" />
           <rect x="12" y="12" width="236" height="506" rx="34" fill="#111111" clipPath="url(#sc)" />
-          <rect x="96" y="22" width="68" height="24" rx="12" fill="#0e0f10" />
+          <rect x="96" y="22" width="68" height="24" rx="12" fill="var(--c-deep)" />
           <rect x="0" y="110" width="3" height="36" rx="1.5" fill="#2a2a2a" />
           <rect x="0" y="158" width="3" height="64" rx="1.5" fill="#2a2a2a" />
           <rect x="0" y="234" width="3" height="64" rx="1.5" fill="#2a2a2a" />

@@ -190,7 +190,7 @@ export default function Navbar() {
               className="hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer"
               style={{
                 background: "linear-gradient(135deg, #F85900, #FF9432)",
-                color: "#0E0F10",
+                color: "var(--c-deep)",
                 boxShadow: "0 4px 14px rgba(248,89,0,0.25)",
               }}
             >
@@ -269,7 +269,7 @@ export default function Navbar() {
                   className="flex items-center justify-center w-full py-4 rounded-2xl text-base font-bold transition-transform duration-200 active:scale-95"
                   style={{
                     background: "linear-gradient(135deg, #F85900, #FF9432)",
-                    color: "#0E0F10",
+                    color: "var(--c-deep)",
                     boxShadow: "0 8px 20px rgba(248,89,0,0.3)"
                   }}
                   onClick={() => setMobileOpen(false)}

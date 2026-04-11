@@ -20,6 +20,7 @@ export function useTheme() {
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("theme") as Theme | null;
@@ -29,6 +30,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const initial = stored ?? preferred;
     setTheme(initial);
     document.documentElement.setAttribute("data-theme", initial);
+    setMounted(true);
   }, []);
 
   const toggleTheme = () => {

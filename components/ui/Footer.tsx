@@ -137,7 +137,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6 pb-2 text-center sm:text-left">
           <p className="text-xs" style={{ color: "var(--c-text-muted)" }}>
             &copy; {year} {tFooter("made_with")}
-            <span style={{ color: "#F5F5F7", fontWeight: 700, marginLeft: "4px" }}>
+            <span style={{ color: "var(--c-text-primary)", fontWeight: 700, marginLeft: "4px" }}>
               Patrick Hennes
             </span>. {tFooter("rights")}
           </p>

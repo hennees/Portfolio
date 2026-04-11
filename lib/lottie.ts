@@ -1,13 +1,22 @@
 export type ColorMap = [number[], number[]][];
 export type HexColorMap = Record<string, string>;
 
-export const PORTFOLIO_COLOR_MAP: ColorMap = [
+export const DARK_COLOR_MAP: ColorMap = [
   [[0.416, 0.914, 0.624], [0.969, 0.380, 0.039]], // grün → #F7610A
   [[0.627, 0.627, 0.780], [0.416, 0.416, 0.447]], // muted purple → neutral
   [[0.710, 0.671, 0.937], [0.627, 0.620, 0.620]], // light purple → #A09E9E
   [[0.812, 0.792, 1.000], [0.831, 0.824, 0.824]], // very light purple → #D4D2D2
   [[0.906, 0.890, 1.000], [0.929, 0.918, 0.918]], // near-white purple → #EDEAEA
   [[0.961, 0.953, 1.000], [0.961, 0.961, 0.969]], // almost white → #F5F5F7
+];
+
+export const LIGHT_COLOR_MAP: ColorMap = [
+  [[0.416, 0.914, 0.624], [0.969, 0.380, 0.039]], // grün → #F7610A
+  [[0.627, 0.627, 0.780], [0.353, 0.345, 0.345]], // muted purple → darker neutral
+  [[0.710, 0.671, 0.937], [0.463, 0.455, 0.455]], // light purple → dark gray
+  [[0.812, 0.792, 1.000], [0.055, 0.059, 0.063]], // very light purple → almost black
+  [[0.906, 0.890, 1.000], [0.055, 0.059, 0.063]], // near-white purple → almost black
+  [[0.961, 0.953, 1.000], [0.055, 0.059, 0.063]], // almost white → almost black
 ];
 
 export function hexToLottieRgb(hex: string): number[] {
