@@ -1,9 +1,9 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Lottie from "lottie-react";
 import developerAnimationRaw from "@/public/animations/developer.json";
 import { recolorLottie, PORTFOLIO_COLOR_MAP } from "@/lib/lottie";
@@ -23,11 +23,13 @@ export default function Hero() {
   const t = useTranslations("hero");
   const phrases = t.raw("roles") as string[];
   const [mounted, setMounted] = useState(false);
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { amount: 0.1 });
 
   useEffect(() => { setMounted(true); }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden" aria-label="Hero section">
+    <section id="hero" ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden" aria-label="Hero section">
       {/* Background orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="absolute rounded-full animate-orb-1" style={{ width: 600, height: 600, top: "10%", left: "15%", background: "radial-gradient(circle, #F85900 0%, transparent 70%)", opacity: 0.12, filter: "blur(80px)" }} />
@@ -50,7 +52,13 @@ export default function Hero() {
         >
           <div className="absolute rounded-full pointer-events-none" style={{ width: "100%", height: "100%", background: "radial-gradient(circle, rgba(248,89,0,0.15) 0%, transparent 70%)", filter: "blur(30px)" }} />
           {mounted && (
-            <Lottie animationData={developerAnimation} loop autoplay style={{ width: "100%", height: "100%" }} />
+            <Lottie 
+              animationData={developerAnimation} 
+              loop 
+              autoplay={isInView} 
+              style={{ width: "100%", height: "100%" }} 
+              rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
+            />
           )}
         </motion.div>
 
@@ -67,7 +75,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
             className="font-heading font-semibold mb-6"
-            style={{ fontSize: "clamp(1.1rem, 4vw, 1.6rem)", minHeight: "1.4em", color: "#A09E9E" }}
+            style={{ fontSize: "clamp(1.1rem, 4vw, 1.6rem)", minHeight: "1.4em", color: "#C8C6C6" }}
             aria-live="polite" aria-atomic="true" aria-label="Role"
           >
             <TypewriterText phrases={phrases} />
@@ -76,7 +84,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.55 }}
             className="text-base sm:text-lg mb-10 leading-relaxed max-w-md lg:max-w-none"
-            style={{ color: "#A09E9E" }}
+            style={{ color: "#C0BEBE" }}
           >
             {t("tagline")}
           </motion.p>
@@ -99,7 +107,12 @@ export default function Hero() {
         >
           <div className="absolute rounded-full pointer-events-none" style={{ width: 380, height: 380, background: "radial-gradient(circle, rgba(248,89,0,0.12) 0%, transparent 70%)", filter: "blur(40px)" }} />
           {mounted && (
-            <Lottie animationData={developerAnimation} loop autoplay style={{ width: 440, height: 440 }} />
+            <Lottie 
+              animationData={developerAnimation} 
+              loop 
+              autoplay={isInView} 
+              style={{ width: 440, height: 440 }} 
+            />
           )}
         </motion.div>
 
@@ -111,7 +124,7 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         aria-hidden="true"
       >
-        <span className="text-xs font-medium" style={{ color: "#A09E9E" }}>{t("scroll")}</span>
+        <span className="text-xs font-medium" style={{ color: "#B8B6B6" }}>{t("scroll")}</span>
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
           <ArrowDown size={16} style={{ color: "#F85900" }} />
         </motion.div>

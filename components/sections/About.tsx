@@ -34,7 +34,7 @@ type Token = { t: string; c: string };
 const kw  = (t: string): Token => ({ t, c: "rgba(248,89,0,0.75)" });
 const id  = (t: string): Token => ({ t, c: "#F5F5F7" });
 const str = (t: string): Token => ({ t, c: "#FF9432" });
-const op  = (t: string): Token => ({ t, c: "#6B7280" });
+const op  = (t: string): Token => ({ t, c: "#8B9099" });
 const cmt = (t: string): Token => ({ t, c: "rgba(160,158,158,0.4)" });
 const bl  = (t: string): Token => ({ t, c: "#22C55E" });
 
@@ -232,7 +232,7 @@ export default function About() {
           >
             {t("title")}
           </h2>
-          <p className="text-base" style={{ color: "#A09E9E" }}>
+          <p className="text-base" style={{ color: "#C0BEBE" }}>
             {t("subtitle")}
           </p>
         </motion.div>
@@ -253,7 +253,7 @@ export default function About() {
                 variants={fadeUp}
                 transition={{ duration: 0.5 }}
                 className="text-base sm:text-lg leading-relaxed"
-                style={{ color: i === 0 ? "#F5F5F7" : "#A09E9E" }}
+                style={{ color: i === 0 ? "#F5F5F7" : "#C0BEBE" }}
               >
                 {bio}
               </motion.p>
@@ -281,7 +281,7 @@ export default function About() {
                     <span className="font-heading font-black text-2xl sm:text-3xl gradient-text">
                       <AnimatedCounter target={numericPart} suffix={suffix} />
                     </span>
-                    <span className="text-xs font-medium text-center leading-tight" style={{ color: "#A09E9E" }}>
+                    <span className="text-xs font-medium text-center leading-tight" style={{ color: "#C0BEBE" }}>
                       {t(`stats.${statKey}`)}
                     </span>
                   </div>

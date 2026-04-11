@@ -88,8 +88,8 @@ function MarqueeRow({
               border: "1px solid rgba(255,255,255,0.07)",
             }}
           >
-            <Icon size={18} style={{ color: "#7A7878" }} />
-            <span className="text-xs font-medium whitespace-nowrap" style={{ color: "#8A8888" }}>
+            <Icon size={18} style={{ color: "#A8A6A6" }} />
+            <span className="text-xs font-medium whitespace-nowrap" style={{ color: "#B8B6B6" }}>
               {label}
             </span>
           </div>
@@ -130,7 +130,7 @@ export default function StackTools() {
           >
             {t("title")}
           </h2>
-          <p className="text-base max-w-md" style={{ color: "#8A8888" }}>
+          <p className="text-base max-w-md" style={{ color: "#C0BEBE" }}>
             {t("subtitle")}
           </p>
         </motion.div>

@@ -1,9 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import GlassCard from "@/components/ui/GlassCard";
 import Lottie from "lottie-react";
+import { useRef } from "react";
 import webDesignAnimationRaw from "@/public/animations/web-design.json";
 import uxDesignAnimationRaw from "@/public/animations/ux-design.json";
 import mobileDevAnimationRaw from "@/public/animations/mobile-dev.json";
@@ -96,6 +97,98 @@ const SERVICES = [
   { key: "performance", num: "04", tags: ["FHIR", "DSGVO", "Telemedizin"],        scale: "70%" },
 ] as const;
 
+function ServiceCard({ s, idx, t }: { s: typeof SERVICES[number], idx: number, t: any }) {
+  const accent = ACCENTS[s.key];
+  const cardRef = useRef(null);
+  const isVisible = useInView(cardRef, { amount: 0.2, once: false });
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: idx * 0.09 }}
+    >
+      <GlassCard className="group h-full flex flex-col relative overflow-hidden p-0 border-white/5 transition-all duration-500">
+        <div
+          className="absolute top-0 left-0 right-0 h-[2px] z-10"
+          style={{ background: `linear-gradient(to right, ${accent.color}, rgba(${accent.rgb},0.2), transparent)` }}
+        />
+
+        <div className="relative w-full h-[200px] sm:h-[220px] flex items-center justify-center overflow-hidden">
+          <div
+            className="absolute inset-0"
+            style={{ background: `radial-gradient(ellipse at 50% 80%, rgba(${accent.rgb},0.07) 0%, transparent 65%)` }}
+          />
+          <div
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+            style={{ background: `radial-gradient(ellipse at 50% 60%, rgba(${accent.rgb},0.18) 0%, transparent 65%)` }}
+          />
+          <div
+            className="relative z-10 transition-transform duration-700 group-hover:scale-105"
+            style={{ width: s.scale, maxWidth: "240px" }}
+          >
+            <Lottie animationData={(ANIMS as any)[s.key]} loop autoplay={isVisible} />
+          </div>
+          <span
+            className="absolute bottom-2 right-4 font-heading font-black leading-none select-none pointer-events-none"
+            style={{ fontSize: "4rem", color: accent.color, opacity: 0.12 }}
+          >
+            {s.num}
+          </span>
+        </div>
+
+        <div
+          className="h-px w-full"
+          style={{ background: `linear-gradient(to right, rgba(${accent.rgb},0.4), rgba(${accent.rgb},0.05), transparent)` }}
+        />
+
+        <div className="flex flex-col flex-1 p-6 sm:p-7">
+          <span
+            className="text-xs font-mono font-bold mb-4 block"
+            style={{ color: accent.color, opacity: 0.85 }}
+          >
+            {s.num}
+          </span>
+          <h3
+            className="font-heading font-bold text-xl sm:text-2xl mb-2.5 tracking-tight"
+            style={{ color: "#F5F5F7" }}
+          >
+            {t(`items.${s.key}.title`)}
+          </h3>
+          <p className="text-sm leading-relaxed flex-1" style={{ color: "#C0BEBE" }}>
+            {t(`items.${s.key}.description`)}
+          </p>
+
+          {s.tags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mt-5">
+              {s.tags.map((tag: string) => (
+                <span
+                  key={tag}
+                  className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border"
+                  style={{
+                    color: accent.color,
+                    borderColor: `rgba(${accent.rgb},0.25)`,
+                    background: `rgba(${accent.rgb},0.07)`,
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div
+          className="absolute bottom-0 left-0 h-[1.5px] w-0 group-hover:w-full transition-all duration-700"
+          style={{ background: `linear-gradient(to right, ${accent.color}, transparent)` }}
+        />
+      </GlassCard>
+    </motion.div>
+  );
+}
+
 export default function Services() {
   const t = useTranslations("services");
 
@@ -123,100 +216,15 @@ export default function Services() {
           >
             {t("title")}
           </h2>
-          <p className="text-sm sm:text-base max-w-md leading-relaxed" style={{ color: "#A09E9E" }}>
+          <p className="text-base max-w-md leading-relaxed" style={{ color: "#C0BEBE" }}>
             {t("subtitle")}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {SERVICES.map((s, idx) => {
-            const accent = ACCENTS[s.key];
-            return (
-              <motion.div
-                key={s.key}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.09 }}
-              >
-                <GlassCard className="group h-full flex flex-col relative overflow-hidden p-0 border-white/5 transition-all duration-500">
-                  <div
-                    className="absolute top-0 left-0 right-0 h-[2px] z-10"
-                    style={{ background: `linear-gradient(to right, ${accent.color}, rgba(${accent.rgb},0.2), transparent)` }}
-                  />
-
-                  <div className="relative w-full h-[200px] sm:h-[220px] flex items-center justify-center overflow-hidden">
-                    <div
-                      className="absolute inset-0"
-                      style={{ background: `radial-gradient(ellipse at 50% 80%, rgba(${accent.rgb},0.07) 0%, transparent 65%)` }}
-                    />
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                      style={{ background: `radial-gradient(ellipse at 50% 60%, rgba(${accent.rgb},0.18) 0%, transparent 65%)` }}
-                    />
-                    <div
-                      className="relative z-10 transition-transform duration-700 group-hover:scale-105"
-                      style={{ width: s.scale, maxWidth: "240px" }}
-                    >
-                      <Lottie animationData={ANIMS[s.key]} loop autoplay />
-                    </div>
-                    <span
-                      className="absolute bottom-2 right-4 font-heading font-black leading-none select-none pointer-events-none"
-                      style={{ fontSize: "4rem", color: accent.color, opacity: 0.12 }}
-                    >
-                      {s.num}
-                    </span>
-                  </div>
-
-                  <div
-                    className="h-px w-full"
-                    style={{ background: `linear-gradient(to right, rgba(${accent.rgb},0.4), rgba(${accent.rgb},0.05), transparent)` }}
-                  />
-
-                  <div className="flex flex-col flex-1 p-6 sm:p-7">
-                    <span
-                      className="text-[10px] font-mono font-bold mb-4 block"
-                      style={{ color: accent.color, opacity: 0.7 }}
-                    >
-                      {s.num}
-                    </span>
-                    <h3
-                      className="font-heading font-bold text-xl sm:text-2xl mb-2.5 tracking-tight"
-                      style={{ color: "#F5F5F7" }}
-                    >
-                      {t(`items.${s.key}.title`)}
-                    </h3>
-                    <p className="text-sm leading-relaxed flex-1" style={{ color: "#A09E9E" }}>
-                      {t(`items.${s.key}.description`)}
-                    </p>
-
-                    {s.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 mt-5">
-                        {s.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border"
-                            style={{
-                              color: accent.color,
-                              borderColor: `rgba(${accent.rgb},0.25)`,
-                              background: `rgba(${accent.rgb},0.07)`,
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  <div
-                    className="absolute bottom-0 left-0 h-[1.5px] w-0 group-hover:w-full transition-all duration-700"
-                    style={{ background: `linear-gradient(to right, ${accent.color}, transparent)` }}
-                  />
-                </GlassCard>
-              </motion.div>
-            );
-          })}
+          {SERVICES.map((s, idx) => (
+            <ServiceCard key={s.key} s={s} idx={idx} t={t} />
+          ))}
         </div>
       </div>
     </section>

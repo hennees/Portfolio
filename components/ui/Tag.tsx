@@ -21,11 +21,11 @@ const TAG_COLORS: Record<string, { bg: string; color: string }> = {
   AR:                { bg: "rgba(139,92,246,0.18)", color: "#A78BFA" },
   Swift:             { bg: "rgba(255,149,0,0.16)",  color: "#FFAB40" },
   Kotlin:            { bg: "rgba(167,139,250,0.16)", color: "#B39DDB" },
-  Hochschulprojekt:  { bg: "rgba(255,255,255,0.07)", color: "#8A8888" },
-  "Uni Project":     { bg: "rgba(255,255,255,0.07)", color: "#8A8888" },
-  "Proyecto Uni":    { bg: "rgba(255,255,255,0.07)", color: "#8A8888" },
-  StrykerLabs:       { bg: "rgba(255,255,255,0.08)", color: "#A0A0A0" },
-  Frontend:          { bg: "rgba(255,255,255,0.07)", color: "#8A8888" },
+  Hochschulprojekt:  { bg: "rgba(255,255,255,0.07)", color: "#C0BEBE" },
+  "Uni Project":     { bg: "rgba(255,255,255,0.07)", color: "#C0BEBE" },
+  "Proyecto Uni":    { bg: "rgba(255,255,255,0.07)", color: "#C0BEBE" },
+  StrykerLabs:       { bg: "rgba(255,255,255,0.08)", color: "#C0BEBE" },
+  Frontend:          { bg: "rgba(255,255,255,0.07)", color: "#C0BEBE" },
 };
 
 function getTagStyle(tag: string) {

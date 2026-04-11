@@ -56,7 +56,7 @@ export function AnnoCard({ name, description, tags }: { name: string; descriptio
 
       <div className="px-6 pb-6 pt-5">
         <h3 className="font-heading font-bold text-xl mb-2" style={{ color: "#F0EEEE" }}>{name}</h3>
-        <p className="text-xs leading-relaxed mb-3" style={{ color: "#6B6969" }}>{description}</p>
+        <p className="text-sm leading-relaxed mb-3" style={{ color: "#B8B6B6" }}>{description}</p>
         <Tags tags={tags} />
       </div>
     </motion.div>

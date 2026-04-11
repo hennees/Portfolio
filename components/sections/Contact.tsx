@@ -23,7 +23,7 @@ function Chip({ label, selected, onClick }: { label: string; selected: boolean; 
       style={
         selected
           ? { background: "rgba(248,89,0,0.12)", border: "1px solid rgba(248,89,0,0.35)", color: "#F85900" }
-          : { background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", color: "#9A9898" }
+          : { background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", color: "#B8B6B6" }
       }
     >
       {label}
@@ -47,7 +47,7 @@ function ScopeCard({ label, desc, selected, onClick }: { label: string; desc: st
       <span className="font-semibold text-sm" style={{ color: selected ? "#F85900" : "#F5F5F7" }}>
         {label}
       </span>
-      <span className="text-xs leading-relaxed" style={{ color: "#8A8888" }}>
+      <span className="text-xs leading-relaxed" style={{ color: "#B8B6B6" }}>
         {desc}
       </span>
     </button>
@@ -64,7 +64,7 @@ function StepIndicator({ current }: { current: number }) {
             style={{
               background: s < current ? "#F85900" : s === current ? "rgba(248,89,0,0.15)" : "rgba(255,255,255,0.05)",
               border: s === current ? "1px solid rgba(248,89,0,0.5)" : "1px solid transparent",
-              color: s < current ? "#0E0F10" : s === current ? "#F85900" : "#8A8888",
+              color: s < current ? "#0E0F10" : s === current ? "#F85900" : "#B0AEAE",
             }}
           >
             {s < current ? (
@@ -224,7 +224,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="flex flex-col gap-10 lg:sticky lg:top-32"
           >
-            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#F85900" }}>
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#F85900" }}>
               {t("overline")}
             </span>
 
@@ -236,7 +236,7 @@ export default function Contact() {
             </h2>
 
             <div className="flex flex-col gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#8A8888" }}>
+              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#B0AEAE" }}>
                 {t("email_label")}
               </span>
               <a
@@ -248,13 +248,13 @@ export default function Contact() {
               >
                 patrick.hennes27@icloud.com
               </a>
-              <span className="text-sm" style={{ color: "#8A8888" }}>{t("response_time")}</span>
+              <span className="text-sm" style={{ color: "#B0AEAE" }}>{t("response_time")}</span>
             </div>
 
             <div className="h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
 
             <div className="flex flex-col gap-4">
-              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#8A8888" }}>
+              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#B0AEAE" }}>
                 {t("social")}
               </span>
               <div className="flex items-center gap-3">
@@ -262,7 +262,7 @@ export default function Contact() {
                   <a
                     key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                     className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer"
-                    style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", color: "#A09E9E" }}
+                    style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", color: "#C0BEBE" }}
                     onMouseEnter={(e) => { e.currentTarget.style.color = "#F85900"; e.currentTarget.style.borderColor = "rgba(248,89,0,0.2)"; }}
                     onMouseLeave={(e) => { e.currentTarget.style.color = "#A09E9E"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)"; }}
                   >
@@ -272,7 +272,7 @@ export default function Contact() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "#22C55E", boxShadow: "0 0 8px rgba(34,197,94,0.4)" }} aria-hidden="true" />
-                <span className="text-sm" style={{ color: "#8A8888" }}>{t("available")}</span>
+                <span className="text-sm" style={{ color: "#B0AEAE" }}>{t("available")}</span>
               </div>
             </div>
           </motion.div>
@@ -300,7 +300,7 @@ export default function Contact() {
                   <h3 className="font-heading font-bold text-lg mb-1" style={{ color: "#F5F5F7" }}>
                     {t("form.success_title")}
                   </h3>
-                  <p className="text-sm" style={{ color: "#A09E9E" }}>{t("form.success_message")}</p>
+                  <p className="text-sm" style={{ color: "#C0BEBE" }}>{t("form.success_message")}</p>
                 </div>
               </motion.div>
             ) : (
@@ -326,7 +326,7 @@ export default function Contact() {
                       >
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div className="flex flex-col gap-2">
-                            <label htmlFor="contact-name" className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#A09E9E" }}>
+                            <label htmlFor="contact-name" className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#C0BEBE" }}>
                               {t("form.name")}
                               <span className="ml-1" style={{ color: "#F85900" }} aria-hidden="true">*</span>
                             </label>
@@ -351,7 +351,7 @@ export default function Contact() {
                             )}
                           </div>
                           <div className="flex flex-col gap-2">
-                            <label htmlFor="contact-email" className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#A09E9E" }}>
+                            <label htmlFor="contact-email" className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#C0BEBE" }}>
                               {t("form.email")}
                               <span className="ml-1" style={{ color: "#F85900" }} aria-hidden="true">*</span>
                             </label>
@@ -378,7 +378,7 @@ export default function Contact() {
                         </div>
 
                         <div className="flex flex-col gap-2">
-                          <label htmlFor="contact-message" className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#A09E9E" }}>
+                          <label htmlFor="contact-message" className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#C0BEBE" }}>
                             {t("form.message")}
                             <span className="ml-1" style={{ color: "#F85900" }} aria-hidden="true">*</span>
                           </label>
@@ -426,9 +426,9 @@ export default function Contact() {
                             onClick={submitDirect}
                             disabled={sending}
                             className="text-xs font-medium transition-colors duration-200 cursor-pointer disabled:opacity-40"
-                            style={{ color: "#8A8888" }}
-                            onMouseEnter={(e) => { e.currentTarget.style.color = "#A09E9E"; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.color = "#8A8888"; }}
+                            style={{ color: "#B0AEAE" }}
+                            onMouseEnter={(e) => { e.currentTarget.style.color = "#F5F5F7"; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.color = "#B0AEAE"; }}
                             aria-busy={sending}
                           >
                             {sending ? t("form.sending") : t("form.skip")}
@@ -457,13 +457,13 @@ export default function Contact() {
                         className="flex flex-col gap-6"
                       >
                         {/* Optional hint */}
-                        <p className="text-xs px-3 py-2 rounded-lg" style={{ color: "#8A8888", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
+                        <p className="text-xs px-3 py-2 rounded-lg" style={{ color: "#B0AEAE", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
                           {t("form.optional_hint")}
                         </p>
 
                         {/* Project type */}
                         <div className="flex flex-col gap-3">
-                          <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#A09E9E" }}>
+                          <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#C0BEBE" }}>
                             {t("form.project_label")}
                           </span>
                           <div className="flex flex-wrap gap-2">
@@ -475,7 +475,7 @@ export default function Contact() {
 
                         {/* Scope */}
                         <div className="flex flex-col gap-3">
-                          <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#A09E9E" }}>
+                          <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#C0BEBE" }}>
                             {t("form.scope_label")}
                           </span>
                           <div className="flex flex-col gap-2">
@@ -509,7 +509,7 @@ export default function Contact() {
                           <button
                             type="button" onClick={goBack}
                             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm cursor-pointer transition-all duration-200"
-                            style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", color: "#A09E9E" }}
+                            style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", color: "#C0BEBE" }}
                           >
                             <ArrowLeft size={15} aria-hidden="true" /> {t("form.back")}
                           </button>

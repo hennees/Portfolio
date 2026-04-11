@@ -71,7 +71,7 @@ export default function Process() {
           >
             {t("title")}
           </h2>
-          <p className="text-sm sm:text-base max-w-md leading-relaxed" style={{ color: "#A09E9E" }}>
+          <p className="text-base max-w-md leading-relaxed" style={{ color: "#C0BEBE" }}>
             {t("subtitle")}
           </p>
         </motion.div>
@@ -89,7 +89,7 @@ export default function Process() {
               <GlassCard className="group relative overflow-hidden flex flex-col h-full min-h-[220px] p-8 sm:p-10">
                 {/* Step label */}
                 <div className="flex items-center gap-3 mb-6 relative z-10">
-                  <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: "#A09E9E" }}>
+                  <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: "#C0BEBE" }}>
                     STEP {number}
                   </span>
                   <div className="h-px flex-1" style={{ background: "rgba(255,255,255,0.06)" }} />
@@ -103,7 +103,7 @@ export default function Process() {
                   >
                     {t(`items.${key}.title`)}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "#A09E9E" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "#C0BEBE" }}>
                     {t(`items.${key}.description`)}
                   </p>
                 </div>

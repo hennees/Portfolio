@@ -72,7 +72,7 @@ export function ScoonHero({ name, description, tags, featuredLabel }: {
               style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", color: "#F5F5F7", letterSpacing: "-0.04em", lineHeight: 0.95 }}>
               {name}
             </h3>
-            <p className="text-sm leading-relaxed max-w-lg mt-3" style={{ color: "#5A5858" }}>{description}</p>
+            <p className="text-sm leading-relaxed max-w-lg mt-3" style={{ color: "#B8B6B6" }}>{description}</p>
           </div>
           <div className="flex-shrink-0 sm:pb-1"><Tags tags={tags} /></div>
         </div>

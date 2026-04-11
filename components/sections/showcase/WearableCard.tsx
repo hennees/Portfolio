@@ -34,14 +34,14 @@ export function WearableCard({ name, description, tags }: { name: string; descri
 
       <div className="absolute top-5 left-5">
         <span className="px-3 py-1.5 rounded-full text-xs font-semibold"
-          style={{ background: "rgba(255,255,255,0.08)", color: "#9A9898", border: "1px solid rgba(255,255,255,0.12)" }}>
+          style={{ background: "rgba(255,255,255,0.08)", color: "#C8C6C6", border: "1px solid rgba(255,255,255,0.18)" }}>
           StrykerLabs GmbH · Graz
         </span>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 px-7 pb-7">
         <h3 className="font-heading font-bold text-2xl mb-1.5" style={{ color: "#F0EEEE" }}>{name}</h3>
-        <p className="text-sm leading-relaxed mb-3 max-w-lg" style={{ color: "#5E5C5C" }}>{description}</p>
+        <p className="text-sm leading-relaxed mb-3 max-w-lg" style={{ color: "#B8B6B6" }}>{description}</p>
         <Tags tags={tags} />
       </div>
     </motion.div>
