@@ -16,6 +16,7 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/next";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import "../globals.css";
 
 const archivo = Archivo({
@@ -191,6 +192,12 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={locale} className={`${archivo.variable} ${spaceGrotesk.variable}`}>
       <head>
         <link rel="alternate" type="text/plain" href="/llms.txt" />
+        {/* FOUC prevention: apply stored theme before first paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();`,
+          }}
+        />
       </head>
       <body className="font-body antialiased">
         <script
@@ -198,7 +205,9 @@ export default async function LocaleLayout({ children, params }: Props) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </NextIntlClientProvider>
         <Analytics />
       </body>

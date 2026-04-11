@@ -153,11 +153,11 @@ function ServiceCard({ s, idx, t }: { s: typeof SERVICES[number], idx: number, t
           </span>
           <h3
             className="font-heading font-bold text-xl sm:text-2xl mb-2.5 tracking-tight"
-            style={{ color: "#F5F5F7" }}
+            style={{ color: "var(--c-text-primary)" }}
           >
             {t(`items.${s.key}.title`)}
           </h3>
-          <p className="text-sm leading-relaxed flex-1" style={{ color: "#C0BEBE" }}>
+          <p className="text-sm leading-relaxed flex-1" style={{ color: "var(--c-text-muted)" }}>
             {t(`items.${s.key}.description`)}
           </p>
 
@@ -212,11 +212,11 @@ export default function Services() {
           </span>
           <h2
             className="font-heading font-black text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4"
-            style={{ color: "#F5F5F7" }}
+            style={{ color: "var(--c-text-primary)" }}
           >
             {t("title")}
           </h2>
-          <p className="text-base max-w-md leading-relaxed" style={{ color: "#C0BEBE" }}>
+          <p className="text-base max-w-md leading-relaxed" style={{ color: "var(--c-text-muted)" }}>
             {t("subtitle")}
           </p>
         </motion.div>

@@ -1,24 +1,78 @@
 @import "tailwindcss";
 
+/* ─── Theme tokens ─────────────────────────────────────────── */
+:root {
+  /* Dark theme (default) */
+  --c-deep:            #0e0f10;
+  --c-surface-1:       #222222;
+  --c-surface-2:       #2f2f2f;
+  --c-accent:          #f85900;
+  --c-accent-soft:     #ff9432;
+  --c-text-primary:    #f5f5f7;
+  --c-text-muted:      #b0aeae;
+  --c-text-subtle:     #b0aeae;
+  --c-border:          rgba(255, 255, 255, 0.08);
+  --c-glass-bg:        rgba(47, 47, 47, 0.4);
+  --c-glass-border:    rgba(255, 255, 255, 0.08);
+  --c-nav-bg:          rgba(14, 15, 16, 0.7);
+  --c-nav-bg-solid:    rgba(14, 15, 16, 0.92);
+  --c-mobile-bg:       rgba(18, 19, 21, 0.98);
+  --c-mobile-border:   rgba(255, 255, 255, 0.1);
+  --c-scrollbar-track: #0e0f10;
+  --c-scrollbar-thumb: #2f2f2f;
+  --c-locale-active:   rgba(255, 255, 255, 0.1);
+  --c-locale-pill:     rgba(255, 255, 255, 0.05);
+  --c-locale-active-m: rgba(255, 255, 255, 0.15);
+  --c-locale-pill-m:   rgba(255, 255, 255, 0.05);
+  --c-nav-active-bg:   rgba(255, 255, 255, 0.08);
+  --c-orb-opacity:     1;
+}
+
+[data-theme="light"] {
+  --c-deep:            #f5f5f7;
+  --c-surface-1:       #ffffff;
+  --c-surface-2:       #ebebed;
+  --c-accent:          #f85900;
+  --c-accent-soft:     #ff9432;
+  --c-text-primary:    #0e0f10;
+  --c-text-muted:      #5a5858;
+  --c-text-subtle:     #767474;
+  --c-border:          rgba(0, 0, 0, 0.08);
+  --c-glass-bg:        rgba(255, 255, 255, 0.6);
+  --c-glass-border:    rgba(0, 0, 0, 0.1);
+  --c-nav-bg:          rgba(245, 245, 247, 0.7);
+  --c-nav-bg-solid:    rgba(245, 245, 247, 0.92);
+  --c-mobile-bg:       rgba(250, 250, 252, 0.98);
+  --c-mobile-border:   rgba(0, 0, 0, 0.08);
+  --c-scrollbar-track: #f5f5f7;
+  --c-scrollbar-thumb: #d0d0d2;
+  --c-locale-active:   rgba(0, 0, 0, 0.08);
+  --c-locale-pill:     rgba(0, 0, 0, 0.04);
+  --c-locale-active-m: rgba(0, 0, 0, 0.1);
+  --c-locale-pill-m:   rgba(0, 0, 0, 0.04);
+  --c-nav-active-bg:   rgba(0, 0, 0, 0.06);
+  --c-orb-opacity:     0.5;
+}
+
 @theme inline {
-  /* Colors */
-  --color-deep: #0e0f10;
-  --color-surface-1: #222222;
-  --color-surface-2: #2f2f2f;
-  --color-accent: #f85900;
-  --color-accent-soft: #ff9432;
-  --color-text-primary: #f5f5f7;
-  --color-text-muted: #b0aeae;
-  --color-text-subtle: #b0aeae;
-  --color-border: rgba(255, 255, 255, 0.08);
+  /* Colors — reference theme tokens */
+  --color-deep:         var(--c-deep);
+  --color-surface-1:    var(--c-surface-1);
+  --color-surface-2:    var(--c-surface-2);
+  --color-accent:       var(--c-accent);
+  --color-accent-soft:  var(--c-accent-soft);
+  --color-text-primary: var(--c-text-primary);
+  --color-text-muted:   var(--c-text-muted);
+  --color-text-subtle:  var(--c-text-subtle);
+  --color-border:       var(--c-border);
 
   /* Fonts */
   --font-heading: "Archivo", sans-serif;
-  --font-body: "Space Grotesk", sans-serif;
+  --font-body:    "Space Grotesk", sans-serif;
 
   /* Glass */
-  --glass-bg: rgba(47, 47, 47, 0.4);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg:     var(--c-glass-bg);
+  --glass-border: var(--c-glass-border);
 }
 
 *,
@@ -34,8 +88,8 @@ html {
 }
 
 body {
-  background-color: #0e0f10;
-  color: #f5f5f7;
+  background-color: var(--c-deep);
+  color: var(--c-text-primary);
   font-family: "Space Grotesk", sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
@@ -53,7 +107,7 @@ h6 {
 /* Selection */
 ::selection {
   background-color: rgba(248, 89, 0, 0.3);
-  color: #f5f5f7;
+  color: var(--c-text-primary);
 }
 
 /* Scrollbar */
@@ -61,22 +115,22 @@ h6 {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #0e0f10;
+  background: var(--c-scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2f2f2f;
+  background: var(--c-scrollbar-thumb);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f85900;
+  background: var(--c-accent);
 }
 
 /* Glass utility */
 .glass {
-  background: rgba(47, 47, 47, 0.4);
+  background: var(--c-glass-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--c-glass-border);
 }
 
 @media (max-width: 640px) {
@@ -87,10 +141,10 @@ h6 {
 }
 
 .glass-nav {
-  background: rgba(14, 15, 16, 0.8);
+  background: var(--c-nav-bg-solid);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--c-border);
 }
 
 @media (max-width: 640px) {
@@ -147,15 +201,15 @@ h6 {
   0%,
   100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.15;
+    opacity: calc(0.15 * var(--c-orb-opacity));
   }
   33% {
     transform: translate(40px, -60px) scale(1.1);
-    opacity: 0.2;
+    opacity: calc(0.2 * var(--c-orb-opacity));
   }
   66% {
     transform: translate(-30px, 30px) scale(0.95);
-    opacity: 0.12;
+    opacity: calc(0.12 * var(--c-orb-opacity));
   }
 }
 
@@ -163,15 +217,15 @@ h6 {
   0%,
   100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.1;
+    opacity: calc(0.1 * var(--c-orb-opacity));
   }
   33% {
     transform: translate(-50px, 40px) scale(1.05);
-    opacity: 0.15;
+    opacity: calc(0.15 * var(--c-orb-opacity));
   }
   66% {
     transform: translate(60px, -30px) scale(0.9);
-    opacity: 0.08;
+    opacity: calc(0.08 * var(--c-orb-opacity));
   }
 }
 
@@ -179,11 +233,11 @@ h6 {
   0%,
   100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.08;
+    opacity: calc(0.08 * var(--c-orb-opacity));
   }
   50% {
     transform: translate(30px, 50px) scale(1.15);
-    opacity: 0.13;
+    opacity: calc(0.13 * var(--c-orb-opacity));
   }
 }
 
@@ -219,17 +273,17 @@ h6 {
 
 /* Focus visible */
 :focus-visible {
-  outline: 2px solid #f85900;
+  outline: 2px solid var(--c-accent);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 /* Input styles */
 .glass-input {
-  background: rgba(47, 47, 47, 0.4);
+  background: var(--c-glass-bg);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #f5f5f7;
+  border: 1px solid var(--c-glass-border);
+  color: var(--c-text-primary);
   transition: border-color 200ms ease;
 }
 
@@ -239,12 +293,12 @@ h6 {
 }
 
 .glass-input::placeholder {
-  color: #b0aeae;
+  color: var(--c-text-muted);
 }
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #f85900, #ff9432);
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-soft));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -267,18 +321,18 @@ h6 {
 
 /* Nav link hover */
 .nav-link {
-  color: #b8b6b6;
+  color: var(--c-text-muted);
   transition: color 200ms ease, background 200ms ease;
 }
 
 .nav-link:hover {
-  color: #f5f5f7;
-  background: rgba(255, 255, 255, 0.06);
+  color: var(--c-text-primary);
+  background: var(--c-nav-active-bg);
 }
 
 /* Hero CTA primary */
 .hero-cta-primary {
-  background: linear-gradient(135deg, #f85900, #ff9432);
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-soft));
   color: #0e0f10;
   box-shadow: 0 8px 32px rgba(248, 89, 0, 0.35);
   transition: box-shadow 200ms ease, transform 200ms ease;
@@ -291,10 +345,10 @@ h6 {
 
 /* Hero CTA secondary */
 .hero-cta-secondary {
-  background: rgba(47, 47, 47, 0.4);
+  background: var(--c-glass-bg);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #f5f5f7;
+  border: 1px solid var(--c-border);
+  color: var(--c-text-primary);
   transition: border-color 200ms ease, background 200ms ease;
 }
 
@@ -305,7 +359,7 @@ h6 {
 
 /* CTA button primary (contact) */
 .cta-primary {
-  background: linear-gradient(135deg, #f85900, #ff9432);
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-soft));
   color: #0e0f10;
   box-shadow: 0 12px 40px rgba(248, 89, 0, 0.35);
   transition: box-shadow 200ms ease, transform 200ms ease;
@@ -318,15 +372,15 @@ h6 {
 
 /* Social icon button */
 .social-icon {
-  background: rgba(47, 47, 47, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #b8b6b6;
+  background: var(--c-glass-bg);
+  border: 1px solid var(--c-glass-border);
+  color: var(--c-text-muted);
   transition: border-color 200ms ease, color 200ms ease, background 200ms ease;
 }
 
 .social-icon:hover {
   border-color: rgba(248, 89, 0, 0.4);
-  color: #f85900;
+  color: var(--c-accent);
   background: rgba(248, 89, 0, 0.08);
 }
 

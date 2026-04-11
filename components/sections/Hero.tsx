@@ -35,7 +35,7 @@ export default function Hero() {
         <div className="absolute rounded-full animate-orb-1" style={{ width: 600, height: 600, top: "10%", left: "15%", background: "radial-gradient(circle, #F85900 0%, transparent 70%)", opacity: 0.12, filter: "blur(80px)" }} />
         <div className="absolute rounded-full animate-orb-2" style={{ width: 400, height: 400, top: "50%", right: "10%", background: "radial-gradient(circle, #FF9432 0%, transparent 70%)", opacity: 0.08, filter: "blur(60px)" }} />
         <div className="absolute rounded-full animate-orb-3" style={{ width: 300, height: 300, bottom: "20%", left: "5%", background: "radial-gradient(circle, #F85900 0%, transparent 70%)", opacity: 0.07, filter: "blur(60px)" }} />
-        <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
+        <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(var(--c-border) 1px, transparent 1px), linear-gradient(90deg, var(--c-border) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
       </div>
 
       {/* Content — 2-col auf Desktop */}
@@ -67,7 +67,7 @@ export default function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
             className="font-heading font-black tracking-tight mb-4"
-            style={{ fontSize: "clamp(2.5rem, 10vw, 5.5rem)", letterSpacing: "-0.03em", lineHeight: 1, color: "#F5F5F7" }}
+            style={{ fontSize: "clamp(2.5rem, 10vw, 5.5rem)", letterSpacing: "-0.03em", lineHeight: 1, color: "var(--c-text-primary)" }}
           >
             {t("name")}
           </motion.h1>
@@ -75,7 +75,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
             className="font-heading font-semibold mb-6"
-            style={{ fontSize: "clamp(1.1rem, 4vw, 1.6rem)", minHeight: "1.4em", color: "#C8C6C6" }}
+            style={{ fontSize: "clamp(1.1rem, 4vw, 1.6rem)", minHeight: "1.4em", color: "var(--c-text-muted)" }}
             aria-live="polite" aria-atomic="true" aria-label="Role"
           >
             <TypewriterText phrases={phrases} />
@@ -84,7 +84,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.55 }}
             className="text-base sm:text-lg mb-10 leading-relaxed max-w-md lg:max-w-none"
-            style={{ color: "#C0BEBE" }}
+            style={{ color: "var(--c-text-muted)" }}
           >
             {t("tagline")}
           </motion.p>
@@ -124,7 +124,7 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         aria-hidden="true"
       >
-        <span className="text-xs font-medium" style={{ color: "#B8B6B6" }}>{t("scroll")}</span>
+        <span className="text-xs font-medium" style={{ color: "var(--c-text-muted)" }}>{t("scroll")}</span>
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
           <ArrowDown size={16} style={{ color: "#F85900" }} />
         </motion.div>

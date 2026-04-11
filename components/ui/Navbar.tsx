@@ -6,6 +6,8 @@ import { useTranslations, useLocale } from "next-intl";
 import { Link, useRouter, usePathname } from "@/i18n/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "./ThemeProvider";
+import { ThemeToggle } from "./ThemeToggle";
 
 
 const LOCALES = [
@@ -87,6 +89,8 @@ export default function Navbar() {
     return () => el.removeEventListener("keydown", handler);
   }, [mobileOpen]);
 
+  const { theme } = useTheme();
+
   const switchLocale = (next: LocaleCode) => {
     router.replace(pathname, { locale: next });
   };
@@ -106,11 +110,11 @@ export default function Navbar() {
         className="fixed top-4 left-4 right-4 z-50 rounded-2xl"
         style={{
           background: scrolled
-            ? "rgba(14, 15, 16, 0.92)"
-            : "rgba(14, 15, 16, 0.7)",
+            ? "var(--c-nav-bg-solid)"
+            : "var(--c-nav-bg)",
           backdropFilter: "blur(24px)",
           WebkitBackdropFilter: "blur(24px)",
-          border: "1px solid rgba(255,255,255,0.08)",
+          border: "1px solid var(--c-border)",
           transition: "background 300ms ease",
         }}
         role="navigation"
@@ -124,7 +128,7 @@ export default function Navbar() {
             aria-label="henUX — Home"
           >
             <Image
-              src="/logo-dark.svg"
+              src={theme === "dark" ? "/logo-dark.svg" : "/logo-light.svg"}
               alt="henUX"
               height={56}
               width={112}
@@ -143,7 +147,7 @@ export default function Navbar() {
                     <a
                       href={link.href}
                       className="nav-link px-4 py-2 rounded-xl text-sm font-medium cursor-pointer"
-                      style={isActive ? { color: "#F5F5F7", background: "rgba(255,255,255,0.08)" } : undefined}
+                      style={isActive ? { color: "var(--c-text-primary)", background: "var(--c-nav-active-bg)" } : undefined}
                       aria-current={isActive ? "page" : undefined}
                     >
                       {link.label}
@@ -156,7 +160,7 @@ export default function Navbar() {
             {/* Desktop Locale switcher */}
             <div
               className="flex items-center rounded-xl p-0.5"
-              style={{ background: "rgba(255,255,255,0.05)" }}
+              style={{ background: "var(--c-locale-pill)" }}
               role="group"
               aria-label="Language switcher"
             >
@@ -166,8 +170,8 @@ export default function Navbar() {
                   onClick={() => switchLocale(code)}
                   className="px-3 py-2.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer min-h-[40px]"
                   style={{
-                    background: locale === code ? "rgba(255,255,255,0.1)" : "transparent",
-                    color: locale === code ? "#F5F5F7" : "#A09E9E",
+                    background: locale === code ? "var(--c-locale-active)" : "transparent",
+                    color: locale === code ? "var(--c-text-primary)" : "var(--c-text-muted)",
                   }}
                   aria-label={`Switch to ${label}`}
                   aria-pressed={locale === code}
@@ -180,6 +184,7 @@ export default function Navbar() {
 
           {/* Right side: Contact CTA + mobile toggle */}
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             <a
               href="#contact"
               className="hidden md:inline-flex items-center justify-center px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer"
@@ -195,7 +200,7 @@ export default function Navbar() {
             {/* Mobile menu toggle */}
             <button
               className="md:hidden p-2 rounded-xl transition-colors duration-200 cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
-              style={{ color: "#A09E9E" }}
+              style={{ color: "var(--c-text-muted)" }}
               onClick={() => setMobileOpen((o) => !o)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
@@ -232,11 +237,11 @@ export default function Navbar() {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed top-24 left-4 right-4 z-50 rounded-3xl p-6 overflow-hidden"
             style={{
-              background: "rgba(18, 19, 21, 0.98)",
+              background: "var(--c-mobile-bg)",
               backdropFilter: "blur(32px)",
               WebkitBackdropFilter: "blur(32px)",
-              border: "1px solid rgba(255,255,255,0.1)",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+              border: "1px solid var(--c-mobile-border)",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
             }}
             role="dialog"
             aria-modal="true"
@@ -249,7 +254,7 @@ export default function Navbar() {
                     <a
                       href={link.href}
                       className="flex items-center px-4 py-4 rounded-2xl text-lg font-semibold transition-colors duration-200 active:bg-white/5"
-                      style={{ color: "#F5F5F7" }}
+                      style={{ color: "var(--c-text-primary)" }}
                       onClick={() => setMobileOpen(false)}
                     >
                       {link.label}
@@ -258,7 +263,7 @@ export default function Navbar() {
                 ))}
               </ul>
 
-              <div className="flex flex-col gap-4 pt-6 border-t border-white/10">
+              <div className="flex flex-col gap-4 pt-6" style={{ borderTop: "1px solid var(--c-border)" }}>
                 <a
                   href="#contact"
                   className="flex items-center justify-center w-full py-4 rounded-2xl text-base font-bold transition-transform duration-200 active:scale-95"
@@ -272,15 +277,15 @@ export default function Navbar() {
                   {t("contact")}
                 </a>
 
-                <div className="flex gap-2 p-1 rounded-2xl bg-white/5" role="group" aria-label="Language switcher">
+                <div className="flex gap-2 p-1 rounded-2xl" style={{ background: "var(--c-locale-pill-m)" }} role="group" aria-label="Language switcher">
                   {LOCALES.map(({ code, label }) => (
                     <button
                       key={code}
                       onClick={() => { switchLocale(code); setMobileOpen(false); }}
                       className="flex-1 py-3 rounded-xl text-sm font-bold transition-all duration-200"
                       style={{
-                        background: locale === code ? "rgba(255,255,255,0.15)" : "transparent",
-                        color: locale === code ? "#F5F5F7" : "#A09E9E",
+                        background: locale === code ? "var(--c-locale-active-m)" : "transparent",
+                        color: locale === code ? "var(--c-text-primary)" : "var(--c-text-muted)",
                       }}
                       aria-pressed={locale === code}
                     >

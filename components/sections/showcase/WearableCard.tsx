@@ -34,7 +34,7 @@ export function WearableCard({ name, description, tags }: { name: string; descri
 
       <div className="absolute top-5 left-5">
         <span className="px-3 py-1.5 rounded-full text-xs font-semibold"
-          style={{ background: "rgba(255,255,255,0.08)", color: "#C8C6C6", border: "1px solid rgba(255,255,255,0.18)" }}>
+          style={{ background: "rgba(255,255,255,0.12)", color: "#F0EEEE", border: "1px solid rgba(255,255,255,0.22)" }}>
           StrykerLabs GmbH · Graz
         </span>
       </div>

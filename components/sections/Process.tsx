@@ -67,11 +67,11 @@ export default function Process() {
           </span>
           <h2
             className="font-heading font-black text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4"
-            style={{ color: "#F5F5F7" }}
+            style={{ color: "var(--c-text-primary)" }}
           >
             {t("title")}
           </h2>
-          <p className="text-base max-w-md leading-relaxed" style={{ color: "#C0BEBE" }}>
+          <p className="text-base max-w-md leading-relaxed" style={{ color: "var(--c-text-muted)" }}>
             {t("subtitle")}
           </p>
         </motion.div>
@@ -89,21 +89,21 @@ export default function Process() {
               <GlassCard className="group relative overflow-hidden flex flex-col h-full min-h-[220px] p-8 sm:p-10">
                 {/* Step label */}
                 <div className="flex items-center gap-3 mb-6 relative z-10">
-                  <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: "#C0BEBE" }}>
+                  <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: "var(--c-text-muted)" }}>
                     STEP {number}
                   </span>
-                  <div className="h-px flex-1" style={{ background: "rgba(255,255,255,0.06)" }} />
+                  <div className="h-px flex-1" style={{ background: "var(--c-border)" }} />
                 </div>
 
                 {/* Text */}
                 <div className="relative z-10 max-w-[70%]">
                   <h3
                     className="font-heading font-black text-2xl sm:text-3xl mb-3 tracking-tight"
-                    style={{ color: "#F5F5F7", letterSpacing: "-0.02em" }}
+                    style={{ color: "var(--c-text-primary)", letterSpacing: "-0.02em" }}
                   >
                     {t(`items.${key}.title`)}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "#C0BEBE" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--c-text-muted)" }}>
                     {t(`items.${key}.description`)}
                   </p>
                 </div>

@@ -64,12 +64,12 @@ function MarqueeRow({
       {/* Edge fades */}
       <div
         className="absolute inset-y-0 left-0 w-24 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to right, #0E0F10, transparent)" }}
+        style={{ background: "linear-gradient(to right, var(--c-deep), transparent)" }}
         aria-hidden="true"
       />
       <div
         className="absolute inset-y-0 right-0 w-24 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to left, #0E0F10, transparent)" }}
+        style={{ background: "linear-gradient(to left, var(--c-deep), transparent)" }}
         aria-hidden="true"
       />
 
@@ -84,12 +84,12 @@ function MarqueeRow({
             key={`${label}-${i}`}
             className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl flex-shrink-0"
             style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.07)",
+              background: "var(--c-glass-bg)",
+              border: "1px solid var(--c-border)",
             }}
           >
-            <Icon size={18} style={{ color: "#A8A6A6" }} />
-            <span className="text-xs font-medium whitespace-nowrap" style={{ color: "#B8B6B6" }}>
+            <Icon size={18} style={{ color: "var(--c-text-muted)" }} />
+            <span className="text-xs font-medium whitespace-nowrap" style={{ color: "var(--c-text-muted)" }}>
               {label}
             </span>
           </div>
@@ -126,11 +126,11 @@ export default function StackTools() {
           </span>
           <h2
             className="font-heading font-black text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4"
-            style={{ color: "#F5F5F7", letterSpacing: "-0.02em" }}
+            style={{ color: "var(--c-text-primary)", letterSpacing: "-0.02em" }}
           >
             {t("title")}
           </h2>
-          <p className="text-base max-w-md" style={{ color: "#C0BEBE" }}>
+          <p className="text-base max-w-md" style={{ color: "var(--c-text-muted)" }}>
             {t("subtitle")}
           </p>
         </motion.div>

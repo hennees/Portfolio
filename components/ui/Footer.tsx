@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { LinkedInIcon } from "@/components/ui/Icons";
+import { useTheme } from "@/components/ui/ThemeProvider";
 
 const SOCIALS = [
   { Icon: LinkedInIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/hennespatrick/" },
@@ -15,6 +16,7 @@ export default function Footer() {
   const tNav = useTranslations("nav");
   const tFooter = useTranslations("footer");
   const year = new Date().getFullYear();
+  const { theme } = useTheme();
 
   const containerVariants = {
     hidden: {},
@@ -31,7 +33,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative pt-24 pb-8 overflow-hidden bg-[#0E0F10]">
+    <footer className="relative pt-24 pb-8 overflow-hidden" style={{ background: "var(--c-deep)" }}>
       {/* Background radial gradient */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <div
@@ -61,14 +63,14 @@ export default function Footer() {
           <motion.div variants={itemVariants} className="md:col-span-2 flex flex-col items-start gap-6">
             <Link href="/" aria-label="henUX — Home" className="inline-flex transition-opacity hover:opacity-80">
               <Image
-                src="/logo-dark.svg"
+                src={theme === "dark" ? "/logo-dark.svg" : "/logo-light.svg"}
                 alt="henUX"
                 height={56}
                 width={112}
                 className="h-14 w-auto"
               />
             </Link>
-            <p className="text-sm max-w-sm leading-relaxed" style={{ color: "#A09E9E" }}>
+            <p className="text-sm max-w-sm leading-relaxed" style={{ color: "var(--c-text-muted)" }}>
               {tFooter("tagline")}
             </p>
             
@@ -83,9 +85,9 @@ export default function Footer() {
                   aria-label={label}
                   className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300"
                   style={{
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid rgba(255,255,255,0.05)",
-                    color: "#A09E9E"
+                    background: "var(--c-glass-bg)",
+                    border: "1px solid var(--c-border)",
+                    color: "var(--c-text-muted)"
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = "#F85900";
@@ -93,9 +95,9 @@ export default function Footer() {
                     e.currentTarget.style.background = "rgba(248,89,0,0.05)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#A09E9E";
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.05)";
-                    e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+                    e.currentTarget.style.color = "var(--c-text-muted)";
+                    e.currentTarget.style.borderColor = "var(--c-border)";
+                    e.currentTarget.style.background = "var(--c-glass-bg)";
                   }}
                 >
                   <Icon />
@@ -108,32 +110,32 @@ export default function Footer() {
           <motion.div variants={itemVariants} className="col-span-1 md:col-span-2 grid grid-cols-2 md:contents gap-8">
             {/* Platform Links */}
             <div className="flex flex-col gap-3">
-              <h3 className="font-heading font-semibold text-sm tracking-wider uppercase mb-1" style={{ color: "#F5F5F7" }}>
+              <h3 className="font-heading font-semibold text-sm tracking-wider uppercase mb-1" style={{ color: "var(--c-text-primary)" }}>
                 {tFooter("nav_title")}
               </h3>
-              <a href="#work" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tNav("work")}</a>
-              <a href="#services" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tNav("services")}</a>
-              <a href="#about" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tNav("about")}</a>
-              <a href="#contact" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tNav("contact")}</a>
+              <a href="#work" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "var(--c-text-muted)" }}>{tNav("work")}</a>
+              <a href="#services" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "var(--c-text-muted)" }}>{tNav("services")}</a>
+              <a href="#about" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "var(--c-text-muted)" }}>{tNav("about")}</a>
+              <a href="#contact" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "var(--c-text-muted)" }}>{tNav("contact")}</a>
             </div>
 
             {/* Legal Links */}
             <div className="flex flex-col gap-3">
-              <h3 className="font-heading font-semibold text-sm tracking-wider uppercase mb-1" style={{ color: "#F5F5F7" }}>
+              <h3 className="font-heading font-semibold text-sm tracking-wider uppercase mb-1" style={{ color: "var(--c-text-primary)" }}>
                 {tFooter("legal_title")}
               </h3>
-              <Link href="/imprint" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("imprint")}</Link>
-              <Link href="/privacy" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("privacy")}</Link>
+              <Link href="/imprint" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "var(--c-text-muted)" }}>{tFooter("imprint")}</Link>
+              <Link href="/privacy" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "var(--c-text-muted)" }}>{tFooter("privacy")}</Link>
             </div>
           </motion.div>
         </motion.div>
 
         {/* Divider */}
-        <div className="h-px w-full mb-8" style={{ background: "rgba(255,255,255,0.06)" }} />
+        <div className="h-px w-full mb-8" style={{ background: "var(--c-border)" }} />
 
         {/* Bottom Bar containing copyright */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6 pb-2 text-center sm:text-left">
-          <p className="text-xs" style={{ color: "#A09E9E" }}>
+          <p className="text-xs" style={{ color: "var(--c-text-muted)" }}>
             &copy; {year} {tFooter("made_with")}
             <span style={{ color: "#F5F5F7", fontWeight: 700, marginLeft: "4px" }}>
               Patrick Hennes
@@ -142,7 +144,7 @@ export default function Footer() {
           
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" style={{ boxShadow: "0 0 8px rgba(34, 197, 94, 0.4)" }}></span>
-            <span className="text-xs font-medium uppercase tracking-wider" style={{ color: "#A09E9E" }}>{tFooter("available")}</span>
+            <span className="text-xs font-medium uppercase tracking-wider" style={{ color: "var(--c-text-muted)" }}>{tFooter("available")}</span>
           </div>
         </div>
       </div>

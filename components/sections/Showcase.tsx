@@ -39,8 +39,8 @@ export default function Showcase() {
           className="flex flex-col items-center text-center mb-16">
           <span className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#F85900" }}>{t("overline")}</span>
           <h2 className="font-heading font-black text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4"
-            style={{ color: "#F5F5F7", letterSpacing: "-0.025em" }}>{t("title")}</h2>
-          <p className="text-base max-w-md leading-relaxed" style={{ color: "#C0BEBE" }}>{t("subtitle")}</p>
+            style={{ color: "var(--c-text-primary)", letterSpacing: "-0.025em" }}>{t("title")}</h2>
+          <p className="text-base max-w-md leading-relaxed" style={{ color: "var(--c-text-muted)" }}>{t("subtitle")}</p>
         </motion.div>
 
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-40px" }}

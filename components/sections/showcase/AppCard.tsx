@@ -18,7 +18,7 @@ export function AppCard({ name, description, tags, screens, colSpan = "col-span-
       variants={fadeUp}
       transition={{ duration: 0.55 }}
       className={`group relative rounded-2xl cursor-pointer flex flex-col overflow-hidden ${colSpan}`}
-      style={{ background: "#0A0A0A", border: "1px solid rgba(255,255,255,0.055)", minHeight: 420 }}
+      style={{ background: "var(--c-surface-1)", border: "1px solid var(--c-border)", minHeight: 420 }}
       whileHover={{
         scale: 1.013,
         borderColor: `${accentColor}45`,
@@ -42,8 +42,8 @@ export function AppCard({ name, description, tags, screens, colSpan = "col-span-
 
       {/* Text */}
       <div className="px-6 pb-6 pt-5">
-        <h3 className="font-heading font-bold text-xl mb-2" style={{ color: "#F0EEEE" }}>{name}</h3>
-        <p className="text-sm leading-relaxed mb-3" style={{ color: "#B8B6B6" }}>{description}</p>
+        <h3 className="font-heading font-bold text-xl mb-2" style={{ color: "var(--c-text-primary)" }}>{name}</h3>
+        <p className="text-sm leading-relaxed mb-3" style={{ color: "var(--c-text-muted)" }}>{description}</p>
         <Tags tags={tags} />
       </div>
     </motion.div>

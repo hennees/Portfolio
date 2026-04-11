@@ -193,7 +193,7 @@ export default function About() {
       {/* Background */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "rgba(34,34,34,0.2)" }}
+        style={{ background: "var(--c-surface-1)", opacity: 0.2 }}
         aria-hidden="true"
       />
       <div
@@ -228,11 +228,11 @@ export default function About() {
           </span>
           <h2
             className="font-heading font-black text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4"
-            style={{ color: "#F5F5F7", letterSpacing: "-0.02em" }}
+            style={{ color: "var(--c-text-primary)", letterSpacing: "-0.02em" }}
           >
             {t("title")}
           </h2>
-          <p className="text-base" style={{ color: "#C0BEBE" }}>
+          <p className="text-base" style={{ color: "var(--c-text-muted)" }}>
             {t("subtitle")}
           </p>
         </motion.div>
@@ -253,7 +253,7 @@ export default function About() {
                 variants={fadeUp}
                 transition={{ duration: 0.5 }}
                 className="text-base sm:text-lg leading-relaxed"
-                style={{ color: i === 0 ? "#F5F5F7" : "#C0BEBE" }}
+                style={{ color: i === 0 ? "var(--c-text-primary)" : "var(--c-text-muted)" }}
               >
                 {bio}
               </motion.p>
@@ -274,14 +274,14 @@ export default function About() {
                     key={statKey}
                     className="flex flex-col items-center gap-1 p-4 rounded-2xl text-center"
                     style={{
-                      background: "rgba(47,47,47,0.4)",
-                      border: "1px solid rgba(255,255,255,0.08)",
+                      background: "var(--c-glass-bg)",
+                      border: "1px solid var(--c-border)",
                     }}
                   >
                     <span className="font-heading font-black text-2xl sm:text-3xl gradient-text">
                       <AnimatedCounter target={numericPart} suffix={suffix} />
                     </span>
-                    <span className="text-xs font-medium text-center leading-tight" style={{ color: "#C0BEBE" }}>
+                    <span className="text-xs font-medium text-center leading-tight" style={{ color: "var(--c-text-muted)" }}>
                       {t(`stats.${statKey}`)}
                     </span>
                   </div>
