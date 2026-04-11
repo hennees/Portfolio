@@ -93,7 +93,12 @@ const stepVariants = {
 
 // ── Main ───────────────────────────────────────────────────────────────────
 
-const WEB3FORMS_KEY = "feef905c-fd31-4d7a-a4d1-306b68ca7838";
+const isValidUUID = (uuid: string) => 
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(uuid);
+
+const envKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+const fallbackKey = "feef905c-fd31-4d7a-a4d1-306b68ca7838";
+const WEB3FORMS_KEY = (envKey && isValidUUID(envKey)) ? envKey : fallbackKey;
 
 export default function Contact() {
   const t = useTranslations("contact");
@@ -141,9 +146,8 @@ export default function Contact() {
   };
   const goBack = () => { setDirection(-1); setStep(1); };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!name.trim() || !email.trim() || !message.trim()) return;
+  const sendFormData = async () => {
+    if (!validateStep1()) return;
 
     if (botcheck) {
       setSubmitted(true);
@@ -162,7 +166,6 @@ export default function Contact() {
           name,
           email,
           message,
-          botcheck: botcheck ? "yes" : "",
           project_types: selectedTypes.join(", "),
           scope: selectedScope ?? "",
           timeline: selectedTimeline ?? "",
@@ -171,19 +174,28 @@ export default function Contact() {
           replyto: email,
         }),
       });
+
       const result = await res.json();
-      if (result.success) setSubmitted(true);
-      else setError(t("form.error"));
-    } catch {
+      if (res.ok && result.success) {
+        setSubmitted(true);
+      } else {
+        setError(result.message || `Error: ${res.status}`);
+      }
+    } catch (err) {
+      console.error("Form submission error:", err);
       setError(t("form.error"));
     } finally {
       setSending(false);
     }
   };
 
-  const submitDirect = () => {
-    if (!validateStep1()) return;
-    handleSubmit({ preventDefault: () => {} } as React.FormEvent<HTMLFormElement>);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await sendFormData();
+  };
+
+  const submitDirect = async () => {
+    await sendFormData();
   };
 
   return (
@@ -477,7 +489,7 @@ export default function Contact() {
 
                         {/* Timeline */}
                         <div className="flex flex-col gap-3">
-                          <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#A09E9E" }}>
+                          <span className="text-xs font-semibold uppercase tracking-wider text-text-muted">
                             {t("form.timeline_label")}
                           </span>
                           <div className="flex flex-wrap gap-2">
@@ -488,7 +500,12 @@ export default function Contact() {
                           </div>
                         </div>
 
+                        {error && (
+                          <p className="text-xs text-accent mt-2" role="alert">{error}</p>
+                        )}
+
                         <div className="flex items-center justify-between pt-1">
+
                           <button
                             type="button" onClick={goBack}
                             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm cursor-pointer transition-all duration-200"
