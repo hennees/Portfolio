@@ -29,7 +29,7 @@ export function WearableCard({ name, description, tags }: { name: string; descri
       <div className="absolute inset-0"
         style={{ background: "linear-gradient(to top, rgba(6,6,6,0.97) 22%, rgba(6,6,6,0.5) 52%, rgba(6,6,6,0.06) 100%)" }} />
       <motion.div className="absolute inset-0 rounded-2xl pointer-events-none"
-        style={{ border: "1px solid rgba(255,255,255,0.055)" }}
+        style={{ border: "1px solid var(--c-border)" }}
         whileHover={{ borderColor: "rgba(248,89,0,0.28)" }} transition={{ duration: 0.3 }} />
 
       <div className="absolute top-5 left-5">

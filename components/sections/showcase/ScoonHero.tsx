@@ -30,7 +30,7 @@ export function ScoonHero({ name, description, tags, featuredLabel }: {
       variants={fadeUp}
       transition={{ duration: 0.7 }}
       className="col-span-12 relative rounded-3xl overflow-hidden cursor-pointer"
-      style={{ minHeight: 680, background: "#080808" }}
+      style={{ minHeight: 680, background: "var(--c-surface-1)" }}
       whileHover={{ scale: 1.005, transition: { type: "spring", stiffness: 200, damping: 30 } }}
     >
       {/* Ambient glow */}
@@ -39,7 +39,7 @@ export function ScoonHero({ name, description, tags, featuredLabel }: {
       />
       <motion.div
         className="absolute inset-0 rounded-3xl pointer-events-none z-20"
-        style={{ border: "1px solid rgba(255,255,255,0.07)" }}
+        style={{ border: "1px solid var(--c-border)" }}
         whileHover={{ borderColor: "rgba(248,89,0,0.35)", boxShadow: "0 0 100px rgba(248,89,0,0.1)" }}
         transition={{ duration: 0.4 }}
       />
@@ -65,14 +65,14 @@ export function ScoonHero({ name, description, tags, featuredLabel }: {
 
       {/* Bottom text */}
       <div className="absolute bottom-0 left-0 right-0 px-7 sm:px-10 pb-9 z-20"
-        style={{ background: "linear-gradient(to top, #080808 52%, rgba(8,8,8,0.8) 76%, transparent)" }}>
+        style={{ background: "linear-gradient(to top, var(--c-surface-1) 52%, color-mix(in srgb, var(--c-surface-1) 80%, transparent) 76%, transparent)" }}>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5">
           <div>
             <h3 className="font-heading font-black tracking-tight"
-              style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", color: "#F5F5F7", letterSpacing: "-0.04em", lineHeight: 0.95 }}>
+              style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", color: "var(--c-text-primary)", letterSpacing: "-0.04em", lineHeight: 0.95 }}>
               {name}
             </h3>
-            <p className="text-sm leading-relaxed max-w-lg mt-3" style={{ color: "#B8B6B6" }}>{description}</p>
+            <p className="text-sm leading-relaxed max-w-lg mt-3" style={{ color: "var(--c-text-muted)" }}>{description}</p>
           </div>
           <div className="flex-shrink-0 sm:pb-1"><Tags tags={tags} /></div>
         </div>

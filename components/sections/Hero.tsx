@@ -32,9 +32,9 @@ export default function Hero() {
     <section id="hero" ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden" aria-label="Hero section">
       {/* Background orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div className="absolute rounded-full animate-orb-1" style={{ width: 600, height: 600, top: "10%", left: "15%", background: "radial-gradient(circle, #F85900 0%, transparent 70%)", opacity: 0.12, filter: "blur(80px)" }} />
-        <div className="absolute rounded-full animate-orb-2" style={{ width: 400, height: 400, top: "50%", right: "10%", background: "radial-gradient(circle, #FF9432 0%, transparent 70%)", opacity: 0.08, filter: "blur(60px)" }} />
-        <div className="absolute rounded-full animate-orb-3" style={{ width: 300, height: 300, bottom: "20%", left: "5%", background: "radial-gradient(circle, #F85900 0%, transparent 70%)", opacity: 0.07, filter: "blur(60px)" }} />
+        <div className="absolute rounded-full animate-orb-1" style={{ width: 600, height: 600, top: "10%", left: "15%", background: "radial-gradient(circle, #F85900 0%, transparent 70%)", opacity: "calc(0.12 * var(--c-orb-opacity))", filter: "blur(80px)" }} />
+        <div className="absolute rounded-full animate-orb-2" style={{ width: 400, height: 400, top: "50%", right: "10%", background: "radial-gradient(circle, #FF9432 0%, transparent 70%)", opacity: "calc(0.08 * var(--c-orb-opacity))", filter: "blur(60px)" }} />
+        <div className="absolute rounded-full animate-orb-3" style={{ width: 300, height: 300, bottom: "20%", left: "5%", background: "radial-gradient(circle, #F85900 0%, transparent 70%)", opacity: "calc(0.07 * var(--c-orb-opacity))", filter: "blur(60px)" }} />
         <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(var(--c-border) 1px, transparent 1px), linear-gradient(90deg, var(--c-border) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
       </div>
 

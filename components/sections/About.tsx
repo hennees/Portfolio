@@ -193,7 +193,7 @@ export default function About() {
       {/* Background */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "var(--c-surface-1)", opacity: 0.2 }}
+        style={{ background: "color-mix(in srgb, var(--c-surface-1) 20%, transparent)" }}
         aria-hidden="true"
       />
       <div

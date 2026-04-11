@@ -110,7 +110,7 @@ function ServiceCard({ s, idx, t }: { s: typeof SERVICES[number], idx: number, t
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: idx * 0.09 }}
     >
-      <GlassCard className="group h-full flex flex-col relative overflow-hidden p-0 border-white/5 transition-all duration-500">
+      <GlassCard className="group h-full flex flex-col relative overflow-hidden p-0 transition-all duration-500">
         <div
           className="absolute top-0 left-0 right-0 h-[2px] z-10"
           style={{ background: `linear-gradient(to right, ${accent.color}, rgba(${accent.rgb},0.2), transparent)` }}
