@@ -11,25 +11,6 @@ const SOCIALS = [
   { Icon: () => <InstagramIcon size={16} />, label: "Instagram", href: "https://www.instagram.com/hennees" },
 ] as const;
 
-// ── Data — in Kundensprache, kein Tech-Jargon ──────────────────────────────
-
-const PROJECT_TYPES = [
-  "App (iOS)",
-  "App (Android)",
-  "Website",
-  "UI/UX Design",
-  "eHealth Lösung",
-  "Beratung",
-];
-
-const SCOPES = [
-  { key: "kompakt",     label: "Kompakt",     desc: "Einzelne Seite, Konzept oder Komponente" },
-  { key: "projekt",     label: "Projekt",     desc: "Vollständige App, Website oder Design" },
-  { key: "langfristig", label: "Langfristig", desc: "Produkt, laufende Zusammenarbeit" },
-];
-
-const TIMELINES = ["Flexibel", "1–3 Monate", "ASAP"];
-
 // ── Sub-components ─────────────────────────────────────────────────────────
 
 function Chip({ label, selected, onClick }: { label: string; selected: boolean; onClick: () => void }) {
@@ -42,7 +23,7 @@ function Chip({ label, selected, onClick }: { label: string; selected: boolean; 
       style={
         selected
           ? { background: "rgba(248,89,0,0.12)", border: "1px solid rgba(248,89,0,0.35)", color: "#F85900" }
-          : { background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", color: "#6A6A6A" }
+          : { background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", color: "#9A9898" }
       }
     >
       {label}
@@ -66,7 +47,7 @@ function ScopeCard({ label, desc, selected, onClick }: { label: string; desc: st
       <span className="font-semibold text-sm" style={{ color: selected ? "#F85900" : "#F5F5F7" }}>
         {label}
       </span>
-      <span className="text-xs leading-relaxed" style={{ color: "#6A6A6A" }}>
+      <span className="text-xs leading-relaxed" style={{ color: "#8A8888" }}>
         {desc}
       </span>
     </button>
@@ -75,7 +56,7 @@ function ScopeCard({ label, desc, selected, onClick }: { label: string; desc: st
 
 function StepIndicator({ current }: { current: number }) {
   return (
-    <div className="flex items-center gap-2 mb-8" aria-label={`Schritt ${current} von 2`}>
+    <div className="flex items-center gap-2 mb-8" aria-label={`Step ${current} of 2`}>
       {[1, 2].map((s) => (
         <React.Fragment key={s}>
           <div
@@ -83,7 +64,7 @@ function StepIndicator({ current }: { current: number }) {
             style={{
               background: s < current ? "#F85900" : s === current ? "rgba(248,89,0,0.15)" : "rgba(255,255,255,0.05)",
               border: s === current ? "1px solid rgba(248,89,0,0.5)" : "1px solid transparent",
-              color: s < current ? "#0E0F10" : s === current ? "#F85900" : "#4A4A4A",
+              color: s < current ? "#0E0F10" : s === current ? "#F85900" : "#8A8888",
             }}
           >
             {s < current ? (
@@ -117,6 +98,11 @@ const WEB3FORMS_KEY = "feef905c-fd31-4d7a-a4d1-306b68ca7838";
 export default function Contact() {
   const t = useTranslations("contact");
 
+  // Load i18n chip data
+  const PROJECT_TYPES = t.raw("form.project_types") as string[];
+  const SCOPES = t.raw("form.scopes") as Array<{ key: string; label: string; desc: string }>;
+  const TIMELINES = t.raw("form.timelines") as string[];
+
   const [step, setStep]               = useState(1);
   const [direction, setDirection]     = useState(1);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
@@ -126,17 +112,30 @@ export default function Contact() {
   const [sending, setSending]         = useState(false);
   const [error, setError]             = useState<string | null>(null);
 
-  // Store contact fields in state so they survive step transitions
   const [name, setName]       = useState("");
   const [email, setEmail]     = useState("");
   const [message, setMessage] = useState("");
   const [botcheck, setBotcheck] = useState(false);
 
+  const [nameError, setNameError]       = useState(false);
+  const [emailError, setEmailError]     = useState(false);
+  const [messageError, setMessageError] = useState(false);
+
   const toggleType = (val: string) =>
     setSelectedTypes((prev) => prev.includes(val) ? prev.filter((x) => x !== val) : [...prev, val]);
 
+  const validateStep1 = () => {
+    const nErr = !name.trim();
+    const eErr = !email.trim();
+    const mErr = !message.trim();
+    setNameError(nErr);
+    setEmailError(eErr);
+    setMessageError(mErr);
+    return !nErr && !eErr && !mErr;
+  };
+
   const goNext = () => {
-    if (!name.trim() || !email.trim() || !message.trim()) return;
+    if (!validateStep1()) return;
     setDirection(1);
     setStep(2);
   };
@@ -146,7 +145,6 @@ export default function Contact() {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !message.trim()) return;
 
-    // Honeypot check: If the hidden field is filled, pretend success but don't send anything
     if (botcheck) {
       setSubmitted(true);
       return;
@@ -184,7 +182,7 @@ export default function Contact() {
   };
 
   const submitDirect = () => {
-    if (!name.trim() || !email.trim() || !message.trim()) return;
+    if (!validateStep1()) return;
     handleSubmit({ preventDefault: () => {} } as React.FormEvent<HTMLFormElement>);
   };
 
@@ -215,7 +213,7 @@ export default function Contact() {
             className="flex flex-col gap-10 lg:sticky lg:top-32"
           >
             <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#F85900" }}>
-              Contact
+              {t("overline")}
             </span>
 
             <h2
@@ -226,7 +224,7 @@ export default function Contact() {
             </h2>
 
             <div className="flex flex-col gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#5A5A5A" }}>
+              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#8A8888" }}>
                 {t("email_label")}
               </span>
               <a
@@ -238,13 +236,13 @@ export default function Contact() {
               >
                 patrick.hennes27@icloud.com
               </a>
-              <span className="text-sm" style={{ color: "#5A5A5A" }}>{t("response_time")}</span>
+              <span className="text-sm" style={{ color: "#8A8888" }}>{t("response_time")}</span>
             </div>
 
             <div className="h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
 
             <div className="flex flex-col gap-4">
-              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#5A5A5A" }}>
+              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#8A8888" }}>
                 {t("social")}
               </span>
               <div className="flex items-center gap-3">
@@ -262,7 +260,7 @@ export default function Contact() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "#22C55E", boxShadow: "0 0 8px rgba(34,197,94,0.4)" }} aria-hidden="true" />
-                <span className="text-sm" style={{ color: "#5A5A5A" }}>{t("available")}</span>
+                <span className="text-sm" style={{ color: "#8A8888" }}>{t("available")}</span>
               </div>
             </div>
           </motion.div>
@@ -300,11 +298,11 @@ export default function Contact() {
               >
                 <StepIndicator current={step} />
 
-                <form onSubmit={handleSubmit} aria-label="Contact form">
+                <form onSubmit={handleSubmit} aria-label="Contact form" noValidate>
 
                   <AnimatePresence mode="wait" custom={direction}>
 
-                    {/* ── Schritt 1: Kontaktdaten ── */}
+                    {/* ── Step 1: Contact details ── */}
                     {step === 1 && (
                       <motion.div
                         key="step1"
@@ -318,40 +316,81 @@ export default function Contact() {
                           <div className="flex flex-col gap-2">
                             <label htmlFor="contact-name" className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#A09E9E" }}>
                               {t("form.name")}
+                              <span className="ml-1" style={{ color: "#F85900" }} aria-hidden="true">*</span>
                             </label>
                             <input
-                              id="contact-name" type="text"
-                              value={name} onChange={e => setName(e.target.value)}
-                              placeholder={t("form.name_placeholder")} autoComplete="name"
+                              id="contact-name"
+                              type="text"
+                              required
+                              aria-required="true"
+                              aria-describedby={nameError ? "name-error" : undefined}
+                              aria-invalid={nameError}
+                              value={name}
+                              onChange={e => { setName(e.target.value); if (nameError) setNameError(false); }}
+                              placeholder={t("form.name_placeholder")}
+                              autoComplete="name"
                               className="glass-input px-4 py-3 rounded-xl text-sm w-full"
+                              style={nameError ? { borderColor: "rgba(248,89,0,0.5)" } : undefined}
                             />
+                            {nameError && (
+                              <p id="name-error" className="text-xs" style={{ color: "#F85900" }} role="alert">
+                                {t("form.field_required")}
+                              </p>
+                            )}
                           </div>
                           <div className="flex flex-col gap-2">
                             <label htmlFor="contact-email" className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#A09E9E" }}>
                               {t("form.email")}
+                              <span className="ml-1" style={{ color: "#F85900" }} aria-hidden="true">*</span>
                             </label>
                             <input
-                              id="contact-email" type="email"
-                              value={email} onChange={e => setEmail(e.target.value)}
-                              placeholder={t("form.email_placeholder")} autoComplete="email"
+                              id="contact-email"
+                              type="email"
+                              required
+                              aria-required="true"
+                              aria-describedby={emailError ? "email-error" : undefined}
+                              aria-invalid={emailError}
+                              value={email}
+                              onChange={e => { setEmail(e.target.value); if (emailError) setEmailError(false); }}
+                              placeholder={t("form.email_placeholder")}
+                              autoComplete="email"
                               className="glass-input px-4 py-3 rounded-xl text-sm w-full"
+                              style={emailError ? { borderColor: "rgba(248,89,0,0.5)" } : undefined}
                             />
+                            {emailError && (
+                              <p id="email-error" className="text-xs" style={{ color: "#F85900" }} role="alert">
+                                {t("form.field_required")}
+                              </p>
+                            )}
                           </div>
                         </div>
 
                         <div className="flex flex-col gap-2">
                           <label htmlFor="contact-message" className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#A09E9E" }}>
                             {t("form.message")}
+                            <span className="ml-1" style={{ color: "#F85900" }} aria-hidden="true">*</span>
                           </label>
                           <textarea
-                            id="contact-message" rows={5}
-                            value={message} onChange={e => setMessage(e.target.value)}
+                            id="contact-message"
+                            rows={5}
+                            required
+                            aria-required="true"
+                            aria-describedby={messageError ? "message-error" : undefined}
+                            aria-invalid={messageError}
+                            value={message}
+                            onChange={e => { setMessage(e.target.value); if (messageError) setMessageError(false); }}
                             placeholder={t("form.message_placeholder")}
                             className="glass-input px-4 py-3 rounded-xl text-sm w-full resize-none"
+                            style={messageError ? { borderColor: "rgba(248,89,0,0.5)" } : undefined}
                           />
+                          {messageError && (
+                            <p id="message-error" className="text-xs" style={{ color: "#F85900" }} role="alert">
+                              {t("form.field_required")}
+                            </p>
+                          )}
                         </div>
 
-                        {/* Honeypot field for bot protection — completely invisible to real users */}
+                        {/* Honeypot field for bot protection */}
                         <input
                           type="checkbox"
                           name="botcheck"
@@ -373,11 +412,11 @@ export default function Contact() {
                           <button
                             type="button"
                             onClick={submitDirect}
-                            disabled={sending || !name.trim() || !email.trim() || !message.trim()}
+                            disabled={sending}
                             className="text-xs font-medium transition-colors duration-200 cursor-pointer disabled:opacity-40"
-                            style={{ color: "#5A5A5A" }}
+                            style={{ color: "#8A8888" }}
                             onMouseEnter={(e) => { e.currentTarget.style.color = "#A09E9E"; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.color = "#5A5A5A"; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.color = "#8A8888"; }}
                             aria-busy={sending}
                           >
                             {sending ? t("form.sending") : t("form.skip")}
@@ -386,8 +425,7 @@ export default function Contact() {
                           <button
                             type="button"
                             onClick={goNext}
-                            disabled={!name.trim() || !email.trim() || !message.trim()}
-                            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm cursor-pointer transition-all duration-200 disabled:opacity-40"
+                            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm cursor-pointer transition-all duration-200"
                             style={{ background: "linear-gradient(135deg, #F85900, #FF9432)", color: "#0E0F10", boxShadow: "0 8px 24px rgba(248,89,0,0.25)" }}
                           >
                             {t("form.next")} <ArrowRight size={15} aria-hidden="true" />
@@ -396,7 +434,7 @@ export default function Contact() {
                       </motion.div>
                     )}
 
-                    {/* ── Schritt 2: Projektdetails (optional) ── */}
+                    {/* ── Step 2: Project details (optional) ── */}
                     {step === 2 && (
                       <motion.div
                         key="step2"
@@ -407,11 +445,11 @@ export default function Contact() {
                         className="flex flex-col gap-6"
                       >
                         {/* Optional hint */}
-                        <p className="text-xs px-3 py-2 rounded-lg" style={{ color: "#6A6A6A", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
+                        <p className="text-xs px-3 py-2 rounded-lg" style={{ color: "#8A8888", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
                           {t("form.optional_hint")}
                         </p>
 
-                        {/* Projektart */}
+                        {/* Project type */}
                         <div className="flex flex-col gap-3">
                           <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#A09E9E" }}>
                             {t("form.project_label")}
@@ -423,7 +461,7 @@ export default function Contact() {
                           </div>
                         </div>
 
-                        {/* Umfang */}
+                        {/* Scope */}
                         <div className="flex flex-col gap-3">
                           <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#A09E9E" }}>
                             {t("form.scope_label")}

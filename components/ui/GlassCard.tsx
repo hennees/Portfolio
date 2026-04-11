@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type HTMLMotionProps } from "framer-motion";
+import { motion, useReducedMotion, type HTMLMotionProps } from "framer-motion";
 import { type ReactNode } from "react";
 
 type GlassCardProps = HTMLMotionProps<"div"> & {
@@ -15,11 +15,13 @@ export default function GlassCard({
   hover = true,
   ...props
 }: GlassCardProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <motion.div
       className={`glass rounded-2xl ${className}`}
       whileHover={
-        hover
+        hover && !prefersReducedMotion
           ? {
               y: -4,
               boxShadow: "0 20px 60px rgba(248, 89, 0, 0.12)",

@@ -19,6 +19,7 @@
     "scroll": "Scrollen zum Entdecken"
   },
   "showcase": {
+    "overline": "Portfolio",
     "title": "Ausgewählte Projekte",
     "subtitle": "Projekte an der Schnittstelle von Design, Gesundheit und Technologie.",
     "featured_label": "Hauptprojekt",
@@ -142,6 +143,7 @@
     }
   },
   "stack": {
+    "overline": "Technologien",
     "title": "Stack & Tools",
     "subtitle": "Die Technologien und Tools, mit denen ich täglich arbeite."
   },
@@ -183,6 +185,7 @@
     }
   },
   "contact": {
+    "overline": "Kontakt",
     "title": "Lass uns etwas bauen",
     "subtitle": "Hast du ein Projekt im Sinn? Ich freue mich darauf. Schreib mir und wir schauen, was wir gemeinsam erschaffen können.",
     "cta": "Nachricht senden",
@@ -194,6 +197,7 @@
       "scope_label": "Wie groß ist das Vorhaben?",
       "timeline_label": "Wann soll es losgehen?",
       "optional_hint": "Optional — hilft mir, schneller zu antworten",
+      "field_required": "Pflichtfeld",
       "skip": "Überspringen & senden",
       "next": "Weiter",
       "back": "Zurück",
@@ -207,7 +211,14 @@
       "sending": "Wird gesendet...",
       "success_title": "Anfrage erhalten!",
       "success_message": "Ich melde mich innerhalb von 24h bei dir.",
-      "error": "Etwas ist schiefgelaufen. Schreib mir direkt an patrick.hennes27@icloud.com"
+      "error": "Etwas ist schiefgelaufen. Schreib mir direkt an patrick.hennes27@icloud.com",
+      "project_types": ["App (iOS)", "App (Android)", "Website", "UI/UX Design", "eHealth Lösung", "Beratung"],
+      "scopes": [
+        { "key": "compact",  "label": "Kompakt",     "desc": "Einzelne Seite, Konzept oder Komponente" },
+        { "key": "project",  "label": "Projekt",     "desc": "Vollständige App, Website oder Design" },
+        { "key": "ongoing",  "label": "Langfristig", "desc": "Produkt, laufende Zusammenarbeit" }
+      ],
+      "timelines": ["Flexibel", "1–3 Monate", "ASAP"]
     },
     "social": "Finde mich auf"
   },
@@ -218,7 +229,9 @@
     "imprint": "Impressum",
     "privacy": "Datenschutz",
     "made_with": "Designed & Built by",
-    "rights": "Alle Rechte vorbehalten."
+    "rights": "Alle Rechte vorbehalten.",
+    "tagline": "Gesundheit und Technologie verbinden — Interfaces, die sich genauso gut anfühlen, wie sie aussehen.",
+    "available": "Verfügbar für neue Projekte"
   },
   "faq": {
     "title": "Häufige Fragen",

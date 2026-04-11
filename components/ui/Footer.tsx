@@ -69,7 +69,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-sm max-w-sm leading-relaxed" style={{ color: "#A09E9E" }}>
-              Bridging health and technology — designing interfaces that feel as good as they look.
+              {tFooter("tagline")}
             </p>
             
             {/* Social Icons */}
@@ -142,7 +142,7 @@ export default function Footer() {
           
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" style={{ boxShadow: "0 0 8px rgba(34, 197, 94, 0.4)" }}></span>
-            <span className="text-xs font-medium uppercase tracking-wider" style={{ color: "#A09E9E" }}>Available for work</span>
+            <span className="text-xs font-medium uppercase tracking-wider" style={{ color: "#A09E9E" }}>{tFooter("available")}</span>
           </div>
         </div>
       </div>

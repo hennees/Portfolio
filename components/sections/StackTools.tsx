@@ -122,7 +122,7 @@ export default function StackTools() {
           className="flex flex-col items-center text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#F85900" }}>
-            Technologies
+            {t("overline")}
           </span>
           <h2
             className="font-heading font-black text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4"
@@ -130,7 +130,7 @@ export default function StackTools() {
           >
             {t("title")}
           </h2>
-          <p className="text-base max-w-md" style={{ color: "#6B6969" }}>
+          <p className="text-base max-w-md" style={{ color: "#8A8888" }}>
             {t("subtitle")}
           </p>
         </motion.div>

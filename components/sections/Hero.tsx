@@ -45,6 +45,7 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
           className="relative flex lg:hidden items-center justify-center w-full max-w-[280px] aspect-square"
+          style={{ minHeight: 280 }}
           aria-hidden="true"
         >
           <div className="absolute rounded-full pointer-events-none" style={{ width: "100%", height: "100%", background: "radial-gradient(circle, rgba(248,89,0,0.15) 0%, transparent 70%)", filter: "blur(30px)" }} />
@@ -67,7 +68,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
             className="font-heading font-semibold mb-6"
             style={{ fontSize: "clamp(1.1rem, 4vw, 1.6rem)", minHeight: "1.4em", color: "#A09E9E" }}
-            aria-live="polite" aria-label="Role"
+            aria-live="polite" aria-atomic="true" aria-label="Role"
           >
             <TypewriterText phrases={phrases} />
           </motion.div>
@@ -93,6 +94,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.3 }}
           className="relative flex-shrink-0 hidden lg:flex items-center justify-center"
+          style={{ minWidth: 440, minHeight: 440 }}
           aria-hidden="true"
         >
           <div className="absolute rounded-full pointer-events-none" style={{ width: 380, height: 380, background: "radial-gradient(circle, rgba(248,89,0,0.12) 0%, transparent 70%)", filter: "blur(40px)" }} />

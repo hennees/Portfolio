@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, useRouter, usePathname } from "@/i18n/navigation";
 import { Menu, X } from "lucide-react";
@@ -23,12 +23,69 @@ export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  // Active section tracking via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = ["hero", "work", "services", "about", "contact"];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { threshold: 0.3, rootMargin: "-80px 0px 0px 0px" }
+    );
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  // Focus trap for mobile menu
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const el = dialogRef.current;
+    if (!el) return;
+
+    const focusable = Array.from(
+      el.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    first?.focus();
+
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+      } else if (e.key === "Tab") {
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last?.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first?.focus();
+          }
+        }
+      }
+    };
+
+    el.addEventListener("keydown", handler);
+    return () => el.removeEventListener("keydown", handler);
+  }, [mobileOpen]);
 
   const switchLocale = (next: LocaleCode) => {
     router.replace(pathname, { locale: next });
@@ -79,16 +136,21 @@ export default function Navbar() {
           {/* Desktop nav links & locale */}
           <div className="hidden md:flex items-center gap-4">
             <ul className="flex items-center gap-1" role="list">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="nav-link px-4 py-2 rounded-xl text-sm font-medium cursor-pointer"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.slice(1);
+                return (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="nav-link px-4 py-2 rounded-xl text-sm font-medium cursor-pointer"
+                      style={isActive ? { color: "#F5F5F7", background: "rgba(255,255,255,0.08)" } : undefined}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
 
             {/* Desktop Locale switcher */}
@@ -102,7 +164,7 @@ export default function Navbar() {
                 <button
                   key={code}
                   onClick={() => switchLocale(code)}
-                  className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer"
+                  className="px-3 py-2.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer min-h-[40px]"
                   style={{
                     background: locale === code ? "rgba(255,255,255,0.1)" : "transparent",
                     color: locale === code ? "#F5F5F7" : "#A09E9E",
@@ -132,11 +194,12 @@ export default function Navbar() {
 
             {/* Mobile menu toggle */}
             <button
-              className="md:hidden p-2 rounded-xl transition-colors duration-200 cursor-pointer"
+              className="md:hidden p-2 rounded-xl transition-colors duration-200 cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
               style={{ color: "#A09E9E" }}
               onClick={() => setMobileOpen((o) => !o)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
             >
               {mobileOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -161,6 +224,8 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-menu"
+            ref={dialogRef}
             initial={{ opacity: 0, scale: 0.95, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
@@ -192,13 +257,13 @@ export default function Navbar() {
                   </li>
                 ))}
               </ul>
-              
+
               <div className="flex flex-col gap-4 pt-6 border-t border-white/10">
                 <a
                   href="#contact"
                   className="flex items-center justify-center w-full py-4 rounded-2xl text-base font-bold transition-transform duration-200 active:scale-95"
-                  style={{ 
-                    background: "linear-gradient(135deg, #F85900, #FF9432)", 
+                  style={{
+                    background: "linear-gradient(135deg, #F85900, #FF9432)",
                     color: "#0E0F10",
                     boxShadow: "0 8px 20px rgba(248,89,0,0.3)"
                   }}
@@ -207,7 +272,7 @@ export default function Navbar() {
                   {t("contact")}
                 </a>
 
-                <div className="flex gap-2 p-1 rounded-2xl bg-white/5">
+                <div className="flex gap-2 p-1 rounded-2xl bg-white/5" role="group" aria-label="Language switcher">
                   {LOCALES.map(({ code, label }) => (
                     <button
                       key={code}
@@ -217,6 +282,7 @@ export default function Navbar() {
                         background: locale === code ? "rgba(255,255,255,0.15)" : "transparent",
                         color: locale === code ? "#F5F5F7" : "#A09E9E",
                       }}
+                      aria-pressed={locale === code}
                     >
                       {label}
                     </button>

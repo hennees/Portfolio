@@ -19,6 +19,7 @@
     "scroll": "Scroll to explore"
   },
   "showcase": {
+    "overline": "Portfolio",
     "title": "Selected Work",
     "subtitle": "A collection of projects where design meets healthcare and technology.",
     "featured_label": "Featured Project",
@@ -142,6 +143,7 @@
     }
   },
   "stack": {
+    "overline": "Technologies",
     "title": "Stack & Tools",
     "subtitle": "The technologies and tools I work with every day."
   },
@@ -183,6 +185,7 @@
     }
   },
   "contact": {
+    "overline": "Contact",
     "title": "Let's Build Something",
     "subtitle": "Have a project in mind? I'd love to hear about it. Drop me a message and let's see what we can create together.",
     "cta": "Send a Message",
@@ -194,6 +197,7 @@
       "scope_label": "How big is the project?",
       "timeline_label": "When do you want to start?",
       "optional_hint": "Optional — helps me respond faster",
+      "field_required": "Required",
       "skip": "Skip & send",
       "next": "Next",
       "back": "Back",
@@ -207,7 +211,14 @@
       "sending": "Sending...",
       "success_title": "Inquiry received!",
       "success_message": "I'll get back to you within 24h.",
-      "error": "Something went wrong. Email me directly at patrick.hennes27@icloud.com"
+      "error": "Something went wrong. Email me directly at patrick.hennes27@icloud.com",
+      "project_types": ["App (iOS)", "App (Android)", "Website", "UI/UX Design", "eHealth Solution", "Consulting"],
+      "scopes": [
+        { "key": "compact",  "label": "Compact",  "desc": "Single page, concept or component" },
+        { "key": "project",  "label": "Project",  "desc": "Full app, website or design" },
+        { "key": "ongoing",  "label": "Ongoing",  "desc": "Product, ongoing collaboration" }
+      ],
+      "timelines": ["Flexible", "1–3 months", "ASAP"]
     },
     "social": "Find me on"
   },
@@ -218,7 +229,9 @@
     "imprint": "Imprint",
     "privacy": "Privacy Policy",
     "made_with": "Designed & Built by",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "tagline": "Bridging health and technology — designing interfaces that feel as good as they look.",
+    "available": "Available for new projects"
   },
   "faq": {
     "title": "FAQ",
