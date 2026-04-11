@@ -251,11 +251,7 @@ function CodeEditor() {
               <span className="opacity-40">(</span>
               <span className="text-[#F85900] font-bold underline">patrick</span>
               <span className="opacity-40">)</span>
-              <motion.span 
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.8, repeat: Infinity, ease: "steps(2)" }}
-                className="w-1.5 h-4 bg-[#F85900] ml-1 rounded-sm"
-              />
+              <span className="w-1.5 h-4 bg-[#F85900] ml-1 rounded-sm animate-blink" />
             </div>
           </motion.div>
         </AnimatePresence>
