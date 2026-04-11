@@ -124,7 +124,6 @@ export default function Footer() {
               </h3>
               <Link href="/imprint" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("imprint")}</Link>
               <Link href="/privacy" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>{tFooter("privacy")}</Link>
-              <a href="/sitemap.xml" className="text-sm hover:text-[#F85900] transition-colors" style={{ color: "#A09E9E" }}>Sitemap</a>
             </div>
           </motion.div>
         </motion.div>

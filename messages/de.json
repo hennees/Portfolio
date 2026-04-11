@@ -10,7 +10,12 @@
     "tagline": "Gesundheit und Technologie verbinden — Interfaces, die sich genauso gut anfühlen, wie sie aussehen.",
     "cta_work": "Meine Arbeit",
     "cta_contact": "Kontakt aufnehmen",
-    "roles": ["UI/UX Designer", "eHealth Entwickler", "Mobile App Creator", "KI-gestützter Workflow"],
+    "roles": [
+      "UI/UX Designer",
+      "eHealth Entwickler",
+      "Mobile App Creator",
+      "KI-gestützter Workflow"
+    ],
     "scroll": "Scrollen zum Entdecken"
   },
   "showcase": {
@@ -23,47 +28,88 @@
     "scoon": {
       "name": "Scoon",
       "description": "Die Plattform für Fotografen, Videografen und Creator auf der Suche nach den besten Locations. Community-driven, geprüfte Spots — Creator verdienen mit. In Zusammenarbeit mit Itanic & Kyri Agency.",
-      "tags": ["Ionic", "UI/UX", "Creator Platform"]
+      "tags": [
+        "Ionic",
+        "UI/UX",
+        "Creator Platform"
+      ]
     },
     "amigon": {
       "name": "Amigon",
       "description": "Mental-Health-Begleit-App mit KI-Sprachanbindung. Stimmungs-Tracking, sanftes Voice-Journaling und ein ruhiges, durchdachtes Interaktionsdesign.",
-      "tags": ["Flutter", "Mental Health", "Voice KI", "UI/UX"]
+      "tags": [
+        "Flutter",
+        "Mental Health",
+        "Voice KI",
+        "UI/UX"
+      ]
     },
     "portfolio": {
       "name": "Portfolio",
       "description": "Diese Website — gestaltet und gebaut, um meine Arbeit zu präsentieren. Dunkle Glassmorphism-Ästhetik mit mehrsprachiger Unterstützung.",
-      "tags": ["Web", "Next.js", "Framer Motion", "i18n"]
+      "tags": [
+        "Web",
+        "Next.js",
+        "Framer Motion",
+        "i18n"
+      ]
     },
     "dataflow": {
       "name": "DataFlow",
       "description": "Ein SaaS-Dashboard für Echtzeit-Analysen mit komplexer Datenvisualisierung und rollenbasiertem Zugriff.",
-      "tags": ["Dashboard", "SaaS", "React", "UI/UX"]
+      "tags": [
+        "Dashboard",
+        "SaaS",
+        "React",
+        "UI/UX"
+      ]
     },
     "gym": {
       "name": "GymLog",
       "description": "Fitness-Tracking-App mit personalisierten Trainingsplänen, Fortschrittsanalysen und intuitivem Dark-Mode-UI.",
-      "tags": ["Flutter", "UI/UX", "Fitness"]
+      "tags": [
+        "Flutter",
+        "UI/UX",
+        "Fitness"
+      ]
     },
     "gymbook": {
       "name": "GymBook",
       "description": "Workout-Journal-App zum Planen und Tracken von Trainingseinheiten — übersichtlich, schnell und motivierend gestaltet.",
-      "tags": ["Flutter", "UI/UX", "Fitness"]
+      "tags": [
+        "Flutter",
+        "UI/UX",
+        "Fitness"
+      ]
     },
     "pokedex": {
       "name": "Pokédex",
       "description": "Moderne Pokédex-App mit flüssigen Animationen, detaillierten Pokémon-Profilen und durchdachter Suchfunktion. Hochschulprojekt an der Inholland Hogeschool.",
-      "tags": ["iOS", "UI/UX", "Hochschulprojekt"]
+      "tags": [
+        "iOS",
+        "UI/UX",
+        "Hochschulprojekt"
+      ]
     },
     "wearable": {
       "name": "Wearable Dashboard",
       "description": "Health-Dashboard für Wearable-Daten in Zusammenarbeit mit StrykerLabs GmbH, Graz. Herzfrequenz, Schlaf und Aktivität — klar und medizinisch visualisiert.",
-      "tags": ["eHealth", "Dashboard", "React", "UI/UX"]
+      "tags": [
+        "eHealth",
+        "Dashboard",
+        "React",
+        "UI/UX"
+      ]
     },
     "anno": {
       "name": "Anno Amsterdam",
       "description": "AR-Tourismus-App für Amsterdam — Gebäudeinfos per Augmented Reality erleben und Touren auswählen. Entwickelt in Zusammenarbeit mit Inholland Hogeschool und Pieter Both.",
-      "tags": ["AR", "Swift", "Kotlin", "Hochschulprojekt"]
+      "tags": [
+        "AR",
+        "Swift",
+        "Kotlin",
+        "Hochschulprojekt"
+      ]
     }
   },
   "services": {
@@ -73,7 +119,13 @@
       "web": {
         "title": "Full-Stack Webentwicklung",
         "description": "Von der ersten Idee bis zur skalierbaren Cloud-Lösung. Ich entwickle moderne, reaktionsschnelle Web-Apps, Dashboards und SaaS-Produkte, die sowohl im Frontend als auch im Backend überzeugen.",
-        "tags": ["React", "Next.js", "Node.js", "PostgreSQL", "Tailwind"]
+        "tags": [
+          "React",
+          "Next.js",
+          "Node.js",
+          "PostgreSQL",
+          "Tailwind"
+        ]
       },
       "mobile": {
         "title": "Mobile App Entwicklung",
@@ -167,5 +219,35 @@
     "privacy": "Datenschutz",
     "made_with": "Designed & Built by",
     "rights": "Alle Rechte vorbehalten."
+  },
+  "faq": {
+    "title": "Häufige Fragen",
+    "subtitle": "Alles, was du wissen willst — bevor wir starten.",
+    "items": {
+      "process": {
+        "q": "Wie läuft eine Zusammenarbeit ab?",
+        "a": "Wir starten mit einem kurzen Gespräch, in dem ich deine Anforderungen verstehe. Danach folgt ein Konzept und Angebot — erst dann geht es in die Umsetzung. Du bekommst regelmäßige Updates und bist jederzeit im Loop."
+      },
+      "cost": {
+        "q": "Was kostet ein Projekt?",
+        "a": "Der Preis hängt vom Umfang ab. Design-Konzepte, Mobile Apps und Web-Projekte werden individuell kalkuliert. Melde dich einfach — ich erstelle dir ein unverbindliches Angebot."
+      },
+      "timeline": {
+        "q": "Wie lange dauert ein Projekt?",
+        "a": "Ein Design-Konzept ist in 1–2 Wochen fertig. Eine vollständige App oder Website dauert typischerweise 4–10 Wochen, je nach Komplexität und Feedbackrunden."
+      },
+      "stack": {
+        "q": "Welche Technologien nutzt du?",
+        "a": "Swift & SwiftUI für native iOS, Flutter für Cross-Platform, Next.js & React für Web, Figma für Design. Im eHealth-Bereich arbeite ich zusätzlich mit FHIR-Standards und DSGVO-konformen Architekturen."
+      },
+      "remote": {
+        "q": "Arbeitest du auch remote?",
+        "a": "Ja, komplett remote. Meine Kunden kommen aus ganz Österreich und Europa. Tools wie Figma, GitHub und regelmäßige Calls machen die Zusammenarbeit reibungslos — egal wo du bist."
+      },
+      "ehealth": {
+        "q": "Warum speziell eHealth?",
+        "a": "Gesundheitsdaten sind komplex und sensibel — genau da macht gutes Design den Unterschied. Ich studiere eHealth an der FH Joanneum und kenne die Anforderungen an DSGVO-konforme Apps und digitale Gesundheitsstandards."
+      }
+    }
   }
 }

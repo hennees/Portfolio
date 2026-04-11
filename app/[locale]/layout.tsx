@@ -72,9 +72,8 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
     },
     icons: {
       icon: [
-        { url: "/icon" },
-        { url: "/favicon.ico", sizes: "any" },
-        { url: "/logo-dark.svg", type: "image/svg+xml" },
+        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/icon.svg", type: "image/svg+xml" },
       ],
       apple: "/apple-icon",
     },

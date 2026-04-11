@@ -3,9 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import GlassCard from "@/components/ui/GlassCard";
-import dynamic from "next/dynamic";
-
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+import Lottie from "lottie-react";
 import webDesignAnimationRaw from "@/public/animations/web-design.json";
 import uxDesignAnimationRaw from "@/public/animations/ux-design.json";
 import mobileDevAnimationRaw from "@/public/animations/mobile-dev.json";
@@ -62,17 +60,16 @@ const MOBILE_MAP: Record<string, string> = {
   "#3d4962": "#2D3F62",
 };
 
-// face-id is a near-black silhouette → recolor shapes to brand orange
-const FACEID_MAP: Record<string, string> = {
-  "#252525": "#F85900",
-};
-
 const MEDICAL_MAP: Record<string, string> = {
   "#60c3da": "#10B981", // cyan → eHealth green
-  "#ffffff": "#C8C8C8", // pure white → dimmed
-  "#eeeff0": "#888888", // near-white → mid gray
-  "#d0d4d7": "#555555", // light gray → dark gray
-  "#c1bdbb": "#3A3A3A", // warm gray → near-dark
+  "#61c3da": "#10B981", // cyan variant
+  "#000000": "#3A4A44", // black → dark teal (visible on dark bg)
+  "#010101": "#3A4A44",
+  "#020202": "#3A4A44",
+  "#ffffff": "#D1D5DB", // white → light gray
+  "#eeeff0": "#9CA3AF",
+  "#d0d4d7": "#6B7280",
+  "#c1bdbb": "#4B5563",
 };
 
 // ─── PRE-PROCESS ANIMATIONS ───────────────────────────────────────────────

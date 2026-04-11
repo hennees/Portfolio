@@ -3,10 +3,9 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import dynamic from "next/dynamic";
+import { useState, useEffect } from "react";
+import Lottie from "lottie-react";
 import developerAnimationRaw from "@/public/animations/developer.json";
-
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import { recolorLottie, PORTFOLIO_COLOR_MAP } from "@/lib/lottie";
 import { TypewriterText } from "@/components/ui/TypewriterText";
 
@@ -23,6 +22,9 @@ const developerAnimation = (() => {
 export default function Hero() {
   const t = useTranslations("hero");
   const phrases = t.raw("roles") as string[];
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden" aria-label="Hero section">
@@ -37,7 +39,7 @@ export default function Hero() {
       {/* Content — 2-col auf Desktop */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pt-20 lg:pt-0 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
 
-        {/* Animation on Mobile (Visible before text) */}
+        {/* Animation on Mobile */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -46,7 +48,9 @@ export default function Hero() {
           aria-hidden="true"
         >
           <div className="absolute rounded-full pointer-events-none" style={{ width: "100%", height: "100%", background: "radial-gradient(circle, rgba(248,89,0,0.15) 0%, transparent 70%)", filter: "blur(30px)" }} />
-          <Lottie animationData={developerAnimation} loop autoplay style={{ width: "100%", height: "100%" }} />
+          {mounted && (
+            <Lottie animationData={developerAnimation} loop autoplay style={{ width: "100%", height: "100%" }} />
+          )}
         </motion.div>
 
         {/* Links: Text */}
@@ -92,7 +96,9 @@ export default function Hero() {
           aria-hidden="true"
         >
           <div className="absolute rounded-full pointer-events-none" style={{ width: 380, height: 380, background: "radial-gradient(circle, rgba(248,89,0,0.12) 0%, transparent 70%)", filter: "blur(40px)" }} />
-          <Lottie animationData={developerAnimation} loop autoplay style={{ width: 440, height: 440 }} />
+          {mounted && (
+            <Lottie animationData={developerAnimation} loop autoplay style={{ width: 440, height: 440 }} />
+          )}
         </motion.div>
 
       </div>

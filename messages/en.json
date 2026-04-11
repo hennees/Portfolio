@@ -10,7 +10,12 @@
     "tagline": "Bridging health and technology — designing interfaces that feel as good as they look.",
     "cta_work": "View My Work",
     "cta_contact": "Get in Touch",
-    "roles": ["UI/UX Designer", "eHealth Developer", "Mobile App Creator", "AI-Powered Workflow"],
+    "roles": [
+      "UI/UX Designer",
+      "eHealth Developer",
+      "Mobile App Creator",
+      "AI-Powered Workflow"
+    ],
     "scroll": "Scroll to explore"
   },
   "showcase": {
@@ -23,47 +28,88 @@
     "scoon": {
       "name": "Scoon",
       "description": "The platform for photographers, videographers and creators searching for the best locations. Community-driven, curated spots — creators earn from their contributions. Built with Itanic & Kyri Agency.",
-      "tags": ["Ionic", "UI/UX", "Creator Platform"]
+      "tags": [
+        "Ionic",
+        "UI/UX",
+        "Creator Platform"
+      ]
     },
     "amigon": {
       "name": "Amigon",
       "description": "A mental health companion app with AI voice integration. Daily mood tracking, gentle voice journaling, and calm interaction design.",
-      "tags": ["Flutter", "Mental Health", "Voice AI", "UI/UX"]
+      "tags": [
+        "Flutter",
+        "Mental Health",
+        "Voice AI",
+        "UI/UX"
+      ]
     },
     "portfolio": {
       "name": "Portfolio",
       "description": "This very site — designed and built to showcase my craft. Dark glassmorphism aesthetic with multilingual support.",
-      "tags": ["Web", "Next.js", "Framer Motion", "i18n"]
+      "tags": [
+        "Web",
+        "Next.js",
+        "Framer Motion",
+        "i18n"
+      ]
     },
     "dataflow": {
       "name": "DataFlow",
       "description": "A SaaS dashboard for real-time analytics with complex data visualisation, custom chart components, and role-based access.",
-      "tags": ["Dashboard", "SaaS", "React", "UI/UX"]
+      "tags": [
+        "Dashboard",
+        "SaaS",
+        "React",
+        "UI/UX"
+      ]
     },
     "gym": {
       "name": "GymLog",
       "description": "Fitness tracking app with personalised workout plans, progress analytics, and an intuitive dark-mode UI.",
-      "tags": ["Flutter", "UI/UX", "Fitness"]
+      "tags": [
+        "Flutter",
+        "UI/UX",
+        "Fitness"
+      ]
     },
     "gymbook": {
       "name": "GymBook",
       "description": "Workout journal app for planning and tracking training sessions — clear, fast, and motivating by design.",
-      "tags": ["Flutter", "UI/UX", "Fitness"]
+      "tags": [
+        "Flutter",
+        "UI/UX",
+        "Fitness"
+      ]
     },
     "pokedex": {
       "name": "Pokédex",
       "description": "A modern Pokédex app with fluid animations, detailed Pokémon profiles, and a thoughtfully designed search experience. University project at Inholland Hogeschool.",
-      "tags": ["iOS", "UI/UX", "Uni Project"]
+      "tags": [
+        "iOS",
+        "UI/UX",
+        "Uni Project"
+      ]
     },
     "wearable": {
       "name": "Wearable Dashboard",
       "description": "A health dashboard for wearable data, built in collaboration with StrykerLabs GmbH, Graz. Heart rate, sleep, and activity — cleanly visualised in a medical-grade interface.",
-      "tags": ["eHealth", "Dashboard", "React", "UI/UX"]
+      "tags": [
+        "eHealth",
+        "Dashboard",
+        "React",
+        "UI/UX"
+      ]
     },
     "anno": {
       "name": "Anno Amsterdam",
       "description": "AR tourism app for Amsterdam — explore building information through Augmented Reality and choose guided tours. Built with Inholland Hogeschool and Pieter Both.",
-      "tags": ["AR", "Swift", "Kotlin", "Uni Project"]
+      "tags": [
+        "AR",
+        "Swift",
+        "Kotlin",
+        "Uni Project"
+      ]
     }
   },
   "services": {
@@ -73,7 +119,13 @@
       "web": {
         "title": "Full-Stack Web Development",
         "description": "From the initial concept to a scalable cloud solution. I develop modern, responsive web apps, dashboards, and SaaS products that shine both in the frontend and backend.",
-        "tags": ["React", "Next.js", "Node.js", "PostgreSQL", "Tailwind"]
+        "tags": [
+          "React",
+          "Next.js",
+          "Node.js",
+          "PostgreSQL",
+          "Tailwind"
+        ]
       },
       "mobile": {
         "title": "Mobile App Development",
@@ -167,5 +219,35 @@
     "privacy": "Privacy Policy",
     "made_with": "Designed & Built by",
     "rights": "All rights reserved."
+  },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Everything you want to know — before we start.",
+    "items": {
+      "process": {
+        "q": "How does the collaboration work?",
+        "a": "We start with a quick call to understand your requirements. Then comes a concept and proposal — only then do we move into implementation. You get regular updates and are always in the loop."
+      },
+      "cost": {
+        "q": "What does a project cost?",
+        "a": "Pricing depends on the scope. Design concepts, mobile apps, and web projects are calculated individually. Just reach out — I'll put together a no-obligation quote for you."
+      },
+      "timeline": {
+        "q": "How long does a project take?",
+        "a": "A design concept is typically ready in 1–2 weeks. A full app or website usually takes 4–10 weeks, depending on complexity and feedback rounds."
+      },
+      "stack": {
+        "q": "What technologies do you use?",
+        "a": "Swift & SwiftUI for native iOS, Flutter for cross-platform, Next.js & React for web, Figma for design. In the eHealth space I also work with FHIR standards and GDPR-compliant architectures."
+      },
+      "remote": {
+        "q": "Do you work remotely?",
+        "a": "Yes, fully remote. My clients come from all over Austria and Europe. Tools like Figma, GitHub, and regular video calls make collaboration smooth — wherever you are."
+      },
+      "ehealth": {
+        "q": "Why specifically eHealth?",
+        "a": "Health data is complex and sensitive — that's exactly where good design makes a real difference. I study eHealth at FH Joanneum and understand the requirements of GDPR-compliant apps and digital health standards like FHIR."
+      }
+    }
   }
 }
