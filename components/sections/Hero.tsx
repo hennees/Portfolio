@@ -3,23 +3,15 @@
 import { useTranslations } from "next-intl";
 import { motion, useInView } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import Lottie from "lottie-react";
 import developerAnimationRaw from "@/public/animations/developer.json";
-import { recolorLottie, PORTFOLIO_COLOR_MAP } from "@/lib/lottie";
+import { recolorLottie, DARK_COLOR_MAP, LIGHT_COLOR_MAP } from "@/lib/lottie";
 import { TypewriterText } from "@/components/ui/TypewriterText";
-
-const developerAnimation = (() => {
-  const recolored = recolorLottie(developerAnimationRaw, PORTFOLIO_COLOR_MAP);
-  for (const layer of recolored.layers ?? []) {
-    if (["c++", "PHP"].includes(layer.nm)) {
-      layer.ks.o = { a: 0, k: 0, ix: 11 };
-    }
-  }
-  return recolored;
-})();
+import { useTheme } from "@/components/ui/ThemeProvider";
 
 export default function Hero() {
+  const { theme } = useTheme();
   const t = useTranslations("hero");
   const phrases = t.raw("roles") as string[];
   const [mounted, setMounted] = useState(false);
@@ -28,6 +20,17 @@ export default function Hero() {
 
   useEffect(() => { setMounted(true); }, []);
 
+  const developerAnimation = useMemo(() => {
+    const map = theme === "dark" ? DARK_COLOR_MAP : LIGHT_COLOR_MAP;
+    const recolored = recolorLottie(developerAnimationRaw, map);
+    for (const layer of recolored.layers ?? []) {
+      if (["c++", "PHP"].includes(layer.nm)) {
+        layer.ks.o = { a: 0, k: 0, ix: 11 };
+      }
+    }
+    return recolored;
+  }, [theme]);
+
   return (
     <section id="hero" ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden" aria-label="Hero section">
       {/* Background orbs */}
@@ -35,7 +38,7 @@ export default function Hero() {
         <div className="absolute rounded-full animate-orb-1" style={{ width: 600, height: 600, top: "10%", left: "15%", background: "radial-gradient(circle, #F85900 0%, transparent 70%)", opacity: "calc(0.12 * var(--c-orb-opacity))", filter: "blur(80px)" }} />
         <div className="absolute rounded-full animate-orb-2" style={{ width: 400, height: 400, top: "50%", right: "10%", background: "radial-gradient(circle, #FF9432 0%, transparent 70%)", opacity: "calc(0.08 * var(--c-orb-opacity))", filter: "blur(60px)" }} />
         <div className="absolute rounded-full animate-orb-3" style={{ width: 300, height: 300, bottom: "20%", left: "5%", background: "radial-gradient(circle, #F85900 0%, transparent 70%)", opacity: "calc(0.07 * var(--c-orb-opacity))", filter: "blur(60px)" }} />
-        <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(var(--c-border) 1px, transparent 1px), linear-gradient(90deg, var(--c-border) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
+        <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(var(--c-grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--c-grid-line) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
       </div>
 
       {/* Content — 2-col auf Desktop */}

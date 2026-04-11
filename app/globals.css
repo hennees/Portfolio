@@ -2,10 +2,8 @@
 
 /* ─── Theme tokens ─────────────────────────────────────────── */
 :root {
-  /* Dark theme (default) */
+  /* Default to dark variables if no theme is set, but preferably use explicit data-theme */
   --c-deep:            #0e0f10;
-  background-color:    #0e0f10;
-  color:               #f5f5f7;
   --c-surface-1:       #222222;
   --c-surface-2:       #2f2f2f;
   --c-accent:          #f85900;
@@ -28,12 +26,39 @@
   --c-locale-pill-m:   rgba(255, 255, 255, 0.05);
   --c-nav-active-bg:   rgba(255, 255, 255, 0.08);
   --c-orb-opacity:     1;
+  --c-grid-line:       rgba(255, 255, 255, 0.02);
+}
+
+/* Explicit Dark Theme (same as root for fallback) */
+[data-theme="dark"] {
+  --c-deep:            #0e0f10;
+  --c-surface-1:       #222222;
+  --c-surface-2:       #2f2f2f;
+  --c-accent:          #f85900;
+  --c-accent-soft:     #ff9432;
+  --c-text-primary:    #f5f5f7;
+  --c-text-muted:      #b0aeae;
+  --c-text-subtle:     #b0aeae;
+  --c-border:          rgba(255, 255, 255, 0.08);
+  --c-glass-bg:        rgba(47, 47, 47, 0.4);
+  --c-glass-border:    rgba(255, 255, 255, 0.08);
+  --c-nav-bg:          rgba(14, 15, 16, 0.7);
+  --c-nav-bg-solid:    rgba(14, 15, 16, 0.92);
+  --c-mobile-bg:       rgba(18, 19, 21, 0.98);
+  --c-mobile-border:   rgba(255, 255, 255, 0.1);
+  --c-scrollbar-track: #0e0f10;
+  --c-scrollbar-thumb: #2f2f2f;
+  --c-locale-active:   rgba(255, 255, 255, 0.1);
+  --c-locale-pill:     rgba(255, 255, 255, 0.05);
+  --c-locale-active-m: rgba(255, 255, 255, 0.15);
+  --c-locale-pill-m:   rgba(255, 255, 255, 0.05);
+  --c-nav-active-bg:   rgba(255, 255, 255, 0.08);
+  --c-orb-opacity:     1;
+  --c-grid-line:       rgba(255, 255, 255, 0.02);
 }
 
 [data-theme="light"] {
   --c-deep:            #f0f0f2;
-  background-color:    #f0f0f2;
-  color:               #0e0f10;
   --c-surface-1:       #ffffff;
   --c-surface-2:       #e4e4e6;
   --c-accent:          #f85900;
@@ -56,6 +81,7 @@
   --c-locale-pill-m:   rgba(0, 0, 0, 0.05);
   --c-nav-active-bg:   rgba(0, 0, 0, 0.07);
   --c-orb-opacity:     0.4;
+  --c-grid-line:       rgba(0, 0, 0, 0.04);
 }
 
 @theme inline {
@@ -89,6 +115,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--c-deep); /* Ensure html also has the color */
 }
 
 body {
@@ -337,7 +364,7 @@ h6 {
 /* Hero CTA primary */
 .hero-cta-primary {
   background: linear-gradient(135deg, var(--c-accent), var(--c-accent-soft));
-  color: #0e0f10;
+  color: var(--c-deep);
   box-shadow: 0 8px 32px rgba(248, 89, 0, 0.35);
   transition: box-shadow 200ms ease, transform 200ms ease;
 }
@@ -364,7 +391,7 @@ h6 {
 /* CTA button primary (contact) */
 .cta-primary {
   background: linear-gradient(135deg, var(--c-accent), var(--c-accent-soft));
-  color: #0e0f10;
+  color: var(--c-deep);
   box-shadow: 0 12px 40px rgba(248, 89, 0, 0.35);
   transition: box-shadow 200ms ease, transform 200ms ease;
 }
