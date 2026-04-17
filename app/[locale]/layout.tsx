@@ -73,10 +73,10 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
     },
     icons: {
       icon: [
+        { url: "/icon", type: "image/png", sizes: "192x192" },
         { url: "/favicon.svg", type: "image/svg+xml" },
-        { url: "/icon.svg", type: "image/svg+xml" },
       ],
-      apple: "/apple-icon",
+      apple: [{ url: "/apple-icon", type: "image/png", sizes: "180x180" }],
     },
     openGraph: {
       title: homeSeo.title,
